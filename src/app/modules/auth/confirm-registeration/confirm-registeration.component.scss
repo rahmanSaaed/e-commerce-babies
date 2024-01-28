@@ -1,0 +1,25 @@
+section {
+	background-color: #06abb9;
+	background-image: url("../../../../assets/images/mumes-bg2.png");
+	background-repeat-x: no-repeat;
+	background-size: auto;
+}
+.mat-spinner::ng-deep circle {
+	stroke: #fff2f4;
+	font-size: 10px;
+	margin: 0 auto;
+}
+.resend {
+	background: #75cbd8;
+}
+.min-h {
+	min-height: 40px;
+}
+.activation-button {
+	max-width: 160px !important;
+}
+::ng-deep html[dir="rtl"] {
+	.activation-button {
+		max-width: 200px !important;
+	}
+}

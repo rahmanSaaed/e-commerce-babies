@@ -1,0 +1,59 @@
+@import "theme-colors.scss";
+
+
+$theme-colors: (
+  "primary": $primary,
+  "primary1": $primary1,
+  "dark": $dark,
+  "white": $white,
+  "aqua1":$aqua1,
+  "secondary":$secondary,
+  "pink1":$pink1,
+  "pink2":$pink2,
+  "gray1":$gray1,
+  "secondary1":$secondary1,
+  "orange":$orange,
+  "pink3":$pink3,
+  "pink4":$pink4,
+  "gray2":$gray2,
+  "gray3":$gray3,
+  "danger":$danger
+);
+
+@font-face {
+  font-family: 'BryantPro-Medium';
+  src: url(../fonts/BryantPro-Medium.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'BryantPro-Regular';
+  src: url(../fonts/BryantPro-Regular.woff2) format('woff2');
+}
+@font-face {
+  font-family: 'BryantPro-Bold';
+  src: url(../fonts/BryantPro-Bold.woff2) format('woff2');
+}
+
+$font-family-base: 'BryantPro-Regular';
+$body-bg: $white;
+@import "bootstrap/bootstrap.scss";
+@import 'typography.scss';
+@import 'width.scss';
+@import 'customs';
+
+
+html[dir=ltr] {
+    $start:left;
+    $end:right;
+    @import "spacing";
+    @import 'generics.scss';
+
+
+}
+html[dir=rtl] {
+    $start:right;
+    $end:left;
+    @import "spacing";
+    @import 'generics.scss';
+    
+    
+}

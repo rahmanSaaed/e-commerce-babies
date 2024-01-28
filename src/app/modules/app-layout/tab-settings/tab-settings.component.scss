@@ -1,0 +1,50 @@
+.min {
+    min-height: 100%;
+}
+.menu-overlay {
+    position: fixed;
+    top: 100px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(#000000, 0.6);
+    z-index: 2000;
+}
+.filter-menu {
+    background: white;
+    position: fixed;
+    top: 100px;
+    left: -280px;
+    width: 280px;
+    height: 100%;
+    z-index: 20001;
+    padding: 50px 0px 20px 40px;
+    overflow: scroll;
+    transition: 500ms ease-in-out;
+}
+.account-wrapper {
+    justify-content: center !important;       
+}
+@media (max-width: 991.98px) {
+    .account-wrapper {
+        justify-content: unset !important;
+    }
+}
+.filter-menu {
+    left: -280px;
+    padding: 50px 0px 20px 40px;
+}
+.menueSlide {
+    left: 0px;
+}
+::ng-deep html[dir="rtl"] {
+    .filter-menu {
+        right: -280px;
+        padding: 50px 40px 20px 0px;
+    }
+    .menueSlide {
+        right: 0px;
+    }
+}

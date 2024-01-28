@@ -1,0 +1,131 @@
+.content {
+    width: 100%;
+    height: 200px;
+}
+.wrapper {
+    border-left: 1px solid #e0edf9;
+}
+.coll {
+    left: -15px;
+    top: -5px;
+    box-shadow: 0px 11px 22px #6ba4e350;
+    border: 1px solid #dfedf8;
+    max-width: 28px !important;
+}
+.w-75 {
+    width: 75%;
+}
+div.wrapper:last-of-type {
+    border-left: unset !important;
+    margin-bottom: 80px;
+}
+input[type="range"] {
+    -webkit-appearance: none;
+    background-color: #dee2e6;
+    height: 4px;
+    width: 80%;
+    margin-left: 10%;
+}
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    position: relative;
+    top: 0px;
+    z-index: 1;
+    width: 11px;
+    height: 11px;
+    cursor: pointer;
+    border-radius: 4px;
+    background-image: -webkit-gradient(
+        linear,
+        left top,
+        left bottom,
+        color-stop(0%, black),
+        color-stop(50%, black),
+        color-stop(51%, black),
+        color-stop(100%, black)
+    );
+}
+.min,
+.high {
+    line-height: 24px;
+}
+
+
+.search-results {
+  height: 20rem;
+  overflow: scroll;
+}
+.menu-overlay {
+    position: fixed;
+    top: 100px;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(#000000,0.6);
+    z-index: 2000;
+}
+.filter-menu {
+    background: white;
+    position: fixed;
+    top: 100px;
+    left: -280px;;
+    width: 280px;
+    height: 100%;
+    z-index: 20001;
+    padding: 50px 0px 20px 40px;
+    overflow: scroll;
+    transition: 500ms ease-in-out;
+}
+
+
+#scroller {
+  height: 100vh;
+  width: 700px;
+  overflow: scroll;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+::ng-deep html[dir=rtl] {
+    .wrapper {
+        border-left: unset;
+        border-right: 1px solid #e0edf9;
+    }
+    .coll {
+        left: unset !important;
+        right: -15px;
+        top: -5px;
+        box-shadow: 0px 11px 22px #6ba4e350;
+        border: 1px solid #dfedf8;
+        max-width: 28px !important;
+    }
+    div.wrapper:last-of-type {
+        border-right: unset !important;
+        margin-bottom: 80px;
+    }
+}
+
+.filter-mobile {
+    transform: rotate(90deg);
+}
+.filter-menu {
+    left: -280px;
+    padding: 50px 0px 20px 40px;
+}
+.menueSlide {
+    left: 0px;
+}
+::ng-deep html[dir="rtl"] {
+    .filter-menu {
+        right: -280px;
+        padding: 50px 40px 20px 0px;
+    }
+    .menueSlide {
+        right: 0px;
+    }
+}
+.content {opacity:0; -webkit-transition:all .30s ease;-o-transition:all .30s ease;transition:all .30s ease}
+.content.show {opacity:1;}

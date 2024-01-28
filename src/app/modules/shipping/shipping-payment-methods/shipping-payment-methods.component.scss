@@ -1,0 +1,42 @@
+.divider {
+    background: #F4F4F4;
+    height: 1px;
+}
+::-webkit-input-placeholder::ng-deep {
+	/* Chrome/Opera/Safari */
+	font-size: 0.675rem !important;
+	color: #969CAA !important;
+	font-family: "BryantPro-Regular" !important;
+}
+@media (max-width: 575.9px) {
+	.payment {
+		[type=radio]:checked + label:before, [type=radio]:not(:checked) + label:before {
+			top:6px !important;
+
+		}
+		 [type=radio]:checked + label:after,  [type=radio]:not(:checked) + label:after {
+
+			top: 10px;
+
+		}
+
+	}
+}
+
+
+.filter-green{
+  filter: invert(120%) sepia(79%) saturate(100%) hue-rotate(100deg) brightness(100%) contrast(100%);
+}
+
+.button-prev {
+  font-size: 23px;
+  font-weight: bolder;
+  margin-top: 48px;
+}
+::ng-deep html[dir="rtl"] {
+	
+	.prev-arrow {
+	  transform: scaleX(-1);
+	  margin-right: 2px;
+	}
+  }

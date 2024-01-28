@@ -1,0 +1,17 @@
+.masonry-item {
+    width: 30%;
+}
+.background {
+    background-color: #F8FBFF;
+}
+@media (max-width: 991.9px) {
+    .masonry-item {
+        width: 40%;
+    }
+  }  
+  @media (max-width: 480px) {
+    .masonry-item {
+        width: 80%;
+    }
+  }  
+  

@@ -1,0 +1,68 @@
+.height {
+    height: 250px;
+}
+img {
+    object-fit: cover;
+}
+.star {
+    max-width: 8px;
+}
+.overlay {
+    background-color: rgba(0, 0, 0, 0.2);
+    position: absolute;
+    height: 250px;
+    top: 0;
+    width: 200px;
+    opacity: 0;
+    -webkit-transition: background-color 0.8s ease-in, opacity 0.8s ease-in;
+    transition: background-color 0.8s ease-in, opacity 0.8s ease-in;
+}
+.whishlist {
+    top: 12px;
+    right: 12px;
+    opacity: 0;
+    -webkit-transition: transparent 0.8s ease-in, opacity 0.8s ease-in;
+    transition: transparent 0.8s ease-in, opacity 0.8s ease-in;
+}
+.cart {
+    top: 53px;
+    right: 12px;
+        opacity: 0;
+    -webkit-transition: transparent 0.8s ease-in, opacity 0.8s ease-in;
+    transition: transparent 0.8s ease-in, opacity 0.8s ease-in;
+}
+
+.preview:hover .overlay {
+    opacity: 1;
+    -webkit-transition: background-color 0.8s ease-in, opacity 0.8s ease-in;
+    transition: background-color 0.8s ease-in, opacity 0.8s ease-in;
+}
+.preview:hover .whishlist {
+    opacity: 1;
+    -webkit-transition: transparent 0.8s ease-in, opacity 0.8s ease-in;
+    transition: transparent 0.8s ease-in, opacity 0.8s ease-in;
+}
+
+.preview:hover .cart {
+  opacity: 1;
+  -webkit-transition: transparent 0.8s ease-in, opacity 0.8s ease-in;
+  transition: transparent 0.8s ease-in, opacity 0.8s ease-in;
+}
+
+.cart img {
+    max-width: 16px;
+}
+.whishlist img {
+    max-width: 18px;
+}
+.truncate-overflow {
+    --max-lines: 1;
+    --lh: 0.9rem;
+    max-height: calc(var(--lh) * var(--max-lines));
+    overflow: hidden;
+}
+
+
+mat-spinner {
+  zoom: 0.2
+}

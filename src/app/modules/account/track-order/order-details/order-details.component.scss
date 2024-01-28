@@ -1,0 +1,57 @@
+.step {
+   position: relative;
+}
+
+.step::before {
+    content: "";
+    width: 44px;
+    height: 44px;
+    border:1px dashed  #ff8392;
+    color:  #ff8392;
+    display: block;
+    position: absolute;
+    left:  -50px;
+    background-color: white;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.step::after {
+    content: "";
+    height: 100%;
+    border-left: 1px dashed #ff8392;
+    position: absolute;
+    bottom: 0;
+    left: -27px;
+    top: 44px;
+}
+div.step:last-of-type::after {
+    content: unset;
+}
+.stepper .step:nth-of-type(1)::before {
+    content: "1";
+    font-family: 'BryantPro-Bold';
+}
+.stepper .step:nth-of-type(2)::before {
+    content: "2";
+    font-family: 'BryantPro-Bold';
+}
+.stepper .step:nth-of-type(3)::before {
+    content: "3";
+    font-family: 'BryantPro-Bold';
+}
+.stepper .step:nth-of-type(4)::before {
+    content: "4";
+    font-family: 'BryantPro-Bold';
+}
+.step.active::before {
+    background:  #ff8392;
+    color: white;
+}
+.stepper .step:nth-of-type(2) {
+  min-height: 100px;
+}
+.stepper .step:nth-of-type(3) {
+    min-height: 100px;
+}

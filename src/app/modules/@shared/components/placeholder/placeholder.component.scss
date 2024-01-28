@@ -1,0 +1,465 @@
+$base-color: #f4f4f4;
+$shine-color: rgba(229, 229, 229, 0.6);
+$animation-duration: 1.5s;
+@mixin background-gradient($color: $base-color, $background-size: 600px) {
+    background-image: linear-gradient(90deg, $color 0px, $shine-color 40px, $color 80px);
+    background-size: $background-size;
+    @content;
+}
+.product-placeholder {
+    $avatar-offset: 20 + 16;
+    .image-placeholder {
+        width: 100%;
+        height: 250px;
+        @include background-gradient {
+            animation: shine-avatar $animation-duration infinite ease-in;
+        }
+    }
+    .line-placeholder {
+        width: 180px;
+        height: 10px;
+        margin: auto;
+        margin-top: 12px;
+        border-radius: 7px;
+        @include background-gradient {
+            animation: shine-lines $animation-duration infinite ease-out;
+        }
+    }
+    @keyframes shine-avatar {
+        0% {
+            background-position: -100px + $avatar-offset;
+        }
+    
+        40% {
+            background-position: 140px + $avatar-offset;
+        }
+        100% {
+            background-position: 140px + $avatar-offset;
+        }
+    }
+}
+.category-placeholder {
+    $avatar-offset: 20 + 16;
+    .image-placeholder {
+        width: 100%;
+        height: 250px;
+        @include background-gradient {
+            animation: shine-avatar $animation-duration infinite ease-in;
+        }
+    }
+    .category-line-placeholder {
+        position: absolute;
+        left: 0;
+        right: 0;
+        margin: auto;
+        bottom: 0;
+        width: 80%;
+        height: 50px;
+        border-radius: 7px;
+        background: #f7f7f7;
+    }
+    @keyframes shine-avatar {
+        0% {
+            background-position: -100px + $avatar-offset;
+        }
+    
+        40% {
+            background-position: 140px + $avatar-offset;
+        }
+        100% {
+            background-position: 140px + $avatar-offset;
+        }
+    }
+}
+.big-slider-placeholder {
+    $avatar-offset: 5 + 16;
+    .image-placeholder {
+        width: 100%;
+        height: 400px !important;
+        @include background-gradient {
+            animation: shine-avatar $animation-duration infinite ease-in;
+        }
+    }
+    @keyframes shine-avatar {
+        0% {
+            background-position: -150px + $avatar-offset;
+        }
+    
+        40% {
+            background-position: 600px + $avatar-offset;
+        }
+        100% {
+            background-position: 600px + $avatar-offset;
+        }
+    }
+}
+.small-slider-placeholder {
+    $avatar-offset: 5 + 16;
+    .image-placeholder {
+        width: 100%;
+        height: 190px !important;
+        @include background-gradient {
+            animation: shine-avatar $animation-duration infinite ease-in;
+        }
+    }
+    @keyframes shine-avatar {
+        0% {
+            background-position: -150px + $avatar-offset;
+        }
+    
+        40% {
+            background-position: 600px + $avatar-offset;
+        }
+        100% {
+            background-position: 600px + $avatar-offset;
+        }
+    }
+}
+.subCategory-placeholder {
+    $avatar-offset: 20 + 16;
+    .image-placeholder {
+        width: 100%;
+        height: 200px;
+        @include background-gradient {
+            animation: shine-avatar $animation-duration infinite ease-in;
+        }
+    }
+    .line-placeholder {
+        width: 180px;
+        height: 10px;
+        margin: auto;
+        margin-top: 12px;
+        border-radius: 7px;
+        @include background-gradient {
+            animation: shine-lines $animation-duration infinite ease-out;
+        }
+    }
+    @keyframes shine-avatar {
+        0% {
+            background-position: -100px + $avatar-offset;
+        }
+    
+        40% {
+            background-position: 140px + $avatar-offset;
+        }
+        100% {
+            background-position: 140px + $avatar-offset;
+        }
+    }
+}
+.section-small {
+    $avatar-offset: 5 + 16;
+    .image-placeholder {
+        width: 100%;
+        height: 300px !important;
+        @include background-gradient {
+            animation: shine-avatar $animation-duration infinite ease-in;
+        }
+    }
+    @keyframes shine-avatar {
+        0% {
+            background-position: -150px + $avatar-offset;
+        }
+    
+        40% {
+            background-position: 600px + $avatar-offset;
+        }
+        100% {
+            background-position: 600px + $avatar-offset;
+        }
+    }
+}
+.brand {
+    $avatar-offset: 5 + 16;
+    .image-placeholder {
+        width: 200px;
+        height: 80px !important;
+        @include background-gradient {
+            animation: shine-avatar $animation-duration infinite ease-in;
+        }
+    }
+    @keyframes shine-avatar {
+        0% {
+            background-position: -150px + $avatar-offset;
+        }
+    
+        40% {
+            background-position: 600px + $avatar-offset;
+        }
+        100% {
+            background-position: 600px + $avatar-offset;
+        }
+    }
+}
+.review {
+    $avatar-offset: 20 + 16;
+    .image-placeholder {
+        width: 100%;
+        height: 50px;
+        @include background-gradient {
+            animation: shine-avatar $animation-duration infinite ease-in;
+        }
+    }
+    .line-placeholder {
+        width: 180px;
+        height: 10px;
+        margin: auto;
+        margin-top: 12px;
+        border-radius: 7px;
+        @include background-gradient {
+            animation: shine-lines $animation-duration infinite ease-out;
+        }
+    }
+    @keyframes shine-avatar {
+        0% {
+            background-position: -100px + $avatar-offset;
+        }
+    
+        40% {
+            background-position: 140px + $avatar-offset;
+        }
+        100% {
+            background-position: 140px + $avatar-offset;
+        }
+    }
+}
+.whishlist {
+    $avatar-offset: 20 + 16;
+    .image-placeholder {
+        width: 100%;
+        height: 250px;
+        @include background-gradient {
+            animation: shine-avatar $animation-duration infinite ease-in;
+        }
+    }
+    .line-placeholder {
+        width: 180px;
+        height: 30px;
+        margin: auto;
+        margin-top: 12px;
+        border-radius: 20px;
+        @include background-gradient {
+            animation: shine-lines $animation-duration infinite ease-out;
+        }
+    }
+    @keyframes shine-avatar {
+        0% {
+            background-position: -100px + $avatar-offset;
+        }
+    
+        40% {
+            background-position: 140px + $avatar-offset;
+        }
+        100% {
+            background-position: 140px + $avatar-offset;
+        }
+    }
+}
+.account-info {
+    $avatar-offset: 20 + 16;
+    .image-placeholder {
+        width: 100%;
+        height: 180px;
+        @include background-gradient {
+            animation: shine-avatar $animation-duration infinite ease-in;
+        }
+    }
+    .line-placeholder {
+        width: 100%;
+        height: 30px;
+        margin: auto;
+        margin-top: 12px;
+        border-radius: 20px;
+        @include background-gradient {
+            animation: shine-lines $animation-duration infinite ease-out;
+        }
+    }
+    @keyframes shine-avatar {
+        0% {
+            background-position: -100px + $avatar-offset;
+        }
+    
+        40% {
+            background-position: 140px + $avatar-offset;
+        }
+        100% {
+            background-position: 140px + $avatar-offset;
+        }
+    }
+}
+.all-catogries {
+    $avatar-offset: 20 + 16;
+    .image-placeholder {
+        width: 100%;
+        height: 300px;
+        @include background-gradient {
+            animation: shine-avatar $animation-duration infinite ease-in;
+        }
+    }
+    @keyframes shine-avatar {
+        0% {
+            background-position: -100px + $avatar-offset;
+        }
+    
+        40% {
+            background-position: 350px + $avatar-offset;
+        }
+        100% {
+            background-position: 350px + $avatar-offset;
+        }
+    }
+}
+.blog {
+    $avatar-offset: 20 + 16;
+    .image-placeholder {
+        width: 100%;
+        height: 500px;
+        @include background-gradient {
+            animation: shine-avatar $animation-duration infinite ease-in;
+        }
+    }
+    @keyframes shine-avatar {
+        0% {
+            background-position: -100px + $avatar-offset;
+        }
+    
+        40% {
+            background-position: 520px + $avatar-offset;
+        }
+        100% {
+            background-position: 520px + $avatar-offset;
+        }
+    }
+}
+.order-detail {
+    $avatar-offset: 20 + 16;
+    .image-placeholder {
+        height: 50px;
+        @include background-gradient {
+            animation: shine-avatar $animation-duration infinite ease-in;
+        }
+    }
+    .line-placeholder {
+        width: 10px;
+        height: 180px;
+        margin-bottom: 12px;
+        border-radius: 0px;
+        @include background-gradient {
+            animation: shine-lines $animation-duration infinite ease-out;
+        }
+    }
+    @keyframes shine-avatar {
+        0% {
+            background-position: -100px + $avatar-offset;
+        }
+    
+        40% {
+            background-position: 140px + $avatar-offset;
+        }
+        100% {
+            background-position: 140px + $avatar-offset;
+        }
+    }
+}
+.order {
+    $avatar-offset: 20 + 16;
+    .image-placeholder {
+        height: 100px;
+        @include background-gradient {
+            animation: shine-avatar $animation-duration infinite ease-in;
+        }
+    }
+    .line-placeholder {
+        width: 10px;
+        height: 180px;
+        margin-bottom: 12px;
+        border-radius: 0px;
+        @include background-gradient {
+            animation: shine-lines $animation-duration infinite ease-out;
+        }
+    }
+    @keyframes shine-avatar {
+        0% {
+            background-position: -100px + $avatar-offset;
+        }
+    
+        40% {
+            background-position: 140px + $avatar-offset;
+        }
+        100% {
+            background-position: 140px + $avatar-offset;
+        }
+    }
+}
+.terms-condition {
+    height: 200px;
+    $avatar-offset: 20 + 16;
+    .line-placeholder {
+        margin:auto;
+        width: 80%;
+        height: 10px;
+        margin-bottom: 12px;
+        border-radius: 7px;
+        @include background-gradient {
+            animation: shine-lines $animation-duration infinite ease-out;
+        }
+    }
+    @keyframes shine-avatar {
+        0% {
+            background-position: -100px + $avatar-offset;
+        }
+    
+        40% {
+            background-position: 140px + $avatar-offset;
+        }
+        100% {
+            background-position: 140px + $avatar-offset;
+        }
+    }
+}
+
+// .image-placeholder {
+// 	width: 100%;
+// 	height: 250px;
+// 	@include background-gradient {
+// 		animation: shine-avatar $animation-duration infinite ease-in;
+// 	}
+
+// }
+// &.circle-height {
+//     height: 200px !important;
+// }
+// &.slider {
+//     height: 400px !important;
+//     @include background-gradient($base-color,1000px) {
+//         animation: shine-avatar $animation-duration infinite ease-in;
+//     }
+// }
+// &.circle-height {
+//     height: 200px !important;
+// }
+// &.slider {
+//     height: 400px !important;
+//     @include background-gradient($base-color,1000px) {
+//         animation: shine-avatar $animation-duration infinite ease-in;
+//     }
+// }
+
+
+
+@keyframes shine-lines {
+    0% {
+        background-position: -100px;
+    }
+    40% {
+        background-position: 140px;
+    }
+    100% {
+        background-position: 250px;
+    }
+}
+
+
+@mixin shine-avatar-mixin($avatar-offset: 20 + 16) {
+    
+}

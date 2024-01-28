@@ -1,0 +1,117 @@
+<div class="container ptb-sm-20" id="invoice" *ngIf="order?.orderId" >
+  <section class="border-radius-30">
+    <!-- <div class="text-center bg-primary border-radius-25 ptb-30 top-sec">
+          <img src="../../../assets/images/invoice-logo.png" alt="" class="max-200">
+          <div class="text-white font-medium size-16">Hi , John Thanks for your purchase</div>
+      </div> -->
+    <div class="row row-cols-2 justify-content-between pse-sm-20 mtb-sm-20  pse-10 mtb-10">
+      <div class="col-md-8 col-12">
+        <div> <span class="text-dark font-bold size-6 mb-8">{{'accoun.TransactionCode' | translate}}</span> <span>{{order?.orderCode}}</span>
+        </div>
+        <div> <span class="text-dark font-bold size-6 mb-8">{{'accoun.TransactionDate:' | translate}}</span> {{order?.dateCreated | date}}
+        </div>
+        <div> <span class="text-dark font-bold size-6 mb-8">{{'accoun.Email:' | translate}}</span> {{order?.email}}</div>
+        <div> <span class="text-dark font-bold size-6 mb-8"  >{{'accoun.deliveryAt:' | translate}}</span> {{order?.deliveryAt | date}}</div>
+        <div> <span class="text-dark font-bold size-6 mb-8" *ngIf="order?.dateDelivered">{{'accoun.dateDelivered:' | translate}}</span> {{order?.dateDelivered | date}}</div>
+        <div> <span class="text-dark font-bold size-6 mb-8" >{{'accoun.phone' | translate}}</span> {{order?.mobile}}</div>
+
+        <div> <span class="text-dark font-bold size-6 mb-8">{{'accoun.Adress:' | translate}}</span> {{order?.address?.address}},
+          {{order?.address?.area}}, {{order?.address?.city}}</div>
+      </div>
+      <!-- <div class="col-md-4 text-end">
+      </div> -->
+
+    </div>
+    <div class="pse-20">
+      <div class="table-responsive">
+        <table class="table align-middle">
+          <thead class="table-head  ">
+            <tr class="table-row border-radius-20">
+              <th scope="col" class="font-bold text-white size-6 text-center" style="width: 30%;">{{'accoun.Product' | translate}}
+              </th>
+              <th scope="col" class="font-bold text-white size-6 text-center" style="width: 23%;">{{'accoun.UnitePrice' | translate}}
+              </th>
+              <th scope="col" class="font-bold text-white size-6 text-center" style="width: 23%;">{{'accoun.QTY' | translate}}</th>
+              <th scope="col" class="font-bold text-white size-6 text-center" style="width: 23%;">{{'accoun.Amount' | translate}}</th>
+              <th *ngIf="!orderId?.dataKey" scope="col" class="font-bold text-white size-6 text-center" style="width: 23%;"></th>
+
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let product of order?.orderDetails">
+              <td class="cell text-center pse-16 ptb-10 font-medium">{{product?.product?.name || product?.product?.nameAr}}</td>
+              <td class="cell text-center ptb-10 font-medium">{{currency?.isoAlpha_3}} {{product?.price * currency?.EGP_rate | number:'.1-2'}}</td>
+              <td class="cell text-center ptb-10 font-medium">{{product?.qty}}</td>
+              <td class="cell text-center ptb-10 font-medium">{{currency?.isoAlpha_3}}  {{product?.qty * product?.price * currency?.EGP_rate | number:'.1-2'}}</td>
+              <td *ngIf="!orderId?.dataKey" class="cell text-center ptb-10 font-medium"><div class="text-center mt-4"><div (click)="createReview(product?.orderDetailId)" class="btn btn-secondary1 text-secondary size-2 border-radius-12 max-100 w-100">{{'accoun.AddReview' | translate}}</div></div>
+              </td>
+
+            </tr>
+            <!-- <tr>
+                        <td class="cell text-center pse-16 ptb-10 font-medium">Lorem ipsum dolor sit amet, consetetur
+                            sadipscing elitr, sed</td>
+                        <td class="cell text-center ptb-10 font-medium">EGP 250</td>
+                        <td class="cell text-center ptb-10 font-medium">3</td>
+                        <td class="cell text-center ptb-10 font-medium">EGP 750</td>
+                    </tr>
+                    <tr>
+                        <td class="cell text-center pse-16 ptb-10 font-medium">Lorem ipsum dolor sit amet, consetetur
+                            sadipscing elitr, sed</td>
+                        <td class="cell text-center ptb-10 font-medium">EGP 250</td>
+                        <td class="cell text-center ptb-10 font-medium">3</td>
+                        <td class="cell text-center ptb-10 font-medium">EGP 750</td>
+                    </tr> -->
+            <!-- <tr>
+              <td class="cell text-center pse-16 ptb-16 font-medium"></td>
+              <td class="cell text-center ptb-16 font-medium"></td>
+              <td class="cell text-center ptb-16 font-medium"></td>
+              <td class="cell text-center ptb-16 font-medium"></td>
+            </tr> -->
+
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+    <div class="pse-20 mt-20">
+      <div > <span class="text-dark font-bold size-6 mb-8">{{'accoun.SubTotal:' | translate}}</span> <span>{{order?.subTotalPrice  * currency?.EGP_rate | number:'.1-2'}}</span></div>
+      <div > <span class="text-dark font-bold size-6 mb-8">{{'accoun.VAT&TAX:' | translate}}</span> <span>{{order?.tax  * currency?.EGP_rate | number:'.1-2'}}</span></div>
+      <div > <span class="text-dark font-bold size-6 mb-8">{{'accoun.Shipping:' | translate}}</span> <span>{{order?.shippingFees  * currency?.EGP_rate | number:'.1-2'}}</span></div>
+      <div > <span class="text-dark font-bold size-6 mb-8">{{'accoun.Total:' | translate}}</span> <span></span>{{order?.totalPrice * currency?.EGP_rate | number:'.1-2'}}</div>
+      <div >  <span class="text-dark font-bold size-6 mb-8">{{'accoun.PaymentMethod' | translate}}</span> <span>{{'accoun.CashonDelivery' | translate}}</span>
+        <!-- <span class="text-primary">
+                  <span class="radio mse-8"></span>
+                  Visa
+              </span>
+              <span class="text-primary">
+                  <span class="radio mse-8">
+                      <span class="active">
+
+                      </span>
+                  </span>
+                  Cash
+              </span> -->
+      </div>
+    </div>
+    <div class="text-center text-primary font-bold size-10 mt-50"> <span class="cursor-pointer">{{'accoun.Help&Contac' | translate}}</span>  | <span class="cursor-pointer">{{'accoun.Help&Contac' | translate}}</span> </div>
+    <div class="text-center mt-8 mb-50">
+      <a href={{sittingsValues?.facebook}}>
+        <img src="../../../assets/images/invc-fb.png" alt="" class="w-100 max-25 me-16">
+      </a>
+      <a href={{sittingsValues?.twitter}}>
+        <img src="../../../assets/images/invc-twr.png" alt="" class="w-100 max-25 me-16">
+      </a>
+      <a href={{sittingsValues?.instagram}}>
+        <img src="../../../assets/images/invc-insta.png" alt="" class="w-100 max-25 me-16">
+      </a>
+
+      <div class="text-primary font-bold size-10 d-inline-block align-middle  cursor-pointer" (click)="navigateTohome()" >{{'accoun./Mummez' | translate}}</div>
+    </div>
+  </section>
+
+</div>
+
+
+<div class="row col-md-12 text-centre" *ngIf="!order?.orderId">
+  <h3>{{'accoun.NoDataFound' | translate}}</h3>
+</div>

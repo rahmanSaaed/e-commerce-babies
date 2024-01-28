@@ -1,0 +1,20 @@
+img {
+    object-fit: cover;
+}
+.img-holder {
+    border: 2px solid;
+}
+.bg-color {
+    background-color: #eef6fd;
+}
+::ng-deep .mat-dialog-container {
+    box-shadow: unset !important;
+    border-radius: 40px !important;
+    padding: 120px !important;
+}
+.height {
+    min-height: 125px;
+}
+.img-width{
+    width: 50px !important;
+}

@@ -1,0 +1,406 @@
+
+<ng-container *ngIf="!productDetail">
+  <!-- <div class="col-md-12 text-center">
+    <div><img src="../../../assets/images/empty-cart.svg" alt="" class="w-100 max-500"></div>
+    <div class="size-10 text-dark font-medium mb-8">{{'productDetail.NoProductFond' | translate}}</div>
+  </div> -->
+
+  <div class="col-md-12 container" *ngFor="let item of [1, 2]">
+    <app-placeholder [placeholder]="'product-details'"></app-placeholder>
+</div>
+
+</ng-container>
+
+
+<div class="container" *ngIf="productDetail" >
+    <div class="row mt-30">
+        <div class="text-gray2 size-4 font-medium mb-10 cursor-pointer" *ngIf="(category?.name || category?.nameAr) && (subCategory?.name || subCategory?.nameAr)" >
+            <span routerLink="">{{'productDetail.Home' | translate}}</span> - <span (click)="goToCategoryProduct(category?.categoryId)">{{category?.name || category?.nameAr}}</span> - <span
+                (click)="goToSubCategoriesProducts(subCategory?.subCategoryId)">{{subCategory?.name || subCategory?.nameAr}}</span>
+        </div>
+        <div class="col-xl-8 col-12">
+            <div class="row">
+                <div class="col-md-2 col-sm-12 col-12  overflow mt-4 mt-sm-0 d-flex d-md-block order-2 order-md-1">
+                    <!-- Shoukr Suleiman -->
+                    <img *ngFor="let image of productDetail?.images;let i = index" [src]="image"
+                    (click)="viewImage(image)" alt={{productDetail?.name}}
+                        class="w-100 border-radius-20 gallary mb-4 cursor-pointer me-4 me-md-0 max-130 w-100" defaultImage>
+                    <!-- <img src="../../../../assets/images/baby-details2.jpeg" alt=""
+                        class="w-100 border-radius-20 mb-4 gallary">
+                    <img src="../../../../assets/images/baby-detials3.jpeg" alt=""
+                        class="w-100 border-radius-20 mb-4 gallary">-->
+                </div>
+                <div class="col-md-10 col-sm-12 col-12 position-relative preview order-1 order-md-2">
+                    <!-- Software Engineeer -->
+                    <img [src]="activeImage" alt={{productDetail?.name}}
+                        class="w-100 border-radius-20 cursor-pointer h-100 mb-4 active-image" defaultImage>
+                    <div class="overlay border-radius-20 cursor-pointer d-none d-sm-block">
+                        <div (click)="addToFavorite(productDetail?.productId)"
+                            class="bg-white rounded-circle d-flex align-items-center justify-content-center p-6 position-absolute cursor-pointer whishlist">
+                            <img *ngIf="!addedToFav" src="../../../../assets/images/heart.svg" alt=""
+                                class="max-30 w-100 cursor-pointer">
+                            <img *ngIf="addedToFav" src="../../../../../assets/images/fill-heart.svg" alt=""
+                                class="max-30 w-100 cursor-pointer">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-4 d-flex flex-column col-12 mt-xl-0 mt-20">
+            <div class="">
+                <div class="text-dark size-20 font-bold lh-1 text-capitalize"> {{productDetail?.name || productDetail?.nameAr}}</div>
+                <div class="d-flex align-items-center justify-content-between mtb-10">
+                    <div class="d-flex align-items-center w-100 max-350 cursor-pointer" (click)="getProductsByBrandId(productDetail?.brand?.name, productDetail?.brand?.brandId)">
+                        <img [src]="productDetail?.brand?.image" alt="" class="w-100 max-70 border-radius-20">
+                        <div class="text-gray2 size-2  ms-4"> {{'productDetail.Seeallproductsfrom' | translate}} {{productDetail?.brand?.name || productDetail?.brand?.nameAr}}</div>
+                    </div>
+                    <div class="d-flex align-items-center justify-content-end w-100 max-70"  >
+                        <product-rate [rate]="overallRatingValue" ></product-rate>
+                    </div>
+                </div>
+                <div class="d-flex align-items-center justify-content-between mtb-12">
+                    <ng-container *ngIf="productDetail?.sale">
+                        <div class="text-secondary size-6 font-medium ">{{currency?.isoAlpha_3}} {{productDetail?.salePrice * currency?.EGP_rate}}</div>
+                        <div class="text-gray2 size-4 font-medium">
+                            <del>{{currency?.isoAlpha_3}} {{productDetail?.price * currency?.EGP_rate}}</del>
+                        </div>
+                    </ng-container>
+                    <ng-container *ngIf="!productDetail?.sale">
+                        <div class="text-secondary size-6 font-medium ">{{currency?.isoAlpha_3}} {{productDetail?.price * currency?.EGP_rate}}</div>
+                    </ng-container>
+                </div>
+                <div *ngIf="productDetail?.salePrice" class=" mt-3 lh-1 cursor-pointer max-200" >
+                  {{'productDetail.eligablefor' | translate}} <strong class="text-dark font-medium size-4"> {{'productDetail.freeshiipping' | translate}} </strong>  </div>
+            </div>
+
+
+            <!-- <div class="d-flex align-items-center justify-content-between">
+                <div class="size-4 text-dark font-medium">Quantity</div>
+                <div class="d-flex border border-radius-20 justify-content-between max-100 w-100 ptb-4 pse-6">
+                    <div class="size-4 text-dark cursor-pointer font-medium" (click)="removeProduct()">-</div>
+                    <div class="size-4 text-dark font-medium">{{productQuantity}}</div>
+                    <div class="size-4 text-dark cursor-pointer font-medium" (click)="addProduct()" >+</div>
+                </div>
+            </div> -->
+            <!-- <div class="mtb-8">
+                <div class="size-4 text-dark font-medium mb-6">size: <span class="size-4 text-dark">1-pkg</span></div>
+                <div class="d-flex">
+                    <div class="max-80 w-100 text-center border border-gray me-4 p-2 cursor-pointer">
+                        <div class="size-3 text-dark font-medium">1-pkg</div>
+                        <div class="size-2 text-gray2 font-medium">100EGP</div>
+                    </div>
+                    <div class="max-80 w-100 text-center border border-gray me-4 p-2 cursor-pointer">
+                        <div class="size-3 text-dark font-medium">2-pkg</div>
+                        <div class="size-2 text-gray2 font-medium">180EGP</div>
+                    </div>
+                    <div class="max-80 w-100 text-center border border-gray p-2 cursor-pointer">
+                        <div class="size-3 text-dark font-medium">3-pkg</div>
+                        <div class="size-2 text-gray2 font-medium">240EGP</div>
+                    </div>
+                </div>
+            </div> -->
+            <div class="">
+                <div class="row mtb-8">
+                    <div class="col-md-12">
+                        <button class="btn btn-primary w-100 text-white size-4 font-bold p-8 border-radius-16 position-relative" [disabled]="cartAdd"
+                            (click)="addProductToCart()">
+                            <img src="../../../../assets/images/cart-white.svg" alt="" class="max-20 w-100 me-2" *ngIf="!cartAdd">
+                            <!-- <mat-spinner class="max-20 w-100 me-2" *ngIf="cartAdd"></mat-spinner> -->
+
+                            <div *ngIf="cartAdd" style="top: 30%; right: 59%;"
+                            class="bg-white position-absolute rounded-circle d-flex align-items-center justify-content-center    cart align-self-center max-20 w-100 me-2">
+                            <mat-spinner></mat-spinner>
+
+                          </div>
+
+                             {{'productDetail.AddtoCart' | translate}}</button>
+                    </div>
+                </div>
+                <!-- <div class="d-flex bg-aqua1 border-radius-12 p-8 justify-content-between mb-10 font-medium">
+                    <div class="text-primary size-3">Order Now and get it by July 21</div>
+                    <div class="text-primary size-3">To Egypt</div>
+                </div> -->
+                <div class="d-flex bg-secondary1 border-radius-18 p-8 justify-content-between align-items-center mb-30">
+                    <div class="d-flex align-items-center w-50">
+                        <img src="../../../../assets/images/secure-payment.svg" alt="" class="max-20 w-100">
+                        <div class="size-3 text-secondary ms-8 font-medium">{{'productDetail.SecurePayments' | translate}}</div>
+                    </div>
+                    <div class="d-flex align-items-center w-50 justify-content-end">
+                        <img src="../../../../assets/images/quality.svg" alt="" class="max-20 w-100">
+                        <div class="size-3 text-secondary ms-8 font-medium"> {{'productDetail.100%Authentic' | translate}}</div>
+                    </div>
+                </div>
+                <div class="d-block d-sm-flex align-items-center justify-content-between">
+                    <div class="d-flex align-items-center w-50">
+                        <img src="../../../../assets/images/share.svg" alt="" class="max-30 w-100">
+                        <div class="text-dark size-4 ms-8">{{'productDetail.Tellafriend' | translate}}</div>
+                    </div>
+                    <div class="text-gray2 size-4 font-medium mt-10 mt-sm-0">{{'productDetail.Youneedhelp?' | translate}}<span
+                            class="text-secondary cursor-pointer" (click)="navContact()">{{'productDetail.Contactus' | translate}}</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row mt-50" *ngIf="related?.length > 0">
+        <div class="col-12 mb-8">
+            <div class="row">
+                <div class="col-12 col-md-auto">
+                    <div class="size-26 font-bold text-dark">{{'productDetail.YouMayAlsoLike' | translate}}</div>
+                </div>
+                <div class="col-md"></div>
+                <div class="col-12 col-md d-flex justify-content-end align-items-center">
+                    <!-- <button
+                        class="btn btn-white text-dark font-medium size-4 border w-100 max-120 border-radius-14 ptb-4">View
+                        More</button> -->
+                </div>
+            </div>
+        </div>
+        <!-- <ng-container *ngIf="!related">
+            <div class="col-md-4 col-12 col-sm-6 col-lg-3 col-xl-3 col-xxl-2 d-flex justify-content-center d-sm-block mt-10 mt-lg-0"
+                *ngFor="let i of [1,2,3,4,5,6]">
+
+                <app-placeholder [placeholder]="'product'"></app-placeholder>
+
+            </div>
+        </ng-container>
+        <ng-container *ngIf="related">
+            <div class="col-md-4 col-12 col-sm-6 col-lg-3 col-xl-3 col-xxl-2 d-flex justify-content-center d-sm-block mt-10 mt-xl-0"
+                *ngFor="let product of related">
+                <app-product-item [productId]="product?.productId" [name]="product?.name || product?.nameAr" [price]="product?.price"
+                    [image]="product?.images[0]">
+                </app-product-item>
+            </div>
+        </ng-container> -->
+
+
+        <section class=" border-radius-50 ptb-40 arrival-section position-relative">
+          <img src="../../../assets/images/left.svg" alt=""
+            class="max-sm-40 max-10 d-flex align-items-center justify-content-center position-absolute left cursor-pointer"
+            (click)="scrollToLeft()" *ngIf="related && related.length > 0">
+          <img src="../../../assets/images/right.svg" alt=""
+            class="max-sm-40 max-10 d-flex align-items-center justify-content-center position-absolute right cursor-pointer"
+            (click)="scrollToRight()" *ngIf="related && related.length > 0">
+
+          <div class="container">
+            <div class="d-flex align-items-center justify-content-between">
+              <!-- <div class="text-dark size-26 font-bold">New Arrivals</div>
+              <button class="btn btn-white text-dark font-bold size-4 box-shadow w-100 max-100 border-radius-14">View
+                More</button> -->
+            </div>
+            <div class="row mt-20 arrivals-wrapper d-block mse-15 mse-md-0" #contentScroll>
+              <ng-container *ngIf="!related">
+                <div class="col-md-4 col-8 col-sm-5 col-lg-3 col-xxl-2 d-inline-block" *ngFor="let product of [1,2,3,4,5,6]">
+                  <app-placeholder [placeholder]="'sub-category'"></app-placeholder>
+                </div>
+              </ng-container>
+              <ng-container *ngIf="related && related.length > 0">
+                <div class="col-md-4 col-8 col-sm-5 col-lg-3 col-xxl-2 d-inline-block"
+                  *ngFor="let product of related">
+                  <app-new-arrivals-item [nameSubCategory]="product.name || product.nameAr" [sale]="related?.sale" [salePrice]="related?.salePrice"
+                    [subCategoryId]="product.productId" [image]="product?.images[0]"></app-new-arrivals-item>
+                </div>
+              </ng-container>
+            </div>
+          </div>
+        </section>
+
+
+    </div>
+    <section class="border border-radius-24 p-30 mtb-40">
+        <div class="row">
+            <div class="col-md-6 col-12">
+                <div class="text-dark size-18 font-bold"> {{'productDetail.Description' | translate}}</div>
+                <div class="text-gray3 size-5 font-medium mt-2">{{'productDetail.Features:' | translate}}</div>
+                <div class="size-2 text-gray3 mt-8">
+                    <div class="size-2 text-gray3 font-regular lh-lg" [innerHTML]="productDetail?.description || productDetail?.descriptionAr"></div>
+                    <!-- <pre class="size-2 text-gray3 font-regular lh-lg"> -->
+
+
+                    <!-- {{}} -->
+                    <!-- Includes Graco’s top-rated SnugRide Click Connect 35 Infant Car Seat
+  An easy one-second, one-hand fold offers convenience for busy parents
+  Locking front-swivel wheels with suspension for a smooth ride
+  Click Connect Technology provides a one-step, secure attachment of infant car seat to stroller
+  Multi-position reclining for baby’s comfort
+  Extra-large, easy front-access basket to hold all your essentials
+  Parent’s tray with 2 cup holders for on-the-go convenience
+  Removable child’s tray with cup holder to hold snacks for baby
+  Lightweight, sturdy frame so it’s easier to take with you
+  Stroller holds child up to 50 lbs. Convertible 3- or 5-point harness grows with your child -->
+                    <!-- </pre> -->
+                </div>
+
+            </div>
+            <div class="col-md-6 col-12 d-flex justify-content-end mt-16 mt-md-0">
+                <section class="bg-aqua1 p-20 border-radius-20 w-100 max-400">
+                    <div class="font-bold size-14 text-primary mb-8"> {{'productDetail.Overview:' | translate}}</div>
+                    <div class="size-2 text-primary lh-lg">
+                        <ul>
+                            <li *ngFor="let product of productDetail?.specs" class="text-dark"><span
+                                    class="font-bold">{{product?.specName || product?.specNameAr}}:</span> {{product?.valueName || product?.valueNameAr}}</li>
+                        </ul>
+                        <!-- Product Dimensions: Stroller: 69.8 x 55.9 x 104.1 cm; Car
+                        Seat: 71.1 x 47.4 x 39.6 cm Package Dimensions: 52.0 x 43.0 x 40.0 cm Weight: 18KG Shipping
+                        Weight: 22KG Recommended Age: For Children from Birth to 3 Years Car Seat: 71.1 x 47.4 x 39.6 cm
+                        Package Dimensions: 52.0 x 43.0 x 40.0 cm -->
+                    </div>
+                </section>
+            </div>
+        </div>
+    </section>
+    <div class="row mt-20">
+        <div class="col-12 mb-8">
+            <div class="row">
+                <div class="col-12 col-md-auto">
+                    <div class="size-26 font-bold text-dark"> {{'productDetail.CustomersAlsoBought' | translate}}</div>
+                </div>
+                <div class="col-md"></div>
+                <div class="col-12 col-md d-flex justify-content-end align-items-center">
+                    <!-- <button
+                        class="btn btn-white text-dark font-medium size-4 border w-100 max-120 border-radius-14 ptb-4">View
+                        More</button> -->
+                </div>
+            </div>
+        </div>
+
+        <!-- <ng-container *ngIf="!crossSelling">
+            <div class="col-md-2" *ngFor="let i of [1,2,3,4,5,6]">
+
+                <app-placeholder [placeholder]="'product'"></app-placeholder>
+
+            </div>
+        </ng-container> -->
+        <!-- <ng-container *ngIf="crossSelling">
+            <div class="col-md-4 col-12 col-sm-6 col-lg-3 col-xl-3 col-xxl-2 d-flex justify-content-center d-sm-block mt-10 mt-xl-0"
+                *ngFor="let product of crossSelling">
+                <app-product-item [productId]="product?.productId" [name]="product?.name || product?.nameAr" [price]="product?.price"
+                    [image]="product?.images[0]">
+                </app-product-item>
+            </div>
+        </ng-container> -->
+
+          <!-- <div class="container">
+            <div class="d-flex align-items-center justify-content-between">
+            </div>
+            <div class="row mt-20 arrivals-wrapper d-block mse-15 mse-md-0" #contentScroll>
+              <ng-container *ngIf="!crossSelling">
+                <div class="col-md-4 col-8 col-sm-5 col-lg-3 col-xxl-2 d-inline-block" *ngFor="let subCategory of [1,2,3,4,5,6]">
+                  <app-placeholder [placeholder]="'sub-category'"></app-placeholder>
+                </div>
+              </ng-container>
+              <ng-container *ngIf="crossSelling">
+                <div class="col-md-4 col-8 col-sm-5 col-lg-3 col-xxl-2 d-inline-block"
+                  *ngFor="let product of crossSelling">
+                  <app-new-arrivals-item [nameSubCategory]="product.name || product.nameAr"
+                    [subCategoryId]="product.subCategoryId" [image]="product?.images[0]"></app-new-arrivals-item>
+                </div>
+              </ng-container>
+            </div>
+          </div> -->
+
+          <section class=" border-radius-50 ptb-40 arrival-section position-relative">
+            <img src="../../../assets/images/left.svg" alt=""
+              class="max-sm-40 max-10 d-flex align-items-center justify-content-center position-absolute left cursor-pointer"
+              (click)="scrollToLeft()" *ngIf="crossSelling && crossSelling?.length > 0">
+            <img src="../../../assets/images/right.svg" alt=""
+              class="max-sm-40 max-10 d-flex align-items-center justify-content-center position-absolute right cursor-pointer"
+              (click)="scrollToRight()" *ngIf="crossSelling && crossSelling?.length > 0">
+
+            <div class="container">
+              <div class="d-flex align-items-center justify-content-between">
+                <!-- <div class="text-dark size-26 font-bold">New Arrivals</div>
+                <button class="btn btn-white text-dark font-bold size-4 box-shadow w-100 max-100 border-radius-14">View
+                  More</button> -->
+              </div>
+              <div class="row mt-20 arrivals-wrapper d-block mse-15 mse-md-0" #contentScroll>
+                <ng-container *ngIf="!crossSelling">
+                  <div class="col-md-4 col-8 col-sm-5 col-lg-3 col-xxl-2 d-inline-block" *ngFor="let product of [1,2,3,4,5,6]">
+                    <app-placeholder [placeholder]="'sub-category'"></app-placeholder>
+                  </div>
+                </ng-container>
+                <ng-container *ngIf="crossSelling && crossSelling?.length > 0">
+                  <div class="col-md-4 col-8 col-sm-5 col-lg-3 col-xxl-2 d-inline-block"
+                    *ngFor="let product of crossSelling">
+                    <app-new-arrivals-item [nameSubCategory]="product.name || product.nameAr"
+                      [subCategoryId]="product.productId" [image]="product?.images[0]"></app-new-arrivals-item>
+                  </div>
+                </ng-container>
+              </div>
+            </div>
+          </section>
+
+
+    </div>
+    <section class="border border-radius-18 mtb-40">
+        <div class="row">
+            <div class="col-xl-6 col-12 review-list p-sm-40 p-20">
+                <div class="text-dark size-24 font-bold mb-10"> {{'productDetail.Reviews' | translate}}</div>
+                <div class="scroll-overflow d-flex d-sm-block align-items-stretch">
+                    <ng-container *ngIf="!productReviews">
+                        <div class="mb-6" *ngFor="let i of [1,2,3,4,5,6,7,8]">
+                            <app-placeholder [placeholder]="'review'"></app-placeholder>
+                        </div>
+
+                    </ng-container>
+                    <ng-container *ngIf="productReviews">
+                        <ng-container *ngIf="productReviews?.length == 0 ">
+                            <div class="size-10 text-dark font-medium mtb-20 text-center"> {{'productDetail.NoReviews' | translate}}</div>
+                        </ng-container>
+                        <ng-container *ngIf="productReviews?.length > 0 ">
+                            <ng-continter *ngFor="let productReview of productReviews;">
+                                <div class="mb-6 review-wrapper me-5">
+                                    <app-product-review [name]="productReview?.buyer?.buyerFirstName"
+                                        [description]="productReview?.description || productReview?.descriptionAr" [rate]="productReview.rate"
+                                        [image]="productReview?.buyer?.avatar"></app-product-review>
+                                </div>
+                            </ng-continter>
+                        </ng-container>
+                    </ng-container>
+                </div>
+
+            </div>
+            <div class="col-xl-6 col-12 p-sm-40 p-20">
+                <div class="text-dark font-bold size-10 text-center mb-4">{{'productDetail.OverallRating' | translate}}</div>
+                <div class="font-bold size-30 text-center active-review lh-1">{{ overallRatingValue }}</div>
+                <div class="text-center">
+                    <product-rate [rate]="overallRatingValue"></product-rate>
+                </div>
+                <div class="size-3 font-medium text-gray2 text-center mb-16">{{'productDetail.Basedon' | translate}} {{ productReviews?.length }}
+                     {{'productDetail.ratings' | translate}}</div>
+                <div class="d-flex align-items-center mb-8">
+                    <product-rate rate="0"></product-rate>
+                    <mat-progress-bar mode="determinate" [value]="(customerReviews['0']/productReviews?.length) * 100"
+                        class="ms-8"></mat-progress-bar>
+                </div>
+                <div class="d-flex align-items-center mb-8">
+                    <product-rate rate="1"></product-rate>
+                    <mat-progress-bar mode="determinate" [value]="(customerReviews['1']/productReviews?.length) * 100"
+                        class="ms-8"></mat-progress-bar>
+                </div>
+                <div class="d-flex align-items-center mb-8">
+                    <product-rate rate="2"></product-rate>
+                    <mat-progress-bar mode="determinate" [value]="(customerReviews['2']/productReviews?.length) * 100"
+                        class="ms-8"></mat-progress-bar>
+                </div>
+                <div class="d-flex align-items-center mb-8">
+                    <product-rate rate="3"></product-rate>
+                    <mat-progress-bar mode="determinate" [value]="(customerReviews['3']/productReviews?.length) * 100"
+                        class="ms-8"></mat-progress-bar>
+                </div>
+                <div class="d-flex align-items-center mb-8">
+                    <product-rate rate="4"></product-rate>
+                    <mat-progress-bar mode="determinate" [value]="(customerReviews['4']/productReviews?.length) * 100"
+                        class="ms-8"></mat-progress-bar>
+                </div>
+                <div class="d-flex align-items-center mb-8">
+                    <product-rate rate="5"></product-rate>
+                    <mat-progress-bar mode="determinate" [value]="(customerReviews['5']/productReviews?.length) * 100"
+                        class="ms-8"></mat-progress-bar>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+
+

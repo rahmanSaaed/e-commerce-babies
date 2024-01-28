@@ -1,0 +1,7 @@
+<div class="border-radius-25 position-relative height">
+    <img [src]="image" alt="" class="w-100 border-radius-20 h-100 cursor-pointer" (click)="getProductsByAgeId()">
+    <div class="position-absolute p-8 bg-white cate-name max-270 w-100 border-radius-16 d-flex align-items-center justify-content-between">
+        <div class="font-bold size-8 text-dark cursor-pointer " (click)="getProductsByAgeId()">{{name}}</div>
+        <div class="text-center p-4 bg-pink3 text-pink1 border-radius-18 size-4 w-100 max-120 cursor-pointer" (click)="getProductsByAgeId()" >{{age}}</div>
+    </div>
+</div>

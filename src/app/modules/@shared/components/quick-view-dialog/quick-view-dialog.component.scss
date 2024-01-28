@@ -1,0 +1,22 @@
+.preview {
+    height: 348px;
+}
+img {
+    object-fit: cover;
+}
+.small {
+    height: 60px;
+}
+::ng-deep .mat-dialog-container {
+    box-shadow: unset !important;
+    border-radius: 34px !important;
+    padding: 40px !important;
+    @media (max-width: 575.9px) {
+        padding: 40px !important;
+    }
+}
+
+
+mat-spinner {
+  zoom: 0.2
+}

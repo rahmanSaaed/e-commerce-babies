@@ -1,0 +1,34 @@
+<section class="background pt-60">
+	<div class="container pb-50">
+		<div class="tex-dark size-22 font-bold mb-40"> {{'home.Allcategories' | translate}}</div>
+		<ng-container *ngIf="!allCategories">
+			<div class="row">
+				<div class="col-12 col-sm-6 col-md-4 mb-12"  *ngFor="let i of [1,2,3,4,5,6]">
+					<app-placeholder  [placeholder]="'all-categories'"></app-placeholder>
+				</div>
+			</div>
+		</ng-container>
+		<ng-container *ngIf="allCategories">
+			<ngx-masonry [options]="{horizontalOrder: true, gutter: 40,percentPosition: true}">
+				<div ngxMasonryItem class="masonry-item mb-20" *ngFor="let category of allCategories" [hidden]="category?.subCategories?.length == 0" >
+					<div class="font-bold size-12 text-primary mb-10 cursor-pointer" (click)="goToCategoryProduct(category?.categoryId, category?.name || category?.nameAr)">{{category?.name || category?.nameAr}}</div>
+					<section class="bg-white box-shadow p-12 w-100 max-320 border-radius-8">
+			  <div class="text-dark size-3 font-medium mb-6 cursor-pointer"  (click)="goToSubCategoriesProducts(subCategory?.subCategoryId, subCategory?.name || subCategory?.nameAr)"
+			  *ngFor="let subCategory of category.subCategories">{{subCategory?.name || subCategory?.nameAr}}
+						</div>
+					</section>
+				</div>
+			</ngx-masonry>
+		</ng-container>
+	</div>
+</section>
+
+
+<!-- <div class="bg-dark border-radius-20 p-12 text-white item" *ngFor="let category of allCategories">
+		<h3 (click)="goToCategoryProduct(category.categoryId)">{{category.name}}</h3>
+		<ul>
+			<li *ngFor="let subCategory of category.subCategories"
+				(click)="goToSubCategoriesProducts(subCategory.subCategoryId)">{{subCategory.name}}</li>
+		</ul>
+	</div> -->
+

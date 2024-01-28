@@ -1,0 +1,13 @@
+.tabs {
+    box-shadow: -4px -11px 24px rgb(109 164 227 / 8%);
+}
+.active-tab {
+    background: rgba(#FFFFFF, 0.08);
+    border-radius: 10px;
+}
+
+img {
+    @media (max-width: 320.9px) {
+       max-width: 18px !important;
+    }
+}

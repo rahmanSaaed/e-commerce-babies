@@ -1,0 +1,59 @@
+<div class="text-gray3 size-25 font-bold">{{'order.BillingInfo' | translate}}</div>
+
+<ng-container *ngIf="!buyer">
+  <div class="col-xxl-3 col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12 mb-20" *ngFor="let item of [1]">
+      <app-placeholder [placeholder]="'product'"></app-placeholder>
+  </div>
+</ng-container>
+
+<form class="row mb-sm-100 mb-50 needs-validation" [formGroup]="buyerData" novalidate *ngIf="buyer" >
+  <div class="row mt-12 row-cols-sm-2">
+    <div class="col-12 col-sm max-350">
+      <label for="exampleFormControlInput1" class="text-gray3 size-4 font-bold">{{'order.Firstname' | translate}}</label>
+      <input type="text" class="form-control border-radius-8 border-gray text-gray3 size-4 p-5"
+        id="exampleFormControlInput1" formControlName="buyerFirstName">
+    </div>
+
+
+    <div class="col-12 col-sm max-350 mt-sm-0  mt-8">
+      <label for="exampleFormControlInput1" class="text-gray3 size-4 font-bold">{{'order.Lastname' | translate}}</label>
+      <input type="text" class="form-control border-radius-8 border-gray text-gray3 size-4 p-5"
+        id="exampleFormControlInput1" formControlName="buyerLastName">
+
+    </div>
+
+
+    <div class="col-12 col-sm mt-8 max-350">
+      <label for="exampleFormControlInput1" class="text-gray3 size-4 font-bold">{{'order.Phonenumber' | translate}}</label>
+      <input type="text" class="form-control border-radius-8 border-gray text-gray3 size-4 p-5" pattern="(201)[0-9]{9}" minlength="12" maxlength="12"
+      [class.is-invalid]="phoneNumber?.invalid"
+        id="exampleFormControlInput1" formControlName="phoneNumber">
+
+        <div class="invalid-feedback" >
+          <p *ngIf="phoneNumber.errors?.pattern">
+
+            {{'order.phoneVlidation' | translate}}
+          </p>
+
+          <p *ngIf="phoneNumber.hasError('minlength')" >
+
+            {{'order.minimumlength12characters' | translate}}
+          </p>
+      </div>
+
+    </div>
+    <div class="col-12 col-sm mt-8 max-350">
+      <label for="exampleFormControlInput1" class="text-gray3 size-4 font-bold"> {{'order.Email' | translate}}</label>
+      <input type="email" class="form-control border-radius-8 border-gray text-gray3 size-4 p-5"
+        id="exampleFormControlInput1" formControlName="email">
+    </div>
+    <div class="col-12 col-sm max-700 w-100">
+      <button
+      [disabled]="!buyerData.valid"
+        class="btn btn-primary text-white font-bold size-6  size-sm-12 w-100 mt-16 border-radius-10 ptb-6"
+        (click)="nextStep('shippingDetails')"> {{'order.Next' | translate}}<img src="../../../../assets/images/Right-arrow.svg" alt="" class="filter-green">
+      </button>
+    </div>
+  </div>
+
+</form>

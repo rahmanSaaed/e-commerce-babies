@@ -1,0 +1,12 @@
+img {
+    object-fit: cover;
+}
+.profile {
+    height: 50px;
+}
+.truncate-overflow {
+    // --max-lines: 1.4rem;
+    // --lh: 1.5;
+    // max-height: calc(var(--lh) * var(--max-lines));
+    // overflow: hidden;
+}

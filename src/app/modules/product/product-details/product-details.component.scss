@@ -1,0 +1,118 @@
+img {
+    object-fit: cover;
+}
+.review-list {
+    border-right: 1px solid #dee2e6;
+    // Medium devices (tablets, 768px and up)
+    border-bottom: unset;
+@media (max-width: 768px) {
+    border-right: unset !important;
+ }
+}
+.gallary {
+    height: 130px;
+}
+.overlay {
+    background-color: rgba(0, 0, 0, 0.2);
+    position: absolute;
+    max-height: 550px;
+    height: 100%;
+    top: 0;
+    width: 96.7%;
+    opacity: 0;
+    -webkit-transition: background-color 0.8s ease-in, opacity 0.8s ease-in;
+    transition: background-color 0.8s ease-in, opacity 0.8s ease-in;
+
+}
+.whishlist {
+    top: 15px;
+    right: 15px;
+}
+.preview:hover .overlay {
+    opacity: 1;
+    -webkit-transition: background-color 0.8s ease-in, opacity 0.8s ease-in;
+    transition: background-color 0.8s ease-in, opacity 0.8s ease-in;
+}
+.active-review {
+    color:#ffb17c;
+}
+::ng-deep {
+    .mat-progress-bar-buffer {
+      background: #dcdcdc;
+    }
+    .mat-progress-bar-fill::after {
+      background: #ffb17c;
+    }
+}
+
+.max-height-650 {
+    max-height: 650px;
+}
+.gallary-preview {
+    height: 550px;
+}
+.overflow {
+    overflow: auto !important;
+}
+.scroll-overflow {
+    max-height: 400px;
+    overflow: auto;
+}
+.active-image {
+    max-height: 550px;
+    height: 100%;
+}
+@media (max-width: 575.9px) {
+   .review-wrapper {
+       width: 500px;
+   }
+  }
+
+
+  .arrivals-wrapper {
+    overflow-x: scroll;
+    overflow: -moz-scrollbars-none;
+    -ms-overflow-style: none;
+    white-space: nowrap;
+  }
+  .arrivals-wrapper::-webkit-scrollbar {
+    width: 0 !important;
+    display: none;
+  }
+
+  .arrivals-wrapper {
+    overflow-x: scroll;
+    overflow: -moz-scrollbars-none;
+    -ms-overflow-style: none;
+    white-space: nowrap;
+  }
+  .arrivals-wrapper::-webkit-scrollbar {
+    width: 0 !important;
+    display: none;
+  }
+  // .arrival-section {
+  //   margin-left: 6%;
+  //   margin-right: 6%;
+  // }
+
+  .left {
+    left: -1%;
+    top: 50%;
+    bottom: 50%;
+  }
+  .right {
+    right: -1%;
+    top: 50%;
+    bottom: 50%;
+  }
+  //
+  ::ng-deep html[dir=rtl] {
+    .review-list {
+      border-left: 1px solid #dee2e6;
+      border-right: unset !important;
+    }
+}
+
+mat-spinner {
+  zoom: 0.2
+}

@@ -1,0 +1,12 @@
+<div class="text-dark size-25 font-bold"> {{'auth.TrackOrder' | translate}}</div>
+<div class="row mt-16 mb-16">
+    <div class="col-md-8">
+        <label for="exampleFormControlInput1" class="text-black size-4 mb-4 font-medium">{{'auth.Ordernumber' | translate}}</label>
+        <input type="text" class="form-control border-radius-12 text-gray size-4 w-100 p-6 mb-8" [(ngModel)]="orderCode"
+            id="exampleFormControlInput1" >
+    </div>
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+        <button class="btn btn-secondary text-white font-bold size-6 w-100 mt-4 border-radius-18 ptb-6 w-100" [disabled]="!orderCode"  (click)="navigateOrderDetails()">{{'auth.TrackOrder' | translate}}</button>
+    </div>
+</div>

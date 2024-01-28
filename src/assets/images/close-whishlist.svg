@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="29" height="29" viewBox="0 0 29 29">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #ff8392;
+      }
+    </style>
+  </defs>
+  <path id="more_5_" data-name="more (5)" class="cls-1" d="M19.388,9.272H11.225V1.03a1.02,1.02,0,1,0-2.041,0V9.272H1.02a1.03,1.03,0,0,0,0,2.06H9.184v8.241a1.02,1.02,0,1,0,2.041,0V11.332h8.163a1.03,1.03,0,0,0,0-2.06Zm0,0" transform="translate(14.569) rotate(45)"/>
+</svg>

@@ -1,0 +1,137 @@
+.circle {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+}
+.bg-white-opacity {
+  background-color: rgb(117 203 216);
+}
+.item-image {
+  max-height: 85px;
+  object-fit: cover;
+}
+.btn-shop {
+  border-width: 2px;
+}
+.image-boy {
+    bottom: 0;
+    left: 20px;
+    border-radius: 20px;
+    position: static !important;
+    
+}
+@media (min-width: 991px) {
+    .image-boy {
+        position: absolute !important;   
+    } 
+}  
+.baby-image1 {
+  left: 20px;
+  bottom: 0;
+  border-radius: 20px;
+}
+.baby-image2 {
+  right: 0;
+  bottom: 0;
+  border-radius: 20px;
+}
+.last-content-img {
+  border-radius: 20px !important;
+  position: absolute;
+  left: 0;
+}
+.last-content {
+  bottom: 26px;
+}
+.help-image {
+  left: -25px;
+  top: -14px;
+}
+.arrivals-wrapper {
+  overflow-x: scroll;
+  overflow: -moz-scrollbars-none;
+  -ms-overflow-style: none;
+  white-space: nowrap;
+}
+.arrivals-wrapper::-webkit-scrollbar {
+  width: 0 !important;
+  display: none;
+}
+.arrival-section {
+  margin-left: 6%;
+  margin-right: 6%;
+}
+.left {
+  left: 5%;
+  top: 50%;
+  bottom: 50%;
+}
+.right {
+  right: 5%;
+  top: 50%;
+  bottom: 50%;
+}
+.shop-all-boys {
+  background: #85c9f4;
+  // background-image: url(../../../assets/images/sec2-img2.png);
+  background-repeat: no-repeat;
+  background-position: right 30px bottom;
+}
+.shop-all-girls {
+  background: #f7bcd1;
+  // background-image: url(../../../assets/images/sec2-img-1.png);
+  background-repeat: no-repeat;
+  background-position: right 10px bottom;
+}
+.shop-all-mumz {
+  background: #6eccdd;
+  // background-image: url(../../../assets/images/sec2-img3.png);
+  background-repeat: no-repeat;
+  background-position: right 24px bottom 24px;
+}
+
+.shop-by-gender {
+  width: 45%;
+  right: 20px;
+  bottom: 0;
+  position: absolute;
+}
+
+.h-300 {
+  height: 300px;
+}
+
+.tex-box-size {
+  height: 42px;
+  overflow: hidden;
+}
+
+@media (max-width: 575.9px) {
+  .slider-six {
+    height: 250px !important;
+   
+  }
+  .image-boy {
+    margin-bottom: -32px;
+  }
+}  
+@media (max-width: 767.9px) {
+  .image-boy {
+    margin-bottom: -32px;
+  }
+}  
+::ng-deep html[dir=rtl] {
+  .image-boy {
+    left: unset;
+    right: 20px;    
+  }
+  .baby-image1 {
+    right: 20px;
+    left: 0px;
+ 
+  }
+  .baby-image2 {
+    left: 0;
+    right: unset;
+  }
+}

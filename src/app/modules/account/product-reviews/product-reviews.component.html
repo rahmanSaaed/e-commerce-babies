@@ -1,0 +1,25 @@
+<div class="section mb-50">
+    <ng-container *ngIf="!allReviews">
+        <div class="mb-8" *ngFor="let i of [1,2,3]">
+            <app-placeholder [placeholder]="'review'"></app-placeholder>
+        </div>
+    </ng-container>
+    <ng-container *ngIf="allReviews">
+        <ng-container *ngIf="allReviews.length > 0">
+            <div class="review-wrapper" *ngFor="let review of allReviews;let i = index">
+                <div class="mb-8 review-item">
+                    <review-item [productName]="review?.product?.name || review?.product?.nameAr" [description]="review?.description"
+                        [image]="review?.product?.images[0]" [reviewId]="review?.reviewId" [index]="i"
+                        (delete)="deleteItem($event)" [productId]="review?.product?.productId" (edit)="editItem($event)"
+                        [rate]="review?.rate"></review-item>
+                </div>
+            </div>
+        </ng-container>
+        <ng-container *ngIf="allReviews.length == 0">
+            <div class="col-md-12 text-center">
+                <div><img src="../../../assets/images/empty-cart.svg" alt="" class="w-100 max-500"></div>
+                <div class="size-10 text-dark font-medium mb-8">{{'accoun.Noreviewsadded' | translate}}</div>
+            </div>
+        </ng-container>
+    </ng-container>
+</div>

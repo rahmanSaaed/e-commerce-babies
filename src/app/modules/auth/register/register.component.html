@@ -1,0 +1,232 @@
+<form class="row mb-100 needs-validation" [formGroup]="signUpForm" (ngSubmit)="register()" novalidate>
+  <div class="col-md-6 ">
+    <!-- <input type="text" class="form-control border-0 p-12 border-radius-12"
+            [class.is-invalid]="buyerFirstName?.invalid && (buyerFirstName?.dirty ||buyerFirstName?.touched)" placeholder="First name"
+            formControlName="buyerFirstName" required>
+        <div class="invalid-feedback" *ngIf="buyerFirstName?.dirty || buyerFirstName?.touched">
+            <p *ngIf="buyerFirstName.errors?.required">
+                First name is required
+            </p>
+        </div> -->
+    <div class="form-floating mb-3">
+      <input type="text"
+        [class.is-invalid]="buyerFirstName?.invalid && (buyerFirstName?.dirty ||buyerFirstName?.touched)"
+        formControlName="buyerFirstName" class="form-control  border-0  border-radius-12" id="floatingInput"
+        placeholder="{{'auth.FirstName' | translate}}">
+      <label for="floatingInput">{{'auth.FirstName' | translate}}</label>
+      <div class="invalid-feedback">
+        <p *ngIf="buyerFirstName.hasError('required')">
+          {{'auth.FirstNameisrequired' | translate}}
+        </p>
+      </div>
+    </div>
+
+  </div>
+  <div class="col-md-6 mb-8">
+    <!-- <div class="form-group">
+            <input type="text" class="form-control border-0 p-12 border-radius-12"
+                [class.is-invalid]="buyerLastName?.invalid && (buyerLastName?.dirty ||buyerLastName?.touched)" placeholder="Last name"
+                formControlName="buyerLastName">
+            <div class="invalid-feedback" *ngIf="buyerLastName?.dirty || buyerLastName?.touched">
+                <p *ngIf="buyerLastName.errors?.required">
+                    Last name is required
+                </p>
+            </div>
+        </div> -->
+    <div class="form-floating mb-3">
+      <input type="text" [class.is-invalid]="buyerLastName?.invalid && (buyerLastName?.dirty ||buyerLastName?.touched)"
+        formControlName="buyerLastName" class="form-control  border-0  border-radius-12" id="floatingInput"
+        placeholder="{{'auth.LastName' | translate}}">
+      <label for="floatingInput">{{'auth.LastName' | translate}}</label>
+      <div class="invalid-feedback">
+        <p *ngIf="buyerFirstName.hasError('required')">
+          {{'auth.LastNameisrequired' | translate}}
+        </p>
+      </div>
+    </div>
+
+
+
+  </div>
+  <div class="col-md-12 mb-8">
+    <!-- <input type="email" class="form-control border-0 p-12 border-radius-12"
+            [class.is-invalid]="email?.invalid && (email?.dirty ||email?.touched)" placeholder="Email"
+            formControlName="email">
+        <div class="invalid-feedback" *ngIf="email?.dirty || email?.touched">
+            <p *ngIf="email.errors?.required">
+                Email is required
+            </p>
+            <p *ngIf="email.errors?.email">
+                Email is invalid
+            </p>
+        </div> -->
+
+
+
+    <div class="form-floating mb-3">
+      <input type="email" [class.is-invalid]="email?.invalid && (email?.dirty ||email?.touched)" formControlName="email"
+        class="form-control  border-0  border-radius-12" id="floatingInput" placeholder="{{'auth.Email' | translate}}">
+      <label for="floatingInput">{{'auth.Email' | translate}}</label>
+      <div class="invalid-feedback">
+        <p *ngIf="email.hasError('email') && !email.hasError('required')">
+          {{'auth.Pleaseenteravalidemailaddress' | translate}}
+        </p>
+        <p *ngIf="email.hasError('required')">
+          {{'auth.Emailisrequired' | translate}}
+        </p>
+      </div>
+    </div>
+
+
+  </div>
+  <div class="col-md-12 mb-8 position-relative">
+    <!-- <input class="form-control border-0 p-12 border-radius-12 " type="{{passwordType}}"
+             placeholder="Password" pattern="(?=^.{8,}$)(?=.*\d)(?=.*[!@#$%^&*]+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$"
+
+            formControlName="password">
+            <img src="../../../../assets/images/visibility.png" alt="" *ngIf="passwordType && signUpForm.value.password" (click)="showHidePass()"
+            class="d-flex align-items-center  position-absolute  cursor-pointer  bg-gray1 pass">
+
+            <img src="../../../../assets/images/visibility-dis.png" alt="" *ngIf="!passwordType && signUpForm.value.password" (click)="showHidePass()"
+            class="d-flex align-items-center  position-absolute  cursor-pointer  bg-gray1 pass" > -->
+
+    <div class="form-floating">
+      <input type="password" [class.is-invalid]="password?.invalid && (password?.dirty ||password?.touched)"
+        formControlName="password" class="form-control  border-0  border-radius-12" id="floatingPassword"
+        placeholder="{{'auth.password' | translate}}">
+      <label for="floatingPassword">{{'auth.password' | translate}}</label>
+      <div class="invalid-feedback">
+        <p *ngIf="password.hasError('password') && !password.hasError('required')">
+          {{'auth.Pleaseenteravalidpassword' | translate}}
+        </p>
+        <p *ngIf="password.hasError('required')">
+          {{'auth.passwordisrequired' | translate}}
+        </p>
+      </div>
+    </div>
+
+    <!-- <mat-form-field class="example-full-width form-group" >
+              <mat-label class="mat-lable" > {{'auth.password' | translate}}</mat-label>
+              <input  type="{{passwordType}}" matInput  formControlName="password" class="pse-5" pattern="(?=^.{8,}$)(?=.*\d)(?=.*[!@#$%^&*]+)(?![.\n])(?=.*[A-Z])(?=.*[a-z]).*$">
+
+              <img src="../../../../assets/images/visibility.png" alt="" *ngIf="passwordType && signUpForm.value.password" (click)="showHidePass()"
+              class="d-flex align-items-center  position-absolute  cursor-pointer  bg-gray1 pass" >
+
+              <img src="../../../../assets/images/visibility-dis.png" alt="" *ngIf="!passwordType && signUpForm.value.password" (click)="showHidePass()"
+              class="d-flex align-items-center  position-absolute  cursor-pointer  bg-gray1 pass" >
+
+            <mat-error *ngIf="password.hasError('pattern') && !password.hasError('required')">
+              {{'auth.passwordvalidation' | translate}}
+            </mat-error>
+            <mat-error *ngIf="password.hasError('required')">
+              {{'auth.passwordisrequired' | translate}}
+            </mat-error>
+          </mat-form-field> -->
+
+
+  </div>
+
+  <!-- <div class="invalid-validation" *ngIf="password?.dirty || password?.touched">
+            <p *ngIf="password.errors?.required">
+                Password is required
+            </p>
+            <p *ngIf="password?.errors?.pattern">
+              "Password should have Uppercase, lowercase letter and number or special character"
+            </p>
+        </div> -->
+
+  <div class="col-md-12 mb-8">
+    <!-- <input  type="text" class="form-control border-0 p-12 border-radius-12" placeholder="Phone Number (optional)" pattern="(201)[0-9]{9}" minlength="12" maxlength="12"
+        [class.is-invalid]="phoneNumber?.invalid && (phoneNumber?.dirty ||phoneNumber?.touched)"
+            formControlName="phoneNumber"> -->
+
+    <!-- <input
+            type="text"
+            pattern="(201)[0-9]{9}"
+            class="form-control border-0 p-15 border-radius-12"
+            placeholder="Phone Number (optional)"
+            ng2TelInput
+            (hasError)="phoneNumber.hasError($event)"
+            (ng2TelOutput)="getNumber($event)"
+            [ng2TelInputOptions]="{initialCountry: 'eg'}"
+            autocomplete="phoneNumber"
+            minlength="9"
+            maxlength="20"
+            [class.is-invalid]="phoneNumber?.invalid && (phoneNumber?.dirty ||phoneNumber?.touched)"
+            formControlName="phoneNumber">
+             -->
+    <!-- (201)[0-9]{9} -->
+    <!-- <div class="invalid-feedback" *ngIf="phoneNumber?.dirty || phoneNumber?.touched">
+              <p *ngIf="phoneNumber.errors?.pattern">
+                Phone must be 201234567890 (20XXXXXXXXXX)
+              </p>
+
+              <p *ngIf="phoneNumber.hasError('minlength')" >
+                minimum length 12 characters
+              </p>
+
+
+          </div> -->
+
+    <div class="form-floating mb-3">
+      <input type="phoneNumber" [class.is-invalid]="phoneNumber?.invalid && (phoneNumber?.dirty ||phoneNumber?.touched)"
+        formControlName="phoneNumber" pattern="(201)[0-9]{9}" minlength="12" maxlength="12"
+        class="form-control  border-0  border-radius-12" id="floatingInput"
+        placeholder="{{'auth.phoneNumber(optional)' | translate}}">
+      <label for="floatingInput"> {{'auth.phoneNumber(optional)' | translate}}</label>
+      <div class="invalid-feedback">
+        <p *ngIf="phoneNumber.hasError('pattern')">
+          {{'auth.phonepattern' | translate}}
+        </p>
+        <p *ngIf="phoneNumber.hasError('required')">
+          {{'auth.phoneNumberisrequired' | translate}}
+        </p>
+        <p *ngIf="phoneNumber.hasError('minlength')">
+          {{'auth.minimumlength12characters' | translate}}
+        </p>
+      </div>
+    </div>
+    <!-- <mat-form-field class="example-full-width form-group" >
+            <mat-label class="mat-lable" > {{'auth.phoneNumber(optional)' | translate}}</mat-label>
+            <input  type="phoneNumber" matInput  formControlName="phoneNumber" class="pse-5" >
+
+          <mat-error *ngIf=" ">
+            {{'auth.phonepattern' | translate}}
+          </mat-error>
+          <mat-error *ngIf="phoneNumber.hasError('required')">
+            {{'auth.phoneNumberisrequired' | translate}}
+          </mat-error>
+
+          <mat-error *ngIf="phoneNumber.hasError('minlength')">
+            {{'auth.minimumlength12characters' | translate}}
+          </mat-error>
+
+        </mat-form-field> -->
+
+
+  </div>
+  <div class="col-md-12 mt-10 mb-18">
+    <div class="d-flex align-items-center mb-3">
+      <div class="app-checkbox-1 d-inline-flex align-items-center mt-4 d-block p-0">
+        <input type="checkbox" formControlName="termsAccept"
+          [class.is-invalid]="termsAccept?.invalid && (termsAccept?.dirty ||termsAccept?.touched)">
+        <span class="checkbox text-white size-8 ms-20 mt-4 d-inline-block">
+
+          {{'auth.IagreetotheTermsandconditions' | translate}}
+        </span>
+
+      </div>
+    </div>
+    <div class="invalid-feedback d-inline-block ms-20 mt-2" *ngIf="termsAccept?.dirty || termsAccept?.touched">
+      <p *ngIf="termsAccept.errors?.required">
+        {{'auth.Youmustagreebeforesubmitting' | translate}}
+      </p>
+    </div>
+  </div>
+  <div class="col-md-12 text-center">
+    <button class="btn size-12 font-medium btn-pink1 text-white w-100 border-radius-20 p-10"
+      [disabled]="isSubmitting || signUpForm.invalid">
+      {{'auth.Register' | translate}}
+    </button>
+  </div>
+</form>

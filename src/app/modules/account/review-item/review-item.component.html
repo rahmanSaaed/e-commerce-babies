@@ -1,0 +1,25 @@
+<div class="row">
+    <div class="col-8 col-sm-12 col-lg-8 mb-sm-10 mb-lg-0">
+        <div class="bg-aqua1 border-radius-20 p-10 d-flex align-items-center height">
+            <div
+                class="border-primary bg-white d-flex align-items-center justify-content-center img-holder border-radius-12 overflow-hidden cursor-pointer">
+                <img [src]="image" alt="" class="w-100 max-50 img-width" (click)="navProductDetails(productId)" defaultImage>
+            </div>
+            <div class="ms-8 w-100 max-500">
+                <div class="d-flex align-items-center justify-content-between w-100 max-500">
+                    <div class="text-dark font-bold size-5 mb-2">{{ productName }}</div>
+                    <div class="mb-2">
+                        <product-rate [rate]="rate"></product-rate>
+                    </div>
+                </div>
+                <div class="text-primary size-3 max-500">{{ description }}</div>
+            </div>
+        </div>
+    </div>
+    <div class="col-4  col-sm-12 col-lg-4 d-flex flex-sm-row flex-lg-column justify-content-between">
+        <button class="btn btn-secondary1 text-secondary font-bold size-6 w-100 border-radius-10 w-100 font-bold p-8 me-sm-5 me-lg-0"
+            mat-raised-button (click)="openEditReview(reviewId,description,rate)">{{'accoun.Edit' | translate}}</button>
+        <button class="btn btn-pink3 text-pink1 size-6 w-100 border-radius-10 w-100 font-bold p-8" mat-raised-button
+            (click)="openDeleteReview(reviewId,description)">{{'accoun.Delete' | translate}}</button>
+    </div>
+</div>

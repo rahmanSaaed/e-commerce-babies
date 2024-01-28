@@ -1,0 +1,49 @@
+<div class="position-relative preview">
+  <img [src]="image" alt={{name}} class="max-200 border-radius-20 height cursor-pointer"
+    (click)="gotoProductDetail(productId)" defaultImage>
+  <div class="overlay border-radius-20 cursor-pointer" (click)="gotoProductDetail(productId)">
+
+  </div>
+  <div class="quick-view position-absolute d-flex justify-content-center flex-column">
+    <button class="text-white btn btn-secondary size-6 w-100 max-160 align-self-center mb-6 p-2"
+      (click)="openQuickView()">{{'productDetail.Quickview' | translate}}</button>
+    <div (click)="addProductToCart()" *ngIf="!cartAdd"
+      class="bg-white rounded-circle d-flex align-items-center justify-content-center p-4  cursor-pointer cart align-self-center">
+      <img src="../../../../../assets/images/shopping-cart.svg" alt="" class="w-100 cursor-pointer">
+    </div>
+
+    <div *ngIf="cartAdd"
+      class="bg-white rounded-circle d-flex align-items-center justify-content-center p-4   cart align-self-center">
+      <!-- <img src="../../../../../assets/images/shopping-cart.svg" alt="" > -->
+      <mat-spinner></mat-spinner>
+    </div>
+  </div>
+
+
+  <div (click)="addToFavorite(productId)"
+    class="bg-white rounded-circle d-flex align-items-center justify-content-center p-4 position-absolute cursor-pointer whishlist">
+    <img *ngIf="!addedToFav" src="../../../../../assets/images/heart.svg" alt="" class="w-100 cursor-pointer">
+    <img *ngIf="addedToFav" src="../../../../../assets/images/fill-heart.svg" alt="" class="w-100 cursor-pointer">
+  </div>
+
+</div>
+<div class="text-dark font-medium size-5 mt-8 lh-1 cursor-pointer max-200" (click)="gotoProductDetail(productId)">
+  {{name}}</div>
+<div class="d-flex align-items-center mt-4 max-200">
+  <product-rate [rate]="overallRatingValue"></product-rate>
+</div>
+<div *ngIf="salePrice" class=" mt-3 lh-1 cursor-pointer max-200" >
+    {{'productDetail.eligablefor' | translate}} <strong class="text-dark font-medium size-4"> {{'productDetail.freeshiipping' | translate}} </strong>  </div>
+<div class="d-flex align-items-center justify-content-between mt-4 max-200">
+  <ng-container *ngIf="salePrice">
+    <div class="text-secondary size-6 font-medium ">{{currency?.isoAlpha_3}} {{salePrice * currency?.EGP_rate |
+      number:'.1-2' }}</div>
+    <div class="text-gray2 size-4 font-medium">
+      <del>{{currency?.isoAlpha_3}} {{price * currency?.EGP_rate | number:'.1-2'}}</del>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="!salePrice">
+    <div class="text-secondary size-6 font-medium ">{{currency?.isoAlpha_3}} {{price * currency?.EGP_rate |
+      number:'.1-2'}}</div>
+  </ng-container>
+</div>

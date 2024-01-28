@@ -1,0 +1,11 @@
+img {
+    object-fit: cover;
+}
+::ng-deep .mat-dialog-container {
+    box-shadow: unset !important;
+    border-radius: 40px !important;
+    padding: 120px !important;
+    @media (max-width: 575.9px) {
+        padding: 40px !important;
+    }  
+}

@@ -1,0 +1,27 @@
+<div class="container">
+    <div class="text-center size-30 text-dark font-bold mt-lg-50 mb-lg-50 mtb-30">{{'blog.News&Media' | translate}}</div>
+    <div class="row">
+       <ng-container *ngIf="!blogs">
+        <div class="col-md-6 mb-30" *ngFor="let i of [1,2,3,4,6]">
+            <app-placeholder [placeholder]="'blog'"></app-placeholder>
+        </div>
+       </ng-container>
+       <ng-container *ngIf="blogs" >
+         <div class="row" infiniteScroll [infiniteScrollDistance]="2" [scrollWindow]="true"
+         [infiniteScrollThrottle]="50" (scrolled)="onScroll()">
+         <div  class="col-md-6 mb-30" *ngFor="let blog of blogs">
+          <blog-item
+          [dateCreated]="blog?.date"
+          [name]="blog?.name || blog?.nameAr"
+          [image]="blog?.image"
+          [blogId]="blog?.blogId"
+          ></blog-item>
+      </div>
+         </div>
+
+       </ng-container>
+        <!-- <button
+            class="btn btn-white text-dark size-4 border w-100 max-120 border-radius-14 m-auto mb-60 mt-25 font-medium p-4">View
+            More</button> -->
+    </div>
+</div>

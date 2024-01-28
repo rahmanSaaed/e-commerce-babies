@@ -1,0 +1,18 @@
+<div class="menu-overlay" *ngIf="showSettinsTab" ></div>
+<div class="filter-menu pb-100" [class.menueSlide]="showSettinsTab">
+    <div class="cursor-pointer size-6 font-bold mb-6"><div 
+        class="text-decoration-none w-100 text-dark"> Language</div></div>
+<div class="text-gray3 cursor-pointer font-medium size-3 mb-2"><a [routerLink]="['/account']"
+        routerLinkActive="router-link-active" class="text-decoration-none w-100 text-gray3"> العربية </a></div>
+<div class="text-gray3 cursor-pointer font-medium size-3 mb-16"><a [routerLink]="['/account/shipping']"
+        routerLinkActive="router-link-active" class="text-decoration-none w-100 text-gray3"> English</a></div>
+
+        <div class="cursor-pointer size-6 font-bold mb-6"><div 
+            class="text-decoration-none w-100 text-dark"> currency</div></div>
+    <div class="text-gray3 cursor-pointer font-medium size-3 mb-2"><a [routerLink]="['/account']"
+            routerLinkActive="router-link-active" class="text-decoration-none w-100 text-gray3"> USD </a></div>
+    <div class="text-gray3 cursor-pointer font-medium size-3 mb-16"><a [routerLink]="['/account/shipping']"
+            routerLinkActive="router-link-active" class="text-decoration-none w-100 text-gray3"> EGP</a></div>
+            <div class="cursor-pointer size-8 font-medium mtb-6"><div 
+                class="text-decoration-none w-100 text-dark"> Logout</div></div>
+</div>

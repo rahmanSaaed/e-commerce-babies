@@ -1,0 +1,64 @@
+<form [formGroup]="reviewDescriptionForm" (ngSubmit)="edit()">
+    <div class="d-flex justify-content-center align-self-center">
+        <div class="wrapper">
+            <div class="row">
+                <div class="col-md-12 mb-8">
+                    <label for="exampleFormControlInput1" class="text-gray3 size-6 mb-4">{{'accoun.Ratge' | translate}}</label>
+                    <input type="number" class="form-control border-radius-8 border-gray text-gray size-4 w-100" [class.is-invalid]="rate?.invalid && (rate?.dirty ||rate?.touched)"
+                        id="rate" formControlName="rate" min="0" max="5">
+                    <div class="invalid-feedback" *ngIf="rate?.dirty || rate?.touched">
+                        <p *ngIf="rate.errors?.required">
+                            {{'accoun.Rateisrequired' | translate}}
+                        </p>
+                        <p *ngIf="rate.errors?.max">
+                            {{'accoun.Ratecantbemorethan5' | translate}}
+                        </p>
+                        <p *ngIf="rate.errors?.min">
+                            {{'accoun.Ratecantbelessthan0' | translate}}
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-12">
+                    <label for="exampleFormControlInput1" class="text-gray3 size-6 mb-4">{{'accoun.ReviewDescription' | translate}}</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1" rows="6"
+                        formControlName="description" [class.is-invalid]="description?.invalid && (description?.dirty ||description?.touched)"></textarea>
+                        <div class="invalid-feedback" *ngIf="description?.dirty || description?.touched">
+                            <p *ngIf="description.errors?.required">
+                                {{'accoun.descriptionisrequired' | translate}}
+                            </p>
+                        </div>
+                </div>
+                <!-- <div class="col"></div>
+                <div class="col-md-6">
+                    <label for="exampleFormControlInput1" class="text-gray3 size-6 mb-4">Area</label>
+                    <input type="text" class="form-control border-radius-8 border-gray text-gray size-4 w-100"
+                        id="exampleFormControlInput1" value="Lorem">
+                </div>
+                <div class="col"></div>
+
+                <div class="col-md-6">
+                    <label for="exampleFormControlInput1" class="text-gray3 size-6 mb-4">Address</label>
+                    <input type="text" class="form-control border-radius-8 border-gray text-gray size-4 w-100"
+                        id="exampleFormControlInput1" value="Lorem">
+                </div>
+                <div class="col"></div>
+                <div class="col-md-6">
+                    <label for="exampleFormControlInput1" class="text-gray3 size-6 mb-4">Address type</label>
+                    <input type="text" class="form-control border-radius-8 border-gray text-gray size-4 w-100"
+                        id="exampleFormControlInput1" value="Lorem">
+                </div>
+                <div class="col"></div>
+                <div class="col-md-6">
+                    <button
+                        class="btn btn-secondary text-white font-bold size-12 w-100 mt-16 border-radius-10 ptb-6 w-100">Confirm</button>
+                </div> -->
+                <div class="col-md-12">
+                    <button
+                        class="btn btn-secondary text-white font-bold size-12 w-100 mt-16 border-radius-10 ptb-6 w-100"
+                        type="submit" [disabled]="isSubmitting || reviewDescriptionForm.invalid">
+                        {{'accoun.Confirm' | translate}}</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

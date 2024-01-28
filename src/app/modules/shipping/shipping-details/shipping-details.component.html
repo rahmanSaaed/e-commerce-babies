@@ -1,0 +1,148 @@
+<div class="row justify-content-between">
+    <div class="col-6 col-md-auto">
+        <div class="text-gray3 size-25 font-bold">{{'order.ShippingDetails' | translate}} <small class="size-10 font-medium">{{address?.length}}/2</small></div>
+    </div>
+    <!-- <div class="col-md"></div> -->
+    <div class="col-6 d-flex align-items-center justify-content-end">
+        <button class="btn btn-pink3 text-pink1 font-bold size-5 w-100 max-200 mt-4 border-radius-12 p-6" mat-raised-button [disabled]="address?.length == 2"
+            (click)="openAddAddress()">{{'order.Addnewadress' | translate}}</button>
+    </div>
+</div>
+<ng-container *ngIf="!address">
+    <div class="col-md-3  mb-10" *ngFor="let i of [1,2]">
+        <app-placeholder [placeholder]=" 'account-info' "></app-placeholder>
+    </div>
+</ng-container>
+
+<ng-container *ngIf="address">
+    <div class="text-center" *ngIf="address.length == 0">
+        <img src="../../../../assets/images/shipping-address-no.svg" alt="" class="w-100 max-500 mtb-30">
+    </div>
+    <ng-container *ngIf="address.length > 0">
+      <div class="row" >
+        <div class="addresses col-md-8 ">
+          <div class="address" *ngFor="let address of address;let i = index">
+              <input type="radio" id="male-{{address.addressId}}" name="gender" [value]="address"
+                  (input)="sellectAddress(address)" [checked]=" i == 0">
+              <label for="male-{{address.addressId}}" class="d-block mtb-16">
+                  <div class="text-dark font-bold size-6 mb-4">{{address.address}}</div>
+                  <div class="text-gray2 size-3">{{address?.city?.name || address?.city?.name}}, {{address?.area?.name}}</div>
+                  <div class="text-gray2 size-3">{{'order.AddressType:' | translate}} {{address.type}}</div>
+              </label>
+              <div class="divider"></div>
+          </div>
+
+      </div>
+
+      <!-- <div class="col-md-4" > -->
+        <div class="col-md-4  col-12 order-md-2 order-1  ps-md-10 mtb-16">
+          <section class="bg-secondary p-12 text-white border-radius-16 mb-16">
+              <div class="d-flex align-items-center justify-content-between mb-4">
+                  <div class="font-medium size-4">{{'order.Summary' | translate}}</div>
+                  <div class="size-4">{{currency?.isoAlpha_3}} {{totalCartPrice ? (totalCartPrice * currency?.EGP_rate | number:'.1-2')  : 0}}</div>
+              </div>
+              <div class="d-flex align-items-center justify-content-between mb-4" *ngIf="amountDeductedByPromo">
+                <div class="font-medium size-4">{{'cart.Discount' | translate}}</div>
+                <div class="size-4">{{currency?.isoAlpha_3}} {{amountDeductedByPromo * currency?.EGP_rate| number:'.1-2' }}</div>
+              </div>
+              <div class="d-flex align-items-center justify-content-between mb-4">
+                  <div class="font-medium size-4"> {{'order.Tax' | translate}}</div>
+                  <div class="size-4">{{currency?.isoAlpha_3}} {{totalTax ? totalTax * currency?.EGP_rate : 0| number:'.1-2'}}</div>
+              </div>
+              <div class="d-flex align-items-center justify-content-between mb-4">
+                <div class="font-medium size-4"> {{'order.Shipping' | translate}}</div>
+                <div class="size-4">{{currency?.isoAlpha_3}} {{shippingAmmountTotal ? (shippingAmmountTotal * currency?.EGP_rate | number:'.1-2') : 0}}</div>
+            </div>
+              <hr>
+              <div class="d-flex align-items-center justify-content-between mt-4">
+                  <div class="font-bold size-5"> {{'order.Total' | translate}}</div>
+                  <div *ngIf=" !amountDeductedByPromo && dateSellected?.addressId" class="size-5">{{currency?.isoAlpha_3}}  {{totalCartPrice ? ((totalCartPrice + totalTax + shippingAmmountTotal)  * currency?.EGP_rate | number:'.1-2') : 0 }}</div>
+                  <div *ngIf=" amountDeductedByPromo && dateSellected?.addressId" class="size-5">{{currency?.isoAlpha_3}}  {{totalCartPriceAfterDisocunt ? (((totalCartPriceAfterDisocunt + totalTax + shippingAmmountTotal)) * currency?.EGP_rate | number:'.1-2')  : 0}}</div>
+
+              </div>
+          </section>
+
+          <section class="bg-orange p-12 border-radius-16 mb-16">
+            <div class="text-gray3 size-4 font-bold mb-8" *ngIf="!amountDeductedByPromo">{{'cart.DoyouhaveaCoupon?' |
+              translate}}</div>
+            <div class="d-flex align-items-center justify-content-between" *ngIf="amountDeductedByPromo">
+              <div class="">{{'cart.Coupon' | translate}}</div>
+              <div class="">{{validatedPromo.code}}</div>
+              <div (click)="deletePromo()" class="bg-pink3 rounded-circle d-flex align-items-center justify-content-center ptb-4 pse-5 cursor-pointer delete-height"><img src="../../../assets/images/dele-cart.svg" alt="" class="max-20 w-100"></div>
+            </div>
+            <!-- text-gray3 size-4 font-bold mb-8 -->
+            <div class="d-flex align-items-center">
+              <input type="text" class="form-control border-0 border-radius-12 ptb-4" [(ngModel)]='promoCode'
+                *ngIf="!amountDeductedByPromo">
+              <button class="btn btn-pink1 text-white max-80 w-100 ms-8 border-radius-12 size-4 ptb-4"
+                [disabled]="!promoCode" (click)="validatePromoCode()" *ngIf="!amountDeductedByPromo">
+                {{'cart.Apply' | translate}}</button>
+            </div>
+          </section>
+
+      </div>
+      </div>
+
+        <!-- </div> -->
+
+    </ng-container>
+</ng-container>
+
+<ng-container>
+  <div class="table-responsive mb-16">
+    <table class="table" *ngIf="cartDetail?.length > 0" >
+        <thead>
+            <tr>
+                <th scope="col" class="text-gray3 size-4 font-medium"> {{'order.ProductName' | translate}}</th>
+                <th scope="col" class="text-gray3 size-4 font-medium"> {{'order.Price' | translate}}</th>
+                <th scope="col" class="text-gray3 size-4 font-medium"> {{'order.Quantity' | translate}}</th>
+                <th scope="col" class="text-gray3 size-4 font-medium"> {{'order.Subtotal' | translate}}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of cartDetail">
+                <td class="align-middle" style="width: 40%;">
+                    <div class="d-flex align-items-center " >
+                        <img  src={{item.product.images[0]}} alt=""
+                            class="max-50 w-100 border-radius-14 item-image me-10">
+                        <div class="max-180 w-100 font-medium tex-dark size-4 lh-1">{{item?.product?.name || item?.product?.nameAr}}</div>
+                    </div>
+                </td>
+                <td class="align-middle size-5 text-gray3 font-medium">{{currency?.isoAlpha_3}} {{(item?.product?.salePrice || item?.price) * currency?.EGP_rate | number:'.2'}} </td>
+                <td class="align-middle">
+                    <div
+                        class="d-flex justify-content-center border border-radius-20 max-90 w-100 ptb-3 pse-6">
+                        <div class="size-3 text-gray2 font-medium">{{ item.qty }}</div>
+                    </div>
+                </td>
+                <td class="align-middle" style="width: 20%;">
+                    <div class="d-flex align-items-center justify-content-between">
+                        <div class="size-5 text-gray3 font-medium">{{currency?.isoAlpha_3}} {{((item?.product?.salePrice || item?.price) * item.qty) * currency?.EGP_rate | number:'.2'}}</div>
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+</ng-container>
+
+<div class="d-flex mb-sm-100 mb-50 flex-column flex-sm-row w-100 ">
+    <!-- <button class="btn btn-primary text-white font-bold size-sm-12 size-6 w-sm-50  w-100 mt-16 border-radius-10 ptb-6 max-700 me-10"
+         (click)="nextStep('billingInfo')">  <img class="filter-green" src="../../../../assets/images/Left-arrow.svg" alt="" > previous
+        </button> -->
+
+        <div class="col-md-6 text-center button-prev" >
+          <span style="width: 60%;" (click)="nextStep('billingInfo')" class="cursor-pointer">   <img  src="../../../../assets/images/Left-arrow.svg" alt="" class="prev-arrow" > {{'order.Previous' | translate}}</span>
+        </div>
+
+
+        <div class="col-md-6" >
+          <button class="btn btn-primary text-white font-bold size-sm-12 size-6 w-sm-50 w-100 mt-16 border-radius-10 ptb-6 max-300"
+          [disabled]="!dateSellected?.addressId"
+              (click)="nextStep('paymentMethod')"> {{'order.Next' | translate}}
+              <img src="../../../../assets/images/Right-arrow.svg" alt="" class="filter-green"></button>
+        </div>
+
+
+
+</div>

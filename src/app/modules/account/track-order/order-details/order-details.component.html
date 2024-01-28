@@ -1,0 +1,116 @@
+<ng-container *ngIf="!order">
+  <app-placeholder [placeholder]="'order-details'"></app-placeholder>
+</ng-container>
+
+<ng-container *ngIf="order">
+  <ng-container *ngIf="!order?.orderCode">
+    <div class="col-md-12 text-centre">
+      <div><img src="../../../assets/images/empty-cart.svg" alt="" class="w-100 max-500"></div>
+      <div class="size-10 text-dark font-medium mb-8"> {{'accoun.Noorderfound' | translate}}</div>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="order?.orderCode">
+    <div class="row">
+      <div class="col-12 order-lg-2 order-2 mb-20">
+        <div class="stepper ps-20" *ngIf="order?.orderCode">
+          <div class="step ps-5" *ngFor="let status of orderStatus; let i = index"
+            [ngClass]="status.code == order.transactionStatus ? 'active' : ''">
+            <div class="text-dark size-5 font-bold "> {{status?.name || status?.nameAr}}</div>
+            <div class="text-gray3 size-4 font-medium mb-10"> {{status?.description || status?.descriptionAr}}</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 order-lg-1 order-1 mb-10 mt-10">
+        <div class="text-dark size-25 font-bold mb-4">{{'accoun.OrderDetails' | translate}}</div>
+        <div class="text-dark size-4 font-medium mb-4">{{'accoun.OrderCode:' | translate}}<span
+            class="text-primary font-regular size-2">{{order?.orderCode}}</span></div>
+            <div class="text-dark size-4 font-medium">{{'accoun.SubTotal:' | translate}}<span
+              class="text-primary font-regular size-2">{{order?.subTotalPrice}}</span></div>
+        <div class="text-dark size-4 font-medium mb-4">{{'accoun.TotalPrice:' | translate}}<span
+            class="text-primary font-regular size-2">{{order?.totalPrice}} EGP</span></div>
+            <div class="text-dark size-4 font-medium">{{'accoun.Tax:' | translate}} <span
+              class="text-primary font-regular size-2">{{order?.tax}}</span></div>
+        <div class="text-dark size-4 font-medium mb-4">{{'accoun.Paymentmethod:' | translate}}<span
+            class="text-primary font-regular size-2">{{'accoun.CashonDelivery' | translate}}</span></div>
+        <div class="text-dark size-4 font-medium">{{'accoun.OrderDate:' | translate}}<span
+            class="text-primary font-regular size-2 mb-10">{{order?.dateCreated | date}}</span></div>
+        <div class="content p-6">
+          <!-- <div class="border-radius-20 d-flex align-items-center">
+            <div
+              class="border-primary bg-white align-self-stretch d-flex align-items-center border border-secondary border-radius-12 ">
+              <img src="../../../../assets/images/baby-review.jpg" alt="" class="w-100 max-50">
+            </div>
+          </div> -->
+
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</ng-container>
+
+<!-- <div class="stepper">
+  <div class="step active">
+    <div class="content p-6">
+      <div class="text-dark size-5 font-medium mb-4">Order Confirmed</div>
+      <div class="border-radius-20 d-flex align-items-center">
+        <div
+          class="border-primary bg-white align-self-stretch d-flex align-items-center border border-secondary border-radius-12 ">
+          <img src="../../../../assets/images/baby-review.jpg" alt="" class="w-100 max-50">
+        </div> -->
+        <!-- <div class="ms-8">
+
+                <div class="font-regular size-4 text-dark">Order ID : <span class="text-primary size-3">{{order?.orderId}}</span></div>
+                <div class="text-dark font-regular size-4">Total Price : <span class="text-primary size-3">{{order?.totalPrice}} EGP</span></div>
+                <div class="text-center mt-4"><div class="btn btn-secondary1 text-secondary size-2 border-radius-12 max-100 w-100">Add Review</div></div>
+            </div> -->
+      <!-- </div>
+      <div class="text-dark size-4 font-medium mb-4">Order ID : <span
+          class="text-primary font-regular size-2">{{order?.orderId}}</span></div>
+      <div class="text-dark size-4 font-medium mb-4">Total Price : <span
+          class="text-primary font-regular size-2">{{order?.totalPrice}} EGP</span></div>
+      <div class="text-dark size-4 font-medium mb-4">Payment method : <span
+          class="text-primary font-regular size-2">Cash on Delivery</span></div>
+      <div class="text-dark size-4 font-medium">Order Date : <span
+          class="text-primary font-regular size-2">{{order?.dateCreated | date}}</span></div>
+    </div>
+  </div>
+  <div class="step">
+    <div class="content p-6">
+      <div class="text-dark size-5 font-medium mb-4">Processing</div>
+      <div class="text-primary size-4">{{order?.transactionStatus}}</div>
+    </div>
+  </div>
+  <div class="step">
+    <div class="content p-6">
+      <div class="text-dark size-5 font-medium">Out For Delivery</div>
+    </div>
+
+  </div>
+  <div class="step">
+    <div class="content p-6">
+      <div class="text-dark size-5 font-medium mb-4">Delivered</div>
+      <div class="border-radius-20 d-flex align-items-center"> -->
+        <!-- <div
+                class="border-primary bg-white align-self-stretch d-flex align-items-center border border-secondary border-radius-12 ">
+                <img src="../../../../assets/images/baby-review.jpg" alt="" class="w-100 max-50">
+            </div> -->
+        <!-- <div class="ms-8">
+
+                <div class="font-regular size-4 text-dark">Order ID : <span class="text-primary size-3">{{order?.orderId}}</span></div>
+                <div class="text-dark font-regular size-4">Total Price : <span class="text-primary size-3">{{order?.totalPrice}} EGP</span></div>
+                <div class="text-center mt-4"><div class="btn btn-secondary1 text-secondary size-2 border-radius-12 max-100 w-100">Add Review</div></div>
+            </div> -->
+      <!-- </div>
+    </div>
+
+  </div> -->
+  <!-- <div class="step bg-pink1 rounded-circle position-relative">
+
+    </div>
+    <div class="step bg-pink1 rounded-circle position-relative">
+
+    </div>
+    <div class="step bg-pink1 rounded-circle position-relative">
+
+    </div> -->
+<!-- </div> -->

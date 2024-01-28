@@ -1,0 +1,10 @@
+<section class="bg-aqua1 border-radius-20 max-700 text-center p-16">
+    <div class="text-gray3 size-10 font-medium mb-16">{{'order.ThankYou!' | translate}}</div>
+    <img src="../../../../assets/images/about-2.png" alt="" class="max-sm-300 max-200 mb-8">
+    <div class="text-gray3 font-bold size-8 mtb-8">{{'order.OrderCode' | translate}} {{shippingcode}}</div>
+    <div class="text-gray3 size-6">{{'order.Yourorderisonitsway' | translate}}</div>
+    <div class="text-gray3 size-6">{{'order.Youcantrackitforupdates' | translate}}</div>
+</section>
+<div class="d-flex mb-100">
+    <button class="btn btn-primary text-white font-bold size-6 w-100 mt-16 border-radius-10 ptb-6 max-700"(click)="openReciept()" >{{'order.OpenReceipt' | translate}}</button>
+</div>

@@ -1,0 +1,63 @@
+    <div class="row align-items-center">
+        <div class="col col-md-auto">
+            <div class="text-dark size-25 font-bold">{{'accoun.ShippingAddress' | translate}} <small class="size-10 font-medium">{{address?.length}}/2</small> </div>
+        </div>
+        <div class="col"></div>
+        <div class="col d-flex justify-content-end">
+            <button class="btn btn-secondary1 text-secondary font-bold size-5 w-100 mt-4 border-radius-12 p-6" mat-raised-button [disabled]="address?.length == 2"
+                (click)="openAddEditAddress()">{{'accoun.AddAdress' | translate}}</button>
+        </div>
+    </div>
+    <div class="row mt-18 mb-30">
+        <ng-container *ngIf="!address">
+            <div class="col-md-6 col-xl-4 col-sm-6 col-12  mb-14" *ngFor="let i of [1,2]">
+                <app-placeholder [placeholder]=" 'account-info' "></app-placeholder>
+            </div>
+        </ng-container>
+
+        <ng-container *ngIf="address">
+            <div class="text-center" *ngIf="address.length == 0">
+                <img src="../../../../assets/images/return-form.png" alt="" class="w-100 max-300 mt-20 mt-lg-80">
+                <div class="text-dark size-16 mb-30 mb-lg-0 mt-16">{{'accoun.Youhaveplacednoaddress' | translate}}</div>
+            </div>
+            <ng-container *ngIf="address.length > 0">
+                <div class="col-md-6 col-xl-4 col-sm-6 col-12 align-items-stretch mb-14" *ngFor="let addres of address; let i = index">
+                    <section class="bg-color p-6 border-radius-12">
+                        <div class="text-gray3 size-6 mb-4">{{'accoun.City' | translate}}</div>
+                        <div class="text-secondary size-4 font-bold mb-4">{{addres?.city?.name}}</div>
+                        <div class="text-gray3 size-6 mb-4">{{'accoun.Area' | translate}}</div>
+                        <div class="text-secondary size-4 font-bold mb-4">{{addres?.area?.name}}</div>
+                        <div class="text-gray3 size-6 mb-4">{{'accoun.Adress' | translate}}</div>
+                        <div class="text-secondary size-4 font-bold mb-4">{{addres?.address}}</div>
+                        <div class="text-gray3 size-6 mb-4">{{'accoun.AdressType' | translate}}</div>
+                        <div class="text-secondary size-4 font-bold">{{addres?.type}}</div>
+                        <div class="text-gray3 size-6 mb-4" *ngIf="addres?.deliveryNote" >{{'accoun.note' | translate}}</div>
+                        <div class="text-secondary size-4 font-bold" *ngIf="addres?.deliveryNote">{{addres?.deliveryNote}}</div>
+
+                    </section>
+                    <button class="btn btn-secondary1 text-secondary font-bold size-5 w-100 mt-4 border-radius-12 p-6"
+                        mat-raised-button (click)="openAddEditAddress(addres)">{{'accoun.Edit' | translate}}</button>
+
+                        <button class="btn btn-pink3 text-pink1 font-bold size-5 w-100 mt-4 border-radius-12 p-6"
+                        mat-raised-button (click)="deleteItem(addres.addressId, i)">{{'accoun.Delete' | translate}}</button>
+                </div>
+            </ng-container>
+        </ng-container>
+
+
+
+        <!-- <div class="col-md-3 align-items-stretch">
+            <section class="bg-color p-6 border-radius-12">
+                <div class="text-gray3 size-6 mb-4">City</div>
+                <div class="text-secondary size-4 font-bold mb-4">Cairo</div>
+                <div class="text-gray3 size-6 mb-4">Area</div>
+                <div class="text-secondary size-4 font-bold mb-4">Heliopolis</div>
+                <div class="text-gray3 size-6 mb-4">Adress</div>
+                <div class="text-secondary size-4 font-bold mb-4">9 A Al-Gabarty, St., Heliopolis</div>
+                <div class="text-gray3 size-6 mb-4">Adress Type</div>
+                <div class="text-secondary size-4 font-bold">Lorem ipsum</div>
+            </section>
+            <button class="btn btn-pink3 text-pink1 font-bold size-5 w-100 mt-4 border-radius-12 p-6"
+                mat-raised-button (click)="openAddEditAddress()">Edit</button>
+        </div> -->
+    </div>

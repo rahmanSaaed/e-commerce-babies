@@ -1,0 +1,111 @@
+<div class="text-gray3 size-25 font-bold mb-8">{{'order.ShippingDetails' | translate}}</div>
+<div class="text-gray3 size-12 font-bold mb-8">{{personalInfo?.buyerFirstName}} {{personalInfo?.buyerLastName}} </div>
+<div class="text-gray3 size-6 font-medium mb-8">{{personalInfo?.email}} </div>
+<div class="text-gray3 size-6 font-medium mb-8">{{personalInfo?.phoneNumber}} </div>
+
+<div class="text-gray3 size-12 font-bold mb-8">{{shippingDetails?.city?.name || shippingDetails?.city?.nameAr }} , {{shippingDetails?.area?.name || shippingDetails?.area?.nameAr}} </div>
+<div class="text-gray3 size-6 font-medium mb-8">{{shippingDetails?.address}} </div>
+<div class="text-gray3 size-25 font-bold mb-20">{{'order.PaymentMethod' | translate}}</div>
+<div class="payments max-600 mb-16">
+    <div class="divider"></div>
+    <div class="payment">
+        <input type="radio" id="x" name="gender" value="true" checked (input)="sellectPayment()">
+        <label for="x" class="d-flex mtb-8 align-items-center justify-content-between">
+            <div class="text-dark font-bold size-6">{{'order.PayOnDelevery' | translate}}</div>
+            <img src="../../../../assets/images/money.png" alt="" class="max-sm-50  max-30 w-100">
+        </label>
+        <div class="divider"></div>
+    </div>
+    <!-- <div class="payment">
+        <input type="radio" id="x" name="gender" value="x" [disabled]="true" >
+        <label for="x" class="d-flex mtb-8 align-items-center justify-content-between">
+            <div class="text-dark font-bold size-6">Paypal</div>
+            <img src="../../../../assets/images/paybal.png" alt="" class="max-50 w-100">
+        </label>
+        <div class="divider"></div>
+    </div>
+    <div class="payment">
+        <input type="radio" id="y" name="gender" value="y" [disabled]="true">
+        <label for="y" class="d-flex mtb-8 align-items-center justify-content-between">
+            <div class="text-dark font-bold size-6">PointsPay</div>
+            <img src="../../../../assets/images/smile.png" alt="" class="max-80 w-100">
+        </label>
+        <div class="divider"></div>
+    </div>
+    <div class="payment">
+        <input type="radio" id="z" name="gender" value="z" [disabled]="true">
+        <label for="z}" class="d-flex mtb-8 align-items-center justify-content-between">
+            <div class="text-dark font-bold size-6">Credit Card</div>
+            <img src="../../../../assets/images/visa.png" alt="" class="max-50 w-100">
+        </label>
+        <div class="divider"></div>
+    </div>
+</div> -->
+    <!-- <div class="max-600">
+    <label for="exampleFormControlInput1" class="text-gray3 size-4 font-bold mb-4">Card Holder Name</label>
+    <input type="text" class="form-control border-radius-12 text-gray size-4 w-100 ptb-6 mb-8"
+        id="exampleFormControlInput1" placeholder="New Card">
+</div>
+<div class="max-600">
+    <label for="exampleFormControlInput1" class="text-gray3 size-4 font-bold mb-4">Card Number</label>
+    <input type="text" class="form-control border-radius-12 text-gray size-4 w-100 ptb-6 mb-8"
+        id="exampleFormControlInput1" placeholder="New Card">
+</div>
+<div class="max-600">
+    <label for="exampleFormControlInput1" class="text-gray3 size-4 font-bold mb-4">Card Expiration</label>
+    <div class="d-flex align-items-center">
+        <div class="w-100 me-2">
+            <app-select>
+                <select class="form-control border-radius-12 text-gray size-4 w-100 ptb-6 mb-8"
+                    aria-label="Default select example" placeholder="Month">
+                    <option selected>Month</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                </select>
+            </app-select>
+        </div>
+        <div class="w-100 ms-2">
+            <app-select>
+                <select class="form-control border-radius-12 text-gray size-4 w-100 ptb-6 mb-8"
+                    aria-label="Default select example" placeholder="Year">
+                    <option selected>Year</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                </select>
+            </app-select>
+        </div>
+
+    </div>
+</div>
+<div class="max-600">
+    <label for="exampleFormControlInput1" class="text-gray3 size-6 font-bold">CVV</label>
+    <input type="text" class="form-control border-radius-12 text-gray size-4 w-100 ptb-7 mb-8"
+        id="exampleFormControlInput1" placeholder="New Card">
+</div>
+ -->
+    <!-- <div class="max-600 mt-10">
+        <div class="payment">
+            <input type="radio" id="z" name="gender" value="true">
+            <label for="z" class="">
+                <div class="text-gray2 size-4 font-medium ptb-7">Save Card For Future Use</div>
+            </label>
+        </div>
+    </div> -->
+    <div class="d-flex mb-sm-100 mb-50 w-100 flex-column flex-sm-row">
+
+        <!-- <button class="btn btn-primary text-white font-bold size-sm-12 size-6 w-100 mt-16 border-radius-10 ptb-6 max-600 me-10"
+            (click)="nextStep('shippingDetails')">
+            <img src="../../../../assets/images/Left-arrow.svg" alt="" class="filter-green"> previous
+        </button> -->
+
+        <div class="col-md-6 text-center button-prev" >
+          <span style="width: 60%;" (click)="nextStep('shippingDetails')" class="cursor-pointer">   <img  src="../../../../assets/images/Left-arrow.svg" alt=""  class="prev-arrow">  {{'order.Previous' | translate}}</span>
+        </div>
+
+        <button [disabled]="!paymenMethod"
+        class="btn btn-primary text-white font-bold size-sm-12 size-6 w-100 mt-16 border-radius-10 ptb-6 max-600"
+        (click)="nextStep('confirmation')">{{'order.PlaceOrder' | translate}}</button>
+
+    </div>

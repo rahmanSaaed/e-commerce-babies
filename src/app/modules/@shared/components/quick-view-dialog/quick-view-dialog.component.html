@@ -1,0 +1,72 @@
+<div class="row">
+
+  <ng-container *ngIf="!productDetail">
+    <div class="col-xxl-3 col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12 mb-20" *ngFor="let item of [1,2]">
+        <app-placeholder [placeholder]="'product'"></app-placeholder>
+    </div>
+</ng-container>
+
+    <div class="col-12 col-lg-4" *ngIf="productDetail">
+        <div class="d-flex align-items-start">
+            <div class="cursor-pointer">
+                <img *ngFor="let image of productDetail?.images; let i = index" [src]="image" alt={{productDetail?.name}} (click)="viewImage(image)" class="max-60 w-100 d-flex align-items-center border-radius-12 mb-6 small" [class.active]=" i == 0"  >
+            </div>
+            <div class="ms-6 align-self-start">
+                <img [src]="activeImage"  alt="" class="max-300 w-100 preview border-radius-20">
+            </div>
+        </div>
+
+    </div>
+    <div class="col-12 col-lg-7 position-relative" *ngIf="productDetail">
+        <div class="text-dark size-24 font-bold mb-2 lh-s mb-8">{{productDetail?.name || productDetail?.nameAr}}</div>
+        <div class="d-flex align-items-center justify-content-between mb-8">
+            <div class="d-flex align-items-center cursor-pointer" (click)="getProductsByBrandId(productDetail?.brand?.name, productDetail?.brand?.brandId)">
+                <img [src]="productDetail?.brand?.image" alt="" class="max-70 w-100">
+                <div class="text-gray2 size-6 text-nowrap ms-4">{{'productDetail.Seeallproductsfrom' | translate}} {{productDetail?.brand?.name || productDetail?.brand?.nameAr}}</div>
+            </div>
+            <div class="d-flex align-items-center justify-content-end w-100 max-70">
+                <product-rate [rate]="overallRatingValue" ></product-rate>
+            </div>
+        </div>
+
+        <div class="d-flex align-items-center justify-content-between mb-8">
+            <div class="d-flex align-items-center">
+                <div class="text-secondary font-bold size-8" *ngIf="!productDetail?.sale">{{currency?.isoAlpha_3}} {{productDetail?.price * currency?.EGP_rate | number:'.1-2'}}</div>
+                <div class="text-secondary font-bold size-8" *ngIf="productDetail?.sale">{{currency?.isoAlpha_3}} {{productDetail?.salePrice * currency?.EGP_rate | number:'.1-2'}}</div>
+
+                <div class="text-dark size-6 ms-10">{{'productDetail.VATInclusive' | translate}}</div>
+            </div>
+
+            <div class="text-gray2 font-bold size-3" *ngIf="productDetail?.sale">
+                <del>{{currency?.isoAlpha_3}} {{productDetail?.price * currency?.EGP_rate | number:'.1-2'}}</del>
+            </div>
+
+        </div>
+
+        <div *ngIf="productDetail?.salePrice" class=" mt-3 lh-1 cursor-pointer max-200 " >
+          {{'productDetail.eligablefor' | translate}} <strong class="text-dark font-medium size-4"> {{'productDetail.freeshiipping' | translate}} </strong>  </div>
+
+        <div class="font-bold text-dark size-12 mb-4 mt-5">{{'productDetail.Description' | translate}}</div>
+        <div class="text-dark size-4">
+          {{productDetail?.description || productDetail?.descriptionAr}}
+        </div>
+        <div class="d-flex align-items-center position-absolute bottom-0     w-100">
+            <button class="btn btn-primary text-white size-6 font-bold max-180 w-100 border-radius-8 p-4 position-relative" (click)="addProductToCart()">
+                <img src="../../../../../assets/images/cart-white.svg" alt="" class="max-30 me-4">
+                <div *ngIf="cartAdd" style="top: 22%; right: 70%;"
+                class="bg-white position-absolute rounded-circle d-flex align-items-center justify-content-center    cart align-self-center max-20 w-100 me-2">
+                <mat-spinner></mat-spinner>
+              </div>
+                {{'productDetail.AddtoCart' | translate}}
+            </button>
+            <button class="btn btn-pink3 text-pink1 size-6 font-bold max-180 w-100 border-radius-8 ms-12 p-4" (click)="addToFavorite(this.data?.dataKey)">
+                <img *ngIf="!addedToFav" src="../../../../assets/images/heart.svg" alt=""
+                class="max-30 w-100 cursor-pointer">
+                <img *ngIf="addedToFav" src="../../../../../assets/images/fill-heart.svg" alt=""
+                class="max-30 w-100 cursor-pointer">
+                {{'productDetail.AddtoFavorite' | translate}}
+            </button>
+        </div>
+    </div>
+    <div class="col-12 col-md-1"></div>
+</div>

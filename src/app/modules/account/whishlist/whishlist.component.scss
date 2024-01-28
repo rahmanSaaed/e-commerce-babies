@@ -1,0 +1,46 @@
+.height {
+    height: 250px;
+}
+img {
+    object-fit: cover;
+}
+.star {
+    max-width: 8px;
+}
+.overlay {
+    background-color: rgba(0, 0, 0, 0.2);
+    position: absolute;
+    height: 250px;
+    top: 0;
+    width: 200px;
+    opacity: 0;
+    -webkit-transition: background-color 0.8s ease-in, opacity 0.8s ease-in;
+    transition: background-color 0.8s ease-in, opacity 0.8s ease-in;
+}
+.whishlist {
+    top: 12px;
+    right: 12px;
+}
+.cart {
+    top: 53px;
+    right: 12px;
+}
+.preview:hover .overlay {
+    opacity: 1;
+    -webkit-transition: background-color 0.8s ease-in, opacity 0.8s ease-in;
+    transition: background-color 0.8s ease-in, opacity 0.8s ease-in;
+}
+.cart img {
+    max-width: 16px;
+}
+.whishlist img {
+    max-width: 18px;
+}
+
+::ng-deep html[dir="rtl"] {
+    .whishlist {
+        top: 12px;
+        right: unset;
+        left: 12px;
+    }
+}

@@ -1,0 +1,156 @@
+<div class="d-flex  justify-content-center align-self-center">
+  <div class="wrapper" *ngIf="cities">
+    <div class="text-secondary size-md-25 size-14 font-bold mb-12" *ngIf="data?.dataKey?.addressId">{{'accoun.UpdateyourAddress.' | translate}}</div>
+    <div class="text-secondary size-md-25 size-14 font-bold mb-12" *ngIf="!data?.dataKey?.addressId">{{'accoun.AddNewAddress' | translate}}</div>
+
+    <form class="row needs-validation" [formGroup]="updateAddressForm" (ngSubmit)="updateAdress()" novalidate  >
+
+      <div class="col-md-6 mb-4">
+        <div class="text-gray3 size-6 mb-4">{{'accoun.Cities' | translate}}</div>
+        <app-select>
+          <select class="form-select select app-select w-100 size-4  border-radius-8"
+            aria-label="Default select example" formControlName="cityId" (change)="changeCity($event?.target?.value)"
+            [class.is-invalid]="cityId?.invalid && (cityId?.dirty || cityId?.touched)" placeholder="City">
+            <option *ngFor="let city of cities" [value]="city?.cityId"   > {{city?.name || city?.nameAr }}</option>
+          </select>
+        </app-select>
+        <div class="invalid-feedback" *ngIf="cityId?.dirty || cityId?.touched">
+          <p *ngIf="cityId.errors?.required">
+            {{'accoun.Typeisrequired' | translate}}
+          </p>
+        </div>
+      </div>
+
+      <div class="col"></div>
+      <div class="col-md-6 mb-4">
+        <div class="text-gray3 size-6 mb-4">{{'accoun.area' | translate}}</div>
+        <app-select>
+          <select class="form-select select app-select w-100 size-4  border-radius-8"
+            aria-label="Default select example" formControlName="areaId"
+            [class.is-invalid]="areaId?.invalid && (areaId?.dirty ||areaId?.touched)" placeholder="area">
+            <option *ngFor="let area of sellectedAreas" [value]="area?.areaId"  > {{area?.name || area?.nameAr}}</option>
+          </select>
+        </app-select>
+        <div class="invalid-feedback" *ngIf="areaId?.dirty || areaId?.touched">
+          <p *ngIf="areaId.errors?.required">
+            {{'accoun.Typeisrequired' | translate}}
+          </p>
+        </div>
+      </div>
+<!--
+      <div class="col-md-12" >
+        <select  [(ngModel)]="status">
+          <option *ngFor="let status_item of status_values">
+          {{status_item}}
+          </option>
+      </select>
+      </div> -->
+      <!-- <div class="col-md-6 mb-4">
+        <label for="exampleFormControlInput1" class="text-gray3 size-6 mb-4">Area</label>
+        <input type="text" class="form-control border-radius-8 border-gray text-gray size-4 w-100"
+          [class.is-invalid]="province?.invalid && (province?.dirty ||province?.touched)" formControlName="areaId"
+          id="exampleFormControlInput1">
+        <div class="invalid-feedback" *ngIf="province?.dirty || province?.touched">
+          <p *ngIf="province.errors?.required">
+            Area is required
+          </p>
+        </div>
+      </div> -->
+      <div class="col"></div>
+
+      <div class="col-md-6 mb-4">
+        <!-- pattern="\b.*[a-zA-Z]+.*\b\s*"/ -->
+        <label for="exampleFormControlInput1" class="text-gray3 size-6 mb-4">{{'accoun.Address' | translate}}</label>
+        <input type="text" class="form-control border-radius-8 border-gray text-gray size-4 w-100"
+          [class.is-invalid]="address?.invalid && (address?.dirty ||address?.touched)" formControlName="address"
+          id="exampleFormControlInput1">
+        <div class="invalid-feedback" *ngIf="address?.dirty || address?.touched">
+          <p *ngIf="address.errors?.required">
+            {{'accoun.Addressisrequired' | translate}}
+          </p>
+
+          <p *ngIf="address.errors?.pattern">
+             {{'accoun.Onlycharacters,whitespaceandnumbers' | translate}}
+          </p>
+
+        </div>
+      </div>
+      <div class="col"></div>
+      <!-- <div class="col-md-6">
+        <label for="exampleFormControlInput1" class="text-gray3 size-6 mb-4">Address type</label>
+        <input type="text" class="form-control border-radius-8 border-gray text-gray size-4 w-100"
+          [class.is-invalid]="addressType?.invalid && (addressType?.dirty ||addressType?.touched)"
+          formControlName="addressType" id="exampleFormControlInput1">
+        <div class="invalid-feedback" *ngIf="addressType?.dirty || addressType?.touched">
+          <p *ngIf="addressType.errors?.required">
+            Address type is required
+          </p>
+        </div>
+      </div> -->
+
+      <!-- <div class="col-md-6">
+        <label for="exampleFormControlInput1" class="text-gray3 size-6 mb-4">Address type</label>
+        <input type="text" class="form-control border-radius-8 border-gray text-gray size-4 w-100"
+        [class.is-invalid]="type?.invalid && (type?.dirty ||type?.touched)"
+        formControlName="type"
+          id="exampleFormControlInput1" >
+          <div class="invalid-feedback" *ngIf="type?.dirty || type?.touched">
+            <p *ngIf="type.errors?.required">
+                Type  is required
+            </p>
+        </div>
+      </div> -->
+
+      <div class="col-md-6 mb-4">
+        <div class="text-gray3 size-6 mb-4">{{'accoun.Addresstype' | translate}}</div>
+        <app-select>
+          <select class="form-select select app-select w-100 size-4  border-radius-8"
+            aria-label="Default select example" formControlName="type"
+            [class.is-invalid]="type?.invalid && (type?.dirty ||type?.touched)" placeholder="Type">
+            <option *ngFor="let type of addressTypes" [value]="type.name || type?.nameAr"> {{type?.name || type?.nameAr}}</option>
+          </select>
+        </app-select>
+        <div class="invalid-feedback" *ngIf="type?.dirty || type?.touched">
+          <p *ngIf="type.errors?.required">
+            {{'accoun.Typeisrequired' | translate}}
+          </p>
+        </div>
+      </div>
+      <div class="col"></div>
+
+
+      <div class="col-md-6 mb-4">
+        <label for="exampleFormControlInput1" class="text-gray3 size-6 mb-4">{{'accoun.note' | translate}}</label>
+        <textarea type="text" class="form-control border-radius-8 border-gray text-gray size-4 w-100"
+          [class.is-invalid]="deliveryNote?.invalid && (deliveryNote?.dirty || deliveryNote?.touched)" formControlName="deliveryNote"
+          id="exampleFormControlInput1"> </textarea>
+        <!-- <div class="invalid-feedback" *ngIf="deliveryNote?.dirty || deliveryNote?.touched">
+          <p *ngIf="deliveryNote.errors?.pattern">
+             {{'accoun.Onlycharacters, whitespaceandnumbers' | translate}}
+          </p>
+        </div> -->
+      </div>
+
+      <div class="col"></div>
+      <div class="col-md-6" *ngIf="data?.dataKey?.addressId">
+        <button [disabled]="!updateAddressForm.valid || !updateAddressForm.dirty || !updateAddressForm.touched"
+          class="btn btn-secondary text-white font-bold size-6 size-md-12 w-100 mt-16 border-radius-10 ptb-6 w-100">
+          {{'accoun.UpdateAdress' | translate}}
+        </button>
+      </div>
+
+      <div class="col-md-6" *ngIf="!data?.dataKey?.addressId">
+        <button [disabled]="!updateAddressForm.valid || !updateAddressForm.dirty || !updateAddressForm.touched"
+          class="btn btn-secondary text-white font-bold size-6 size-md-12 w-100 mt-16 border-radius-10 ptb-6 w-100">
+          {{'accoun.AddAdress' | translate}}
+        </button>
+      </div>
+      <!-- <div class="col-md-6">
+        <button
+          class="btn btn-pink3 text-pink1 font-bold size-12 w-100 mt-16 border-radius-10 ptb-6 w-100">Cancel</button>
+      </div> -->
+    </form>
+  </div>
+</div>
+
+

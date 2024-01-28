@@ -1,0 +1,100 @@
+.app-select {
+    background-image: unset !important;
+}
+.ng5-slider .ng5-slider-bar {
+    height: 2px !important;
+}
+:focus {
+    outline: 0 !important;
+}
+
+.ng5-slider .ng5-slider-pointer {
+    background-color: $dark !important;
+    width: 15px !important;
+    height: 15px !important;
+    top: -7px !important;
+    border-radius: 5px !important;
+}
+
+.ng5-slider .ng5-slider-pointer:after {
+    content: unset !important;
+    width: 8px;
+    height: 8px;
+    position: absolute;
+    top: 12px;
+    left: 12px;
+    border-radius: 4px;
+    /* background: black !important;/ */
+}
+
+.ng5-slider .ng5-slider-selection {
+    z-index: 2;
+    background: $dark !important;
+    border-radius: 2px;
+}
+
+.ng5-slider .ng5-slider-bubble {
+    font-size: 11px !important;
+    font-weight: bold !important;
+    color: $dark !important;
+}
+
+.ng5-slider .ng5-slider-bubble.ng5-slider-limit {
+    visibility: hidden !important;
+}
+
+.ngx-pagination .current {
+    background: $dark !important;
+}
+
+span.ng5-slider-span.ng5-slider-bubble.ng5-slider-model-value,
+span.ng5-slider-span.ng5-slider-bubble.ng5-slider-model-high {
+    visibility: hidden !important;
+}
+.cdk-overlay-container {
+    background: rgba(#03ABB9, 0.6);
+    position: fixed;
+    z-index: 1000;
+}
+.cdk-overlay-dark-backdrop {
+    background: unset;
+}
+.delete-dialog {
+    .mat-dialog-container {
+        box-shadow: unset !important;
+        border-radius: 40px !important;
+        padding: 40px !important;
+    }
+}
+.agm-map-container-inner {
+    border-radius: 60px;
+}
+.cdk-overlay-container {
+    z-index: 9999 !important;
+}
+
+input:focus {
+  outline: none !important;
+  outline-color: no;
+  outline-style: auto;
+  outline-width: 1px;
+}
+.confirmation-dialog {
+     .mat-dialog-container {
+        box-shadow: unset !important;
+        border-radius: 40px !important;
+        width: 1000px;
+        height: 800px;
+        padding: 120px !important;
+        @media (max-width: 575.9px) {
+            padding: 10px !important;
+            height: 400px !important;
+        } 
+        @media (max-width:991.9px) {
+            padding: 40px !important;
+            height: 600px !important;
+        } 
+        
+    }
+    
+}

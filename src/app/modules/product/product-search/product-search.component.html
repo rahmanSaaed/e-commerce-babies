@@ -1,0 +1,466 @@
+
+<div class="container">
+	<div class="row mt-lg-40 mt-20">
+		<div class="d-block d-lg-none">
+			<div class="menu-overlay" *ngIf="showFilterMenue" (click)="showFilterMenue = !showFilterMenue"></div>
+			<img src="../../../../assets/images/filter-mobile.svg" alt="" class="w-100 max-sm-30 max-20 mb-10 d-flex aling-items-center filter-mobile" (click)="showFilterMenue = !showFilterMenue">
+			<div class="filter-menu" [class.menueSlide]="showFilterMenue">
+				<div class="d-flex wrapper position-relative" *ngIf="subCategories?.length > 0">
+					<img src="../../../../assets/images/minues.svg" alt=""
+						class="w-100 bg-white rounded-circle border position-absolute coll d-flex align-items-center justify-content-center cursor-pointer">
+					<div class="mb-8 ms-16 w-75" [hidden]="!subCategories">
+						<div class="text-dark font-bold size-8"> {{'productSearch.SubCategory' | translate}}</div>
+						<form [formGroup]="filterSubCategoryForm" novalidate>
+
+							<div class="d-flex align-items-center mb-3 justify-content-between"
+								*ngFor="let data of subCategories; let i=index">
+
+								<div class="app-checkbox-2 d-inline-flex align-items-center mt-4 d-block p-0">
+									<input type="checkbox" #checkboxes [value]="data.subCategoryId"
+										(input)="onCheckboxChange($event, 'subCategories')">
+									<span class="checkbox text-black size-4 ms-14 mt-4 d-inline-block">
+										{{data?.name || data?.nameAr}}
+									</span>
+								</div>
+
+							</div>
+						</form>
+
+					</div>
+
+
+				</div>
+				<div class="d-flex wrapper position-relative" *ngIf="brands?.length > 0">
+					<img src="../../../../assets/images/minues.svg" alt=""
+						class="w-100 bg-white rounded-circle border position-absolute coll d-flex align-items-center justify-content-center cursor-pointer">
+					<div class="mb-8 ms-16 w-75">
+						<div class="text-dark font-bold size-8"> {{'productSearch.Brand' | translate}}</div>
+
+						<form [formGroup]="filterSubCategoryForm" novalidate>
+							<div class="d-flex align-items-center mb-3 justify-content-between"
+								*ngFor="let brand of brands; let i=index">
+								<div class="app-checkbox-2 d-inline-flex align-items-center mt-4 d-block p-0">
+									<input type="checkbox" #checkboxes [value]="brand?.brandId"
+										(input)="onCheckboxChange($event, 'brands')">
+									<span class="checkbox text-black size-4 ms-14 mt-4 d-inline-block">
+										{{brand?.name || brand?.nameAr}}
+									</span>
+								</div>
+							</div>
+						</form>
+
+						<!-- <div class="d-flex align-items-center mb-3 justify-content-between"
+				*ngFor="let i of [1,1,1,1,1,1];let k =index">
+				<div class="app-checkbox-2 d-inline-flex align-items-center mt-4 d-block p-0">
+				  <input type="checkbox">
+				  <span class="checkbox text-black size-4 ms-14 mt-4 d-inline-block">
+					Gear
+				  </span>
+				</div>
+				<div
+				  class="bg-pink1 text-white d-flex align-items-center max-40 border-radius-16 w-100 justify-content-center size-2 font-bold p-2"
+				  *ngIf="k == 0">(15)</div>
+			  </div> -->
+						<!-- <button class="btn btn-secondary1 max-200 w-100 text-secondary font-medium border-radius-10 mtb-8 size-4">Show
+				More</button> -->
+					</div>
+				</div>
+				<div class="d-flex wrapper position-relative" *ngIf="ages?.length > 0">
+					<img src="../../../../assets/images/minues.svg" alt=""
+						class="w-100 bg-white rounded-circle border position-absolute coll d-flex align-items-center justify-content-center cursor-pointer">
+					<div class="mb-8 ms-16 w-75">
+						<div class="text-dark font-bold size-8"> {{'productSearch.Age' | translate}}</div>
+
+						<form [formGroup]="filterSubCategoryForm" novalidate>
+
+							<div class="d-flex align-items-center mb-3 justify-content-between"
+								*ngFor="let age of ages; let i=index">
+
+								<div class="app-checkbox-2 d-inline-flex align-items-center mt-4 d-block p-0">
+									<input type="checkbox" #checkboxes [value]="age.ageId" (input)="onCheckboxChange($event, 'ages')">
+									<span class="checkbox text-black size-4 ms-14 mt-4 d-inline-block">
+										{{age?.name || age?.nameAr}} <span *ngIf="age.age"> ({{age.age}}) </span>
+									</span>
+								</div>
+
+							</div>
+						</form>
+
+						<!-- <div class="d-flex align-items-center mb-3 justify-content-between"
+				*ngFor="let age of ages;let k =index">
+				<div class="app-checkbox-2 d-inline-flex align-items-center mt-4 d-block p-0">
+				  <input type="checkbox">
+				  <span class="checkbox text-black size-4 ms-14 mt-4 d-inline-block">
+					{{age.name}}
+				  </span>
+				</div>
+				<div
+				  class="bg-pink1 text-white d-flex align-items-center max-40 border-radius-16 w-100 justify-content-center size-2 font-bold p-2"
+				  *ngIf="k == 0">(15)</div>
+			  </div> -->
+						<!-- <button class="btn btn-secondary1 max-200 w-100 text-secondary font-medium border-radius-10 mtb-8 size-4">Show
+				More</button> -->
+					</div>
+				</div>
+				<div class="d-flex wrapper position-relative" *ngIf="genders?.length > 0">
+					<img src="../../../../assets/images/minues.svg" alt=""
+						class="w-100 bg-white rounded-circle border position-absolute coll d-flex align-items-center justify-content-center cursor-pointer">
+					<div class="mb-8 ms-16 w-75">
+						<div class="text-dark font-bold size-8">{{'productSearch.Gender' | translate}}</div>
+
+						<form [formGroup]="filterSubCategoryForm" novalidate>
+							<div class="d-flex align-items-center mb-3 justify-content-between"
+								*ngFor="let gender of genders; let i=index">
+								<div class="app-checkbox-2 d-inline-flex align-items-center mt-4 d-block p-0">
+									<input type="checkbox" #checkboxes [value]="gender.genderId"
+										(input)="onCheckboxChange($event, 'genders')">
+									<span class="checkbox text-black size-4 ms-14 mt-4 d-inline-block">
+										{{gender.name || gender.nameAr}}
+									</span>
+								</div>
+							</div>
+						</form>
+
+						<!-- <div class="d-flex align-items-center mb-3 justify-content-between"
+				*ngFor="let i of [1,1,1,1,1,1];let k =index">
+				<div class="app-checkbox-2 d-inline-flex align-items-center mt-4 d-block p-0">
+				  <input type="checkbox">
+				  <span class="checkbox text-black size-4 ms-14 mt-4 d-inline-block">
+					Boy
+				  </span>
+				</div>
+				<div
+				  class="bg-pink1 text-white d-flex align-items-center max-40 border-radius-16 w-100 justify-content-center size-2 font-bold p-2"
+				  *ngIf="k == 0">(15)</div>
+			  </div> -->
+						<!-- <button class="btn btn-secondary1 max-200 w-100 text-secondary font-medium border-radius-10 mtb-8 size-4">Show
+				More</button> -->
+					</div>
+				</div>
+				<div class="d-flex wrapper position-relative">
+					<img src="../../../../assets/images/minues.svg" alt=""
+						class="w-100 bg-white rounded-circle border position-absolute coll d-flex align-items-center justify-content-center cursor-pointer">
+					<div class="mb-8 ms-16 w-75">
+						<div class="text-dark font-bold size-8">{{'productSearch.Sale' | translate}}</div>
+
+						<form [formGroup]="filterSubCategoryForm" novalidate>
+							<div class="d-flex align-items-center mb-3 justify-content-between">
+								<div class="app-checkbox-2 d-inline-flex align-items-center mt-4 d-block p-0">
+									<input type="checkbox" #checkboxes [value]="'1'" (input)="onCheckboxChange($event, 'sale')">
+									<span class="checkbox text-black size-4 ms-14 mt-4 d-inline-block">
+										 {{'productSearch.Sale' | translate}}
+									</span>
+								</div>
+							</div>
+						</form>
+
+						<!-- <div class="d-flex align-items-center mb-3 justify-content-between" >
+				<div class="app-checkbox-2 d-inline-flex align-items-center mt-4 d-block p-0">
+				  <input type="checkbox">
+				  <span class="checkbox text-black size-4 ms-14 mt-4 d-inline-block">
+					Sale
+				  </span>
+				</div>
+				<div
+				  class="bg-pink1 text-white d-flex align-items-center max-40 border-radius-16 w-100 justify-content-center size-2 font-bold p-2"
+				  *ngIf="k == 0">(15)</div>
+			  </div> -->
+						<!-- <button class="btn btn-secondary1 max-200 w-100 text-secondary font-medium border-radius-10 mtb-8 size-4">Show
+				More</button> -->
+					</div>
+				</div>
+				<div class="d-flex wrapper position-relative">
+					<img src="../../../../assets/images/minues.svg" alt=""
+						class="w-100 bg-white rounded-circle border position-absolute coll d-flex align-items-center justify-content-center cursor-pointer">
+					<div class="mb-8 ms-16 w-75">
+						<div class="text-dark font-bold size-8">{{'productSearch.Price' | translate}}</div>
+						<ng5-slider [(value)]="value" [(highValue)]="highValue" [options]="options"
+							(userChangeEnd)="price($event)">
+						</ng5-slider>
+						<div class="d-flex align-items-center justify-content-between">
+							<div class="min size-2">{{ value }}.00<span class="font-bold size-3">EGP</span></div>
+							<div class="high size-2">{{ highValue }}.00<span class="font-bold size-3">EGP</span></div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<div class=" size-8 font-bold mb-10 cursor-pointer text-dark mb-10">
+			<span routerLink="">{{'productSearch.Home' | translate}}</span><span *ngIf="category?.name || category?.nameAr"
+        (click)="goToCategoryProduct(category.categoryId)"> - {{category?.name || category?.nameAr }}</span>
+         <span
+				*ngIf="(subCategory?.name || subCategory?.nameAr) && categoryId " (click)="goToSubCategoriesProducts(subCategory.subCategoryId)"> -
+				{{subCategory?.name || subCategory?.nameAr}}</span>
+		</div>
+		<div class="col-xxl-3 col-xl-4 col-lg-4 col-md-4 pt-16 d-none d-lg-block">
+			<!-- <div class="text-dark font-bold size-25 mb-8">Stroller</div> -->
+			<!-- <div class="d-flex wrapper position-relative">
+        <img src="../../../../assets/images/minues.svg" alt=""
+          class="w-100 bg-white rounded-circle border position-absolute coll d-flex align-items-center justify-content-center cursor-pointer">
+        <div class="mb-8 ms-16 w-75">
+          <div class="text-dark font-bold size-8">Filter by:</div>
+          <div class="d-flex align-items-center mb-3 justify-content-between">
+            <div class="app-checkbox-2 d-inline-flex align-items-center mt-4 d-block p-0">
+              <input type="checkbox">
+              <span class="checkbox text-black size-4 ms-14 mt-4 d-inline-block">
+                Yalla
+              </span>
+            </div>
+            <div
+              class="bg-pink1 text-white d-flex align-items-center max-40 border-radius-16 w-100 justify-content-center size-2 font-bold p-2">
+              (15)</div>
+          </div>
+        </div>
+      </div> -->
+			<div class="d-flex wrapper position-relative" *ngIf="subCategories?.length > 0">
+				<img src="../../../../assets/images/minues.svg" alt=""
+					class="w-100 bg-white rounded-circle border position-absolute coll d-flex align-items-center justify-content-center cursor-pointer">
+				<div class="mb-8 ms-16 w-75" [hidden]="!subCategories">
+					<div class="text-dark font-bold size-8">{{'productSearch.SubCategory' | translate}}</div>
+					<form [formGroup]="filterSubCategoryForm" novalidate class="">
+
+						<div class="d-flex align-items-center mb-3 justify-content-between"
+							*ngFor="let data of subCategories; let i=index">
+
+							<div class="app-checkbox-2 d-inline-flex align-items-center mt-4 d-block p-0">
+								<input type="checkbox" #checkboxes [value]="data.subCategoryId"
+									(input)="onCheckboxChange($event, 'subCategories')">
+								<span class="checkbox text-black size-4 ms-14 mt-4 d-inline-block">
+									{{data?.name || data?.nameAr}}
+								</span>
+							</div>
+
+						</div>
+					</form>
+
+				</div>
+
+
+			</div>
+			<div class="d-flex wrapper position-relative" *ngIf="brands?.length > 0">
+				<img src="../../../../assets/images/minues.svg" alt=""
+					class="w-100 bg-white rounded-circle border position-absolute coll d-flex align-items-center justify-content-center cursor-pointer">
+				<div class="mb-8 ms-16 w-75">
+					<div class="text-dark font-bold size-8">{{'productSearch.Brand' | translate}}</div>
+
+					<form [formGroup]="filterSubCategoryForm" novalidate>
+						<div class="d-flex align-items-center mb-3 justify-content-between"
+							*ngFor="let brand of brands; let i=index">
+							<div class="app-checkbox-2 d-inline-flex align-items-center mt-4 d-block p-0">
+								<input type="checkbox" #checkboxes [value]="brand?.brandId" [checked]=" brand?.brandId ==  brandId"
+									(input)="onCheckboxChange($event, 'brands')">
+								<span class="checkbox text-black size-4 ms-14 mt-4 d-inline-block">
+									{{brand?.name || brand?.nameAr}}
+								</span>
+							</div>
+						</div>
+					</form>
+
+					<!-- <div class="d-flex align-items-center mb-3 justify-content-between"
+            *ngFor="let i of [1,1,1,1,1,1];let k =index">
+            <div class="app-checkbox-2 d-inline-flex align-items-center mt-4 d-block p-0">
+              <input type="checkbox">
+              <span class="checkbox text-black size-4 ms-14 mt-4 d-inline-block">
+                Gear
+              </span>
+            </div>
+            <div
+              class="bg-pink1 text-white d-flex align-items-center max-40 border-radius-16 w-100 justify-content-center size-2 font-bold p-2"
+              *ngIf="k == 0">(15)</div>
+          </div> -->
+					<!-- <button class="btn btn-secondary1 max-200 w-100 text-secondary font-medium border-radius-10 mtb-8 size-4">Show
+            More</button> -->
+				</div>
+			</div>
+			<div class="d-flex wrapper position-relative" *ngIf="ages?.length > 0">
+				<img src="../../../../assets/images/minues.svg" alt=""
+					class="w-100 bg-white rounded-circle border position-absolute coll d-flex align-items-center justify-content-center cursor-pointer">
+				<div class="mb-8 ms-16 w-75">
+					<div class="text-dark font-bold size-8">{{'productSearch.Age' | translate}}</div>
+
+					<form [formGroup]="filterSubCategoryForm" novalidate>
+
+						<div class="d-flex align-items-center mb-3 justify-content-between"
+							*ngFor="let age of ages; let i=index">
+
+							<div class="app-checkbox-2 d-inline-flex align-items-center mt-4 d-block p-0">
+								<input  type="checkbox" #checkboxes [value]="age.ageId" (input)="onCheckboxChange($event, 'ages')" [checked]="age?.ageId == ageId" >
+								<span class="checkbox text-black size-4 ms-14 mt-4 d-inline-block">
+									{{age.name || age.nameAr}} <span *ngIf="age?.age || age?.ageAr"> ({{age?.age || age?.ageAr}}) </span>
+								</span>
+							</div>
+
+						</div>
+					</form>
+
+					<!-- <div class="d-flex align-items-center mb-3 justify-content-between"
+            *ngFor="let age of ages;let k =index">
+            <div class="app-checkbox-2 d-inline-flex align-items-center mt-4 d-block p-0">
+              <input type="checkbox">
+              <span class="checkbox text-black size-4 ms-14 mt-4 d-inline-block">
+                {{age.name}}
+              </span>
+            </div>
+            <div
+              class="bg-pink1 text-white d-flex align-items-center max-40 border-radius-16 w-100 justify-content-center size-2 font-bold p-2"
+              *ngIf="k == 0">(15)</div>
+          </div> -->
+					<!-- <button class="btn btn-secondary1 max-200 w-100 text-secondary font-medium border-radius-10 mtb-8 size-4">Show
+            More</button> -->
+				</div>
+			</div>
+			<div class="d-flex wrapper position-relative" *ngIf="genders?.length > 0">
+				<img src="../../../../assets/images/minues.svg" alt=""
+					class="w-100 bg-white rounded-circle border position-absolute coll d-flex align-items-center justify-content-center cursor-pointer">
+				<div class="mb-8 ms-16 w-75">
+					<div class="text-dark font-bold size-8">{{'productSearch.Gender' | translate}}</div>
+
+					<form [formGroup]="filterSubCategoryForm" novalidate>
+						<div class="d-flex align-items-center mb-3 justify-content-between"
+							*ngFor="let gender of genders; let i=index">
+							<div class="app-checkbox-2 d-inline-flex align-items-center mt-4 d-block p-0">
+								<input #checkboxes type="checkbox" [value]="gender?.genderId" [checked]="gender?.genderId == genderId"
+									(input)="onCheckboxChange($event, 'genders')">
+								<span class="checkbox text-black size-4 ms-14 mt-4 d-inline-block">
+									{{gender?.name || gender?.nameAr}}
+								</span>
+							</div>
+						</div>
+          </form>
+
+
+
+					<!-- <div class="d-flex align-items-center mb-3 justify-content-between"
+            *ngFor="let i of [1,1,1,1,1,1];let k =index">
+            <div class="app-checkbox-2 d-inline-flex align-items-center mt-4 d-block p-0">
+              <input type="checkbox">
+              <span class="checkbox text-black size-4 ms-14 mt-4 d-inline-block">
+                Boy
+              </span>
+            </div>
+            <div
+              class="bg-pink1 text-white d-flex align-items-center max-40 border-radius-16 w-100 justify-content-center size-2 font-bold p-2"
+              *ngIf="k == 0">(15)</div>
+          </div> -->
+					<!-- <button class="btn btn-secondary1 max-200 w-100 text-secondary font-medium border-radius-10 mtb-8 size-4">Show
+            More</button> -->
+				</div>
+			</div>
+			<div class="d-flex wrapper position-relative">
+				<img src="../../../../assets/images/minues.svg" alt=""
+					class="w-100 bg-white rounded-circle border position-absolute coll d-flex align-items-center justify-content-center cursor-pointer">
+				<div class="mb-8 ms-16 w-75">
+					<div class="text-dark font-bold size-8">{{'productSearch.Sale' | translate}}</div>
+
+					<form [formGroup]="filterSubCategoryForm" novalidate>
+						<div class="d-flex align-items-center mb-3 justify-content-between">
+							<div class="app-checkbox-2 d-inline-flex align-items-center mt-4 d-block p-0">
+								<input type="checkbox" #checkboxes [value]="'1'" (input)="onCheckboxChange($event, 'sale')" [checked]="sale" >
+								<span class="checkbox text-black size-4 ms-14 mt-4 d-inline-block">
+									{{'productSearch.Sale' | translate}}
+								</span>
+							</div>
+						</div>
+					</form>
+
+					<!-- <div class="d-flex align-items-center mb-3 justify-content-between" >
+            <div class="app-checkbox-2 d-inline-flex align-items-center mt-4 d-block p-0">
+              <input type="checkbox">
+              <span class="checkbox text-black size-4 ms-14 mt-4 d-inline-block">
+                Sale
+              </span>
+            </div>
+            <div
+              class="bg-pink1 text-white d-flex align-items-center max-40 border-radius-16 w-100 justify-content-center size-2 font-bold p-2"
+              *ngIf="k == 0">(15)</div>
+          </div> -->
+					<!-- <button class="btn btn-secondary1 max-200 w-100 text-secondary font-medium border-radius-10 mtb-8 size-4">Show
+            More</button> -->
+				</div>
+			</div>
+			<div class="d-flex wrapper position-relative">
+				<img src="../../../../assets/images/minues.svg" alt=""
+					class="w-100 bg-white rounded-circle border position-absolute coll d-flex align-items-center justify-content-center cursor-pointer">
+				<div class="mb-8 ms-16 w-75">
+					<div class="text-dark font-bold size-8">{{'productSearch.Price' | translate}}</div>
+					<ng5-slider [(value)]="value" [(highValue)]="highValue" [options]="options"
+						(userChangeEnd)="price($event)">
+					</ng5-slider>
+					<div class="d-flex align-items-center justify-content-between">
+						<div class="min size-2">{{ value }}.00<span class="font-bold size-3">EGP</span></div>
+						<div class="high size-2">{{ highValue }}.00<span class="font-bold size-3">EGP</span></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="col-xxl-9 col-xl-8 col-lg-8 col-md-12 col-12">
+			<div class="row mb-10">
+				<div class="col">
+					<!-- <div class="d-flex align-items-center">
+            <div class="text-dark size-4 font-bold me-8">Sort by</div>
+            <app-select>
+              <select class="form-select select app-select max-180 border-radius-20 size-4"
+                aria-label="Default select example">
+                <option selected>Brand Popularity</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+              </select>
+            </app-select>
+          </div> -->
+				</div>
+				<div class="col-auto">
+					<div class="text-dark size-3 me-10" *ngIf="products && products?.length !=0"> {{'productSearch.Total:' | translate}}
+						{{products?.length}} {{'productSearch.items' | translate}}</div>
+				</div>
+			</div>
+			<div class="row">
+				<ng-container *ngIf="!products">
+					<div class="col-xxl-3 col-xl-4 col-lg-4 col-md-6 col-sm-6 col-md-4 col-12 mb-12"
+						*ngFor="let i of [1,2,3,4,5,6]">
+						<app-placeholder [placeholder]="'product'"></app-placeholder>
+					</div>
+				</ng-container>
+				<ng-container *ngIf="products">
+					<ng-container *ngIf="products?.length !=0">
+						<!-- <ng-container  infiniteScroll [infiniteScrollDistance]="2" [infiniteScrollThrottle]="50" -->
+						<!-- (scrolled)="onScroll()"> -->
+						<div class="col-md-12 row" infiniteScroll [infiniteScrollDistance]="2" [scrollWindow]="true"
+							[infiniteScrollThrottle]="50" (scrolled)="onScroll()">
+							<div class="col-xxl-3 col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12 mb-12 d-flex justify-content-center d-sm-block"
+								*ngFor="let product of products">
+								<!-- <app-product-item [productId]="product?.productId" [name]="product?.name || product?.nameAr"
+									[price]="product?.price" [salePrice]="product?.salePrice" [sale]="product?.sale" [productReviews]="product?.reviews"
+									[image]="product?.images[0]">
+								</app-product-item> -->
+								<app-single-product></app-single-product>
+							</div>
+						</div>
+          </ng-container>
+
+					<ng-container *ngIf="products?.length == 0 || !products">
+            <!-- <div class="text-dark size-12 font-medium text-center mtb-100">No Products Found</div> -->
+            <div class="col-md-12 text-center">
+              <div><img src="../../../assets/images/empty-cart.svg" alt="" class="w-100 max-500"></div>
+              <div class="size-10 text-dark font-medium mb-8"> {{'productSearch.NoProductsFond' | translate}}</div>
+            </div>
+          </ng-container>
+
+				</ng-container>
+				<!-- </ng-container> -->
+				<!-- <button
+          class="btn btn-white text-dark font-bold size-4 border w-100 max-100 border-radius-14 m-auto mb-60 mt-25">View
+          More</button> -->
+			</div>
+		</div>
+	</div>
+</div>
+
+<!--
+<ng-container *ngIf="!productDetail">
+  <div class="col-md-12 text-center">
+    <div><img src="../../../assets/images/empty-cart.svg" alt="" class="w-100 max-500"></div>
+    <div class="size-10 text-dark font-medium mb-8">No Product Fond</div>
+  </div>
+</ng-container> -->

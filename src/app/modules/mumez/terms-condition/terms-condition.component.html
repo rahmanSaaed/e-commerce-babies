@@ -1,0 +1,145 @@
+<div class="container">
+  <!-- <div class="row justify-content-center row-cols-1 mt-60">
+        <section
+            class="bg-sec p-30 mb-14 max-1000 w-100 border-radius-30 d-flex align-items-center justify-content-center">
+            <div class="">
+                <div class="text-secondary size-40 font-bold max-800">
+                    Seller Terms and Conditions
+                </div>
+                <div class="text-secondary size-8 mt-10 max-800">
+                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                    industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type
+                    and scrambled it to make a type specimen book. It has survived not only five centuries, but also the
+                    leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s
+                    with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop
+                    publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                </div>
+            </div>
+        </section>
+    </div> -->
+    <!-- terms-condition -->
+    <!-- app-placeholder -->
+  <ng-container *ngIf="!termsConditions">
+    <div class=" mtb-xl-50 mtb-30" *ngFor="let i of [1,2,3]">
+        <app-placeholder [placeholder]="'terms-condition'"></app-placeholder>
+    </div>
+  </ng-container>
+    <ng-container *ngIf="termsConditions">
+        <div [hidden]="termsConditions?.length != 0" class="col-md-12 text-centre" >
+            <h3>{{'mumez.NoDataFound' | translate}}</h3>
+          </div>
+        <div class="row justify-content-center row-cols-1" [hidden]="termsConditions?.length == 0" *ngFor="let paragraph of termsConditions" [ngClass]="paragraph.margin" >
+            <section
+              class=" p-lg-30 p-15 mb-14 max-280 max-sm-500 max-md-800  max-lg-1000 w-100 border-radius-30 d-flex align-items-center justify-content-center" [ngClass]="[paragraph.bgColor]" >
+              <div class="">
+                <div class="font-bold max-lg-800 w-100 mb-10" [ngClass]="[paragraph.color , paragraph.titleSize]" [innerHtml]="paragraph.title || paragraph.titleAr">
+                  <!-- Creating a seller account for Your Country -->
+                  
+                </div>
+                <div class=" max-800 mt-10 mb-16" [ngClass]="[paragraph.color , paragraph.descSize]">
+                  {{paragraph?.description || paragraph?.descriptionAr}}
+                  <!-- It is a long established fact that a reader will be distracted by the readable content of a page
+                            when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal
+                            distribution of letters, as opposed to using 'Content here, content here', making it look like
+                            readable English. Many desktop publishing packages. -->
+                </div>
+                <!-- <div class="text-primary size-8 max-800">
+                            It is a long established fact that a reader will be distracted by the readable content of a page
+                            when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal
+                            distribution of letters, as opposed to using 'Content here, content here', making it look like
+                            readable English. Many desktop publishing packages.
+                        </div> -->
+              </div>
+            </section>
+          </div>
+    </ng-container>
+
+  <!-- <div class="row justify-content-center row-cols-1">
+        <section
+            class="bg-pink3 p-30 mb-14 max-1000 w-100 border-radius-30 d-flex align-items-center justify-content-center">
+            <div class="">
+                <div class="text-pink1 size-15 font-bold max-800 mb-10">
+                    Password
+                </div>
+                <div class="text-pink1 size-8 max-800 mt-10 mb-16">
+                    It is a long established fact that a reader will be distracted by the readable content of a page
+                    when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal
+                    distribution of letters, as opposed to using 'Content here, content here', making it look like
+                    readable English. Many desktop publishing packages.
+                </div>
+                <div class="text-pink1 size-8 max-800">
+                    It is a long established fact that a reader will be distracted by the readable content of a page
+                    when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal
+                    distribution of letters, as opposed to using 'Content here, content here', making it look like
+                    readable English. Many desktop publishing packages.
+                </div>
+            </div>
+        </section>
+    </div>
+    <div class="row justify-content-center row-cols-1">
+        <section
+            class="bg-policy p-30 mb-14 max-1000 w-100 border-radius-30 d-flex align-items-center justify-content-center">
+            <div class="">
+                <div class="text-gray3 size-15 font-bold max-800 mb-10">
+                    Our Policies
+                </div>
+                <div class="text-gray3 size-8 max-800 mt-10 mb-16">
+                    It is a long established fact that a reader will be distracted by the readable content of a page
+                    when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal
+                    distribution of letters, as opposed to using 'Content here, content here', making it look like
+                    readable English. Many desktop publishing packages.
+                </div>
+                <div class="text-gray3 size-8 max-800">
+                    It is a long established fact that a reader will be distracted by the readable content of a page
+                    when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal
+                    distribution of letters, as opposed to using 'Content here, content here', making it look like
+                    readable English. Many desktop publishing packages.
+                </div>
+            </div>
+        </section>
+    </div>
+    <div class="row justify-content-center row-cols-1">
+        <section
+            class="bg-pink3 p-30 mb-14 max-1000 w-100 border-radius-30 d-flex align-items-center justify-content-center">
+            <div class="">
+                <div class="text-pink1 size-15 font-bold max-800 mb-10">
+                    Fees and Payments
+                </div>
+                <div class="text-pink1 size-8 max-800 mt-10 mb-16">
+                    It is a long established fact that a reader will be distracted by the readable content of a page
+                    when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal
+                    distribution of letters, as opposed to using 'Content here, content here', making it look like
+                    readable English. Many desktop publishing packages.
+                </div>
+                <div class="text-pink1 size-8 max-800">
+                    It is a long established fact that a reader will be distracted by the readable content of a page
+                    when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal
+                    distribution of letters, as opposed to using 'Content here, content here', making it look like
+                    readable English. Many desktop publishing packages.
+                </div>
+            </div>
+        </section>
+    </div>
+    <div class="row justify-content-center row-cols-1 mb-60">
+        <section
+            class="bg-aqua1 p-30 mb-14 max-1000 w-100 border-radius-30 d-flex align-items-center justify-content-center">
+            <div class="">
+                <div class="text-primary size-15 font-bold max-800 mb-10">
+                    Return
+                </div>
+                <div class="text-primary size-8 max-800 mt-10 mb-16">
+                    It is a long established fact that a reader will be distracted by the readable content of a page
+                    when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal
+                    distribution of letters, as opposed to using 'Content here, content here', making it look like
+                    readable English. Many desktop publishing packages.
+                </div>
+                <div class="text-primary size-8 max-800">
+                    It is a long established fact that a reader will be distracted by the readable content of a page
+                    when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal
+                    distribution of letters, as opposed to using 'Content here, content here', making it look like
+                    readable English. Many desktop publishing packages.
+                </div>
+            </div>
+        </section>
+    </div> -->
+</div>

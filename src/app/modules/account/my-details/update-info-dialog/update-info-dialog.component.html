@@ -1,0 +1,22 @@
+<form class="row  needs-validation" [formGroup]="updateBuyerForm" (ngSubmit)="updateBuyerDetails()" novalidate>
+    <div class="text-dark size-md-25 size-14 font-bold mb-12">{{'accoun.Updateyourinformation' | translate}}</div>
+    <div class="row">
+        <div class="col-md-6 mt-8">
+            <label for="exampleFormControlInput1" class="text-gray3 size-6">{{'accoun.Firstname' | translate}}</label>
+            <input type="text" class="form-control border-radius-8 border-gray text-gray size-4"
+                id="exampleFormControlInput1" formControlName="buyerFirstName">
+        </div>
+        <div class="col-md-6 mt-8">
+            <label for="exampleFormControlInput1" class="text-gray3 size-6">{{'accoun.Lastname' | translate}}</label>
+            <input type="text" class="form-control border-radius-8 border-gray text-gray size-4"
+                id="exampleFormControlInput1" formControlName="buyerLastName">
+        </div>
+        <div class="col-md-6 mt-8">
+            <label for="exampleFormControlInput1" class="text-gray3 size-6">{{'accoun.Phonenumber' | translate}}</label>
+            <input type="text" class="form-control border-radius-8 border-gray text-gray size-4"
+                id="exampleFormControlInput1" formControlName="phoneNumber">
+        </div>
+        <button [disabled]="!updateBuyerForm.touched || !updateBuyerForm.valid"
+            class="btn btn-secondary text-white font-bold  size-6 size-md-12 w-100 mt-16 border-radius-10 ptb-6">{{'accoun.Save' | translate}}</button>
+    </div>
+</form>

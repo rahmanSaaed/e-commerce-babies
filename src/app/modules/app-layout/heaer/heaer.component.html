@@ -1,0 +1,139 @@
+<header class="bg-gray1 fixed-top">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <div class="d-flex align-items-center justify-content-between ptb-16">
+          <div class="d-flex align-items-center cursor-pointer"  >
+            <img src="assets/images/mumez-logo-primary-{{global?.lang}}.svg" alt="" class="d-flex-align-items-center max-150  w-100" (click)="navigateTohome()" >
+          </div>
+
+          <div class="d-flex align-items-center max-lg-500 max-700 w-100">
+            <div class="w-100 position-relative mse-8">
+              <!-- {{'header.signIn' | translate}} -->
+              <input  type="text" class="form-control border-radius-10  border-secondary1 ptb-3 " [ngClass]="(products?.length > 0 && searchKey) ? 'bg-white': 'bg-gray1'" (focus)="searchFocus()" (keyup.enter)="searchWithEnter()"
+                [placeholder]="'header.whatCanWeHelpToFind' | translate" [(ngModel)]="searchKey" (input)="searchByKey()" >
+              <img src="../../../../assets/images/search-icon.svg"  alt="" (click)="searchWithEnter()"
+                class="d-flex align-items-center w-100 position-absolute max-20 search-icon  bg-gray1 cursor-pointer">
+              <div class="sub-cate-list bg-white  d-flex justify-content-between"   *ngIf="products?.length > 0 && searchKey"   >
+                <div class="category me-16 col-md-12" appClickOutside (clickOutside)="closeDropdown()" >
+                  <div class="text-dark size-4 display-block font-medium mb-4 cursor-pointer dropDown-search-item" appDropDownNavigate (keyUpDown)="navigateDropDownSearch($event)"
+                   *ngFor="let product of products;
+                    let i = index"
+                    (click)="searchWithEnter()" [index]="i" [lenth]="products.length" >
+                  <span class="search-result">{{product.name || product.nameAr}}</span>
+                  </div>
+                </div>
+                <div class="cate-image d-flex align-items-cetner">
+                </div>
+              </div>
+              <div class="cate-overlay" *ngIf="products?.length > 0 && searchKey"></div>
+            </div>
+          </div>
+          <div class="d-flex align-items-center w-100 max-lg-350 justify-content-end max-sm-100 max-90">
+            <div class="like position-relative me-10 max-30 w-100 cursor-pointer" [routerLink]="['/account/whishlist']">
+              <img src="../../../../assets/images/heart.svg" alt="" class="d-flex align-items-center">
+              <div
+                class="heart-notify bg-pink1 text-white d-flex algin-items-center justify-content-center position-absolute rounded-circle badge">
+                {{wishList.length}}</div>
+            </div>
+            <div class="cart position-relative me-0 me-sm-10 max-30 w-100 cursor-pointer" (click)="navigateSearch()">
+              <img src="../../../../assets/images/shopping-cart.svg" alt="" class="d-flex align-items-center">
+              <div
+                class="cart-notify bg-primary text-white d-flex algin-items-center justify-content-center position-absolute rounded-circle badge">
+                {{cartDetailLength}}</div>
+            </div>
+
+
+            <div
+            class="profile bg-white d-lg-flex align-items-center p-3 border-radius-18  justify-content-between max-60 w-100 ms-3 box-shadow cursor-pointer position-relative d-none"
+            >
+            <!-- <div class="d-flex align-items-center align-items-center" > -->
+              <img src="{{currentCurrency[0]?.icon}}" alt=""
+                class="max-20 w-100 d-flex align-items-center rounded-circle me-5 profile-image" *ngIf="currentCurrency?.length > 0">
+            <!-- </div> -->
+
+
+            <img src="../../../../assets/images/arrow-down.svg" alt=""
+              class="max-10 w-100 d-flex align-items-center arrow-down">
+            <div class="menue position-absolute bg-white p-16 border-radius-20 mt-4">
+
+              <ng-container >
+                <div class="text-dark size-4 font-medium cursor-pointer mb-4 line" *ngFor="let curency of curencies" (click)="changeCurrency(curency)">{{curency?.name || curency?.nameAr}}</div>
+              </ng-container>
+
+
+            </div>
+          </div>
+
+
+
+
+            <div
+              class="profile bg-white d-lg-flex align-items-center p-3 border-radius-18  justify-content-between max-120 w-100 ms-3 box-shadow cursor-pointer position-relative d-none"
+              >
+              <div class="d-flex align-items-center align-items-center" *ngIf="token">
+                <img [src]="global?.buyerAvatar" alt=""
+                  class="max-20 w-100 d-flex align-items-center rounded-circle me-5 profile-image">
+                <div class="text-dark size-4 font-medium max-50 text-truncate">{{ global?.buyerName }}</div>
+              </div>
+
+              <div class="d-flex align-items-center justify-content-center w-100" *ngIf="!token" (click)="logIn()">
+                <div class="text-dark size-4 font-medium">{{'header.signIn' | translate}}</div>
+              </div>
+
+              <img src="../../../../assets/images/arrow-down.svg" alt=""
+                class="max-10 w-100 d-flex align-items-center  arrow-down">
+              <div class="menue position-absolute bg-white p-16 border-radius-20 mt-4" >
+
+                <ng-container *ngIf="token">
+                  <div class="text-dark size-4 font-medium cursor-pointer mb-4 line" [routerLink]="['/account']"> {{'header.accountInformation' | translate}}
+                    </div>
+                  <!-- <div class="text-dark size-4 font-medium cursor-pointer mb-4">My Registry</div>
+                  <div class="text-dark size-4 font-medium cursor-pointer mb-4">Mumez Loyalty Points</div>
+                  <div class="text-dark size-4 font-medium cursor-pointer mb-4">Mumez Loyalty Points</div>
+                  <div class="text-dark size-4 font-medium cursor-pointer mb-4">Referral Program</div> -->
+                  <div class="text-dark size-4 font-medium cursor-pointer  mb-4 line" (click)="logOut()">{{'header.signOut' | translate}}</div>
+                </ng-container>
+
+                <ng-container *ngIf="!token">
+                  <div class="text-dark size-4 font-medium cursor-pointer mb-4 line" (click)="logIn()">{{'header.signIn' | translate}}</div>
+                  <div class="text-dark size-4 font-medium cursor-pointer  mb-4 line" (click)="register()">{{'header.register' | translate}}</div>
+                </ng-container>
+
+
+              </div>
+            </div>
+
+            <div class="d-none d-lg-block">
+
+              <div class="text-dark size-4 font-medium cursor-pointer lang" *ngIf="'en' == currentLang" (click)="changeLang('ar')" >  العربية </div>
+              <div class="text-dark size-4 font-medium cursor-pointer lang" *ngIf="'ar' == currentLang" (click)="changeLang('en')">  English</div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+  <app-featured-category></app-featured-category>
+</header>
+
+
+<!-- <span class="form-inline">
+	<select
+		class="form-control"
+		#selectedLang
+		(change)="switchLang(selectedLang.value)">
+	  <option *ngFor="let language of translate.getLangs()"
+		[value]="language"
+		[selected]="language === translate.currentLang">
+		{{ language }}
+	  </option>
+	</select>
+  </span>
+
+
+  <div class="row col-md-12 text-center" >
+	<h1>{{'Name' | translate}}</h1>
+	</div> -->

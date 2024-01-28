@@ -1,0 +1,114 @@
+<form class="row mb-100 needs-validation" [formGroup]="signIn" (ngSubmit)="login()" novalidate>
+
+  <!-- <div class="row mb-100"> -->
+  <div class="col-md-12 mb-8">
+    <!-- <div class="form-group">
+        <input [class.is-invalid]="email?.invalid && (email?.dirty ||email?.touched)" placeholder="Email"
+          formControlName="email" type="email" class="form-control border-0 p-12 border-radius-12" placeholder="Email">
+        <div class="invalid-feedback" *ngIf="email?.dirty || email?.touched">
+          <p *ngIf="email.errors?.required">
+            Email is required
+          </p>
+          <p *ngIf="email.errors?.email">
+            Email is invalid
+          </p>
+        </div>
+      </div> -->
+
+
+    <div class="form-floating mb-3">
+      <input type="email" [class.is-invalid]="email?.invalid && (email?.dirty ||email?.touched)" formControlName="email"
+        class="form-control  border-0  border-radius-12" id="floatingInput" placeholder="{{'auth.Email' | translate}}">
+      <label for="floatingInput">{{'auth.Email' | translate}}</label>
+      <div class="invalid-feedback">
+        <p *ngIf="email.hasError('email') && !email.hasError('required')">
+          {{'auth.Pleaseenteravalidemailaddress' | translate}}
+        </p>
+        <p *ngIf="email.hasError('required')">
+          {{'auth.Emailisrequired' | translate}}
+        </p>
+      </div>
+    </div>
+
+    <!-- <mat-form-field class="border-0 border-radius-12 ptb-4" >
+          <mat-label class="mat-lable" > </mat-label>
+          <input type="email" matInput   class="pse-5" >
+        <mat-error *ngIf="">
+          
+        </mat-error>
+        <mat-error *ngIf="">
+           <strong></strong>
+          {
+        </mat-error>
+      </mat-form-field> -->
+    <!-- </div> -->
+
+  </div>
+  <div class="col-md-12 mb-8">
+    <!-- <div class="form-group position-relative">
+        <input class="form-control border-0 p-12 border-radius-12" placeholder="password" type="{{passwordType}}"
+           placeholder="Password"
+          formControlName="password">
+
+          <img src="../../../../assets/images/visibility.png" alt="" *ngIf="passwordType && signIn.value.password" (click)="showHidePass()"
+          class="d-flex align-items-center  position-absolute  cursor-pointer  bg-gray1 pass" >
+
+          <img src="../../../../assets/images/visibility-dis.png" alt="" *ngIf="!passwordType && signIn.value.password" (click)="showHidePass()"
+          class="d-flex align-items-center  position-absolute  cursor-pointer  bg-gray1 pass" >
+
+      </div> -->
+    <div class="form-floating">
+      <input type="password" [class.is-invalid]="password?.invalid && (password?.dirty ||password?.touched)"
+        formControlName="password" class="form-control  border-0  border-radius-12" id="floatingPassword"
+        placeholder="{{'auth.password' | translate}}">
+      <label for="floatingPassword">{{'auth.password' | translate}}</label>
+      <div class="invalid-feedback">
+        <p *ngIf="password.hasError('password') && !password.hasError('required')">
+          {{'auth.Pleaseenteravalidpassword' | translate}}
+        </p>
+        <p *ngIf="password.hasError('required')">
+          {{'auth.passwordisrequired' | translate}}
+        </p>
+      </div>
+    </div>
+
+    <!-- <mat-form-field class="example-full-width form-group" >
+        <mat-label class="mat-lable"  >  </mat-label>
+        <input  type="{{passwordType}}" matInput  class="pse-5" >
+
+        <img src="../../../../assets/images/visibility.png" alt="" *ngIf="passwordType && signIn.value.password" (click)="showHidePass()"
+        class="d-flex align-items-center  position-absolute  cursor-pointer  bg-gray1 pass" >
+
+        <img src="../../../../assets/images/visibility-dis.png" alt="" *ngIf="!passwordType && signIn.value.password" (click)="showHidePass()"
+        class="d-flex align-items-center  position-absolute  cursor-pointer  bg-gray1 pass" >
+
+      
+    </mat-form-field> -->
+
+  </div>
+  <div class="col-md-12 mt-10 mb-18 d-flex justify-content-between">
+    <!-- <div class="form-group ms-20">
+        <input type="checkbox"  id="terms-condition">
+        <label for="terms-condition" class="text-white size-8">Remember me</label>
+      </div> -->
+    <div class="d-flex align-items-center mb-3">
+      <div class="app-checkbox-1 d-inline-flex align-items-center mt-4 d-block p-0">
+        <input type="checkbox" id="terms-condition">
+        <span class="checkbox text-white size-8 ms-20 mt-4 d-inline-block">
+          {{'auth.Rememberme' | translate}}
+        </span>
+
+      </div>
+    </div>
+
+    <div class="text-white size-8 text-capitalize cursor-pointer" (click)="gotoForgetPage()"> {{'auth.ForgetPassword' |
+      translate}}</div>
+  </div>
+  <div class="col-md-12 text-center">
+    <button [disabled]="signIn.invalid"
+      class="btn size-12 font-medium btn-pink1 text-white w-100 border-radius-20 p-10"> {{'auth.Login' |
+      translate}}</button>
+  </div>
+  <!-- </div> -->
+
+</form>

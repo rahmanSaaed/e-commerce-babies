@@ -1,0 +1,86 @@
+<div class="container">
+    <div class="row justify-content-between mt-xl-60 mt-30 row-cols-2">
+        <div class="col-12 col-xl d-flex align-items-center max-500">
+            <div class="">
+                <div class="text-dark size-42 font-bold">{{'mumez.Aboutus' | translate}}</div>
+                <div class="text-dark size-5">
+                    <!-- Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                    industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type
+                    and scrambled it to make a type specimen book. It has survived not only five centuries, but also the
+                    leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s -->
+                    {{aboutUs?.description || aboutUs?.descriptionAr}}
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-xl mt-8 mt-xl-0">
+            <img [src]="aboutUs?.aboutImage" alt="" class="w-100" defaultImage>
+        </div>
+    </div>
+    <div class="row justify-content-between mt-40 row-cols-2">
+        <div class="col-12 col-xl order-2  order-xl-1 mt-8 mt-xl-0">
+            <img [src]="aboutUs?.whyWeDoWhatWeDoImage" alt="" class="w-100" defaultImage>
+        </div>
+        <div class="col-12 col-xl order-1 order-xl-2 d-flex align-items-center max-500">
+            <div class="">
+                <div class="text-dark size-30 font-bold">{{'mumez.Whywedowhatwedo' | translate}}</div>
+                <div class="text-dark size-6 mt-8">
+                    <!-- Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                    industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type
+                    and
+                    scrambled it to make a type specimen book. It has survived not only five centuries, but also the
+                    leap
+                    into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s -->
+                    {{aboutUs?.whyWeDoWhatWeDo || aboutUs?.whyWeDoWhatWeDoAr}}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="text-center size-28 font-bold mt-70"> {{'mumez.WhyshoponMumez?' | translate}}</div>
+    <div class="row mt-35 justify-content-center row-cols-3 sections mb-50">
+        <div [hidden]="whyShopWithUs?.length == 0" class="col-12 text-center mt-16 col-xl mt-xl-0" *ngFor="let why of whyShopWithUs">
+            <img [src]="why?.image" alt="" class="max-80 w-100 mb-10" defaultImage>
+            <div class="text-dark size-10 font-bold mtb-4">{{why?.title || why?.titleAr}}</div>
+            <div class="size-4 text-dark max-400 text-center m-md-auto">
+              {{why?.description || why?.descriptionAr}}
+              <!-- Lorem Ipsum is simply dummy text of the printing and
+                typesetting industry. Lorem Ipsum has been the industry’s standard dummy text -->
+              </div>
+        </div>
+
+        <div class="col-md-12  text-center" [hidden]="whyShopWithUs?.length != 0" >
+          <h3>{{'mumez.NoDataFound' | translate}}</h3>
+        </div>
+        <!-- <div class="col text-center">
+            <img src="../../../../assets/images/about-sec-2.png" alt="" class="max-80 w-100 mb-10">
+            <div class="text-dark size-10 font-bold mtb-4">A superior site experience</div>
+            <div class="size-4 text-dark max-400 text-center">Lorem Ipsum is simply dummy text of the printing and
+                typesetting industry. Lorem Ipsum has been the industry’s standard dummy text</div>
+        </div> -->
+        <!-- <div class="col text-center">
+            <img src="../../../../assets/images/about-sec-3.png" alt="" class="max-80 w-100 mb-10">
+            <div class="text-dark size-10 font-bold mtb-4">Best price guarantee</div>
+            <div class="size-4 text-dark max-400 text-center">Lorem Ipsum is simply dummy text of the printing and
+                typesetting industry. Lorem Ipsum has been the industry’s standard dummy text</div>
+        </div>
+    </div>
+    <div class="row mt-50 justify-content-center row-cols-3 sections mb-100">
+        <div class="col text-center">
+            <img src="../../../../assets/images/about-sec-4.png" alt="" class="max-80 w-100 mb-10">
+            <div class="text-dark size-10 font-bold mtb-4">Free local delivery and easy returns</div>
+            <div class="size-4 text-dark max-400 text-center">Lorem Ipsum is simply dummy text of the printing and
+                typesetting industry. Lorem Ipsum has been the industry’s standard dummy text</div>
+        </div>
+        <div class="col text-center">
+            <img src="../../../../assets/images/about-sec-5.png" alt="" class="max-80 w-100 mb-10">
+            <div class="text-dark size-10 font-bold mtb-4">A rewarding loyalty program</div>
+            <div class="size-4 text-dark max-400 text-center">Lorem Ipsum is simply dummy text of the printing and
+                typesetting industry. Lorem Ipsum has been the industry’s standard dummy text</div>
+        </div>
+        <div class="col text-center">
+            <img src="../../../../assets/images/about-sec-6.png" alt="" class="max-80 w-100 mb-10">
+            <div class="text-dark size-10 font-bold mtb-4">A supportive community</div>
+            <div class="size-4 text-dark max-400 text-center">Lorem Ipsum is simply dummy text of the printing and
+                typesetting industry. Lorem Ipsum has been the industry’s standard dummy text</div>
+        </div> -->
+    </div>
+</div>

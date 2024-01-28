@@ -1,0 +1,126 @@
+<div class="container ">
+  <div class="row mt-md-50 mt-20 justify-content-between">
+    <div class="col-md-8 col-12 order-md-1 order-2">
+      <div class="text-dark size-22 font-bold mb-8"> {{'cart.Cart' | translate}}</div>
+      <div *ngIf="cartDetail?.length == 0 || !cartDetail" class="size-5 text-center text-dark font-medium">
+        <div><img src="../../../assets/images/empty-cart.svg" alt="" class="w-100 max-500"></div>
+        <div class="size-10 text-dark font-medium mb-8"> {{'cart.Cartisempty' | translate}}</div>
+        <button [routerLink]="['']"
+          class="btn btn-primary font-bold text-white size-5 w-100 max-190 border-radius-12 ptb-4">{{'cart.ContinueShopping'
+          | translate}}</button>
+      </div>
+      <div class="table-responsive">
+        <table class="table" *ngIf="cartDetail?.length > 0">
+          <thead>
+            <tr>
+              <th scope="col" class="text-gray3 size-4 font-medium"> {{'cart.ProductName' | translate}}</th>
+              <th scope="col" class="text-gray3 size-4 font-medium"> {{'cart.Price' | translate}}</th>
+              <th scope="col" class="text-gray3 size-4 font-medium"> {{'cart.Quantity' | translate}}</th>
+              <th scope="col" class="text-gray3 size-4 font-medium"> {{'cart.Subtotal' | translate}}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of cartDetail">
+              <td class="align-middle" style="width: 40%;">
+                <div class="d-flex align-items-center cursor-pointer "
+                  (click)="gotoProductDetail(item.productId, item?.product?.name || item?.product?.nameAr)">
+                  <img src={{item.product.images[0]}} alt="" class="max-50 w-100 border-radius-14 item-image me-10">
+                  <div class="max-180 w-100 font-medium tex-dark size-4 lh-1">{{item?.product?.name ||
+                    item?.product?.nameAr}}</div>
+                </div>
+              </td>
+              <td class="align-middle size-5 text-gray3 font-medium">{{currency?.isoAlpha_3}} {{(item?.product?.salePrice || item?.price) * currency?.EGP_rate | number:'.1-2'}} </td>
+              <td class="align-middle">
+                <div class="d-flex border border-radius-20 justify-content-between max-90 w-100 ptb-3 pse-6">
+                  <div class="size-3 text-gray2 cursor-pointer font-medium" (click)="updateCartDetail(item, 'minus')">-
+                  </div>
+                  <div class="size-3 text-gray2 font-medium">{{ item.qty }}</div>
+                  <div class="size-3 text-gray2 cursor-pointer font-medium" (click)="updateCartDetail(item, 'plus')">+
+                  </div>
+                </div>
+              </td>
+              <td class="align-middle" style="width: 20%;">
+                <div class="d-flex align-items-center justify-content-between">
+                  <div class="size-5 text-gray3 font-medium">{{currency?.isoAlpha_3}} {{( (item?.product?.salePrice || item?.price) * item?.qty) * currency?.EGP_rate | number:'.1-2'}}</div>
+                  <div (click)="deleteItem(item.cartDetailId)"
+                    class="bg-pink3 rounded-circle d-flex align-items-center justify-content-center ptb-4 pse-5 cursor-pointer delete-height">
+                    <img src="../../../assets/images/dele-cart.svg" alt="" class="max-20 w-100">
+                  </div>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="d-flex align-items-center mt-8">
+        <button *ngIf="cartDetail?.length > 0" [routerLink]="'/shipping'"
+          class="btn btn-pink3  text-pink1 size-6 w-100 max-220 border-radius-12 ptb-4 me-16">{{'cart.Proceedtocheckout'
+          | translate}}</button>
+      </div>
+
+    </div>
+
+    <div class="col-md-4  col-12 order-md-2 order-1 ps-lg-40 ps-md-10">
+      <section class="bg-secondary p-12 text-white border-radius-16 mb-16">
+        <div class="d-flex align-items-center justify-content-between mb-8">
+          <div class="font-medium size-4">{{'cart.Summary' | translate}}</div>
+          <div class="size-4">{{currency?.isoAlpha_3}} {{totalCartPrice * currency?.EGP_rate | number:'.1-2'}}</div>
+        </div>
+
+        <div class="d-flex align-items-center justify-content-between mb-8" *ngIf="amountDeductedByPromo">
+          <div class="font-medium size-4">{{'cart.Discount' | translate}}</div>
+          <div class="size-4">{{currency?.isoAlpha_3}} {{amountDeductedByPromo * currency?.EGP_rate | number:'.1-2' }}</div>
+        </div>
+
+        <hr>
+        <div class="d-flex align-items-center justify-content-between mt-4">
+          <div class="font-bold size-5">{{'cart.Total' | translate}}</div>
+          <div class="size-5" *ngIf="!totalCartPriceAfterDisocunt">{{currency?.isoAlpha_3}} {{ totalCartPrice *currency?.EGP_rate | number:'.1-2' }}</div>
+          <div class="size-5" *ngIf="totalCartPriceAfterDisocunt">{{currency?.isoAlpha_3}} {{totalCartPriceAfterDisocunt * currency?.EGP_rate | number:'.1-2'}}</div>
+
+        </div>
+      </section>
+
+      <!-- <section class="bg-white p-12 border-radius-16 mb-16 box-total">
+              <div class="text-gray3 size-4 font-bold mb-8">{{'cart.Total' | translate}} : {{totalCartPrice * currency?.EGP_rate}} {{currency?.isoAlpha_3}} </div>
+              <div class="text-gray3 size-4 font-bold mb-8">{{'cart.Discount' | translate}} : {{totalCartPrice * currency?.EGP_rate}} {{currency?.isoAlpha_3}} </div>
+              <div class="text-gray3 size-4 font-bold mb-8">{{'cart.totalPrice' | translate}} : {{totalCartPrice * currency?.EGP_rate}} {{currency?.isoAlpha_3}} </div>
+          </section> -->
+
+      <section class="bg-orange p-12 border-radius-16 mb-16">
+        <div class="text-gray3 size-4 font-bold mb-8" *ngIf="!validatedPromo">{{'cart.DoyouhaveaCoupon?' |
+          translate}}</div>
+        <div class="d-flex align-items-center justify-content-between" *ngIf="validatedPromo">
+          <div class="">{{'cart.Coupon' | translate}}</div>
+          <div class="">{{validatedPromo.code}}</div>
+          <div (click)="deletePromo()" class="bg-pink3 rounded-circle d-flex align-items-center justify-content-center ptb-4 pse-5 cursor-pointer delete-height"><img src="../../../assets/images/dele-cart.svg" alt="" class="max-20 w-100"></div>
+        </div>
+        <!-- text-gray3 size-4 font-bold mb-8 -->
+        <div class="d-flex align-items-center">
+          <input type="text" class="form-control border-0 border-radius-12 ptb-4" [(ngModel)]='promoCode'
+            *ngIf="!validatedPromo">
+          <button class="btn btn-pink1 text-white max-80 w-100 ms-8 border-radius-12 size-4 ptb-4"
+            [disabled]="!promoCode" (click)="validatePromoCode()" *ngIf="!validatedPromo">
+            {{'cart.Apply' | translate}}</button>
+        </div>
+      </section>
+    </div>
+
+  </div>
+  <div class="row mtb-60">
+    <div class="col-12 d-flex justify-content-between align-items-center mb-8">
+      <div [hidden]="crossSelling?.length == 0" class="size-26 font-bold text-dark"> {{'cart.YouMayAlsoLike' |
+        translate}}</div>
+      <!-- <button class="btn btn-white text-dark font-medium size-4 border w-100 max-120 border-radius-14 ptb-4">View
+                More</button> -->
+    </div>
+    <div
+      class="col-md-4 col-12 col-sm-6 col-lg-3 col-xl-3 col-xxl-2 d-flex justify-content-center d-sm-block mt-10 mt-lg-0"
+      *ngFor="let product of crossSelling">
+      <!-- <app-product-item></app-product-item> -->
+      <app-product-item [productId]="product?.productId" [name]="product?.name || product?.nameAr" [salePrice]="product?.salePrice" [sale]="product?.sale" [productReviews]="product?.reviews"
+        [price]="product?.price" [image]="product?.images[0]">
+      </app-product-item>
+    </div>
+  </div>
+</div>

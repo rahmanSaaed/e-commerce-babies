@@ -1,0 +1,45 @@
+    <div class="menu-overlay" *ngIf="showAccMenu" ></div>
+    <div class="filter-menu pb-100" [class.menueSlide]="showAccMenu">
+        <div class="cursor-pointer size-6 font-bold mb-6"><a [routerLink]="['/account']"
+                routerLinkActive="router-link-active" class="text-decoration-none w-100 text-dark"> {{'auth.Accountinformation' | translate}}</a></div>
+        <div class="text-gray3 cursor-pointer font-medium size-3 mb-2"><a [routerLink]="['/account']"
+                routerLinkActive="router-link-active" class="text-decoration-none w-100 text-gray3"> {{'auth.MyDetails' | translate}} </a></div>
+        <div class="text-gray3 cursor-pointer font-medium size-3 mb-16"><a [routerLink]="['/account/shipping']"
+                routerLinkActive="router-link-active" class="text-decoration-none w-100 text-gray3"> {{'auth.ShippingAddress' | translate}}</a></div>
+        <div class="text-dark cursor-pointer size-6 font-bold mb-8">
+            <a [routerLink]="['/account/track-order']" routerLinkActive="router-link-active"
+                class="text-decoration-none w-100 text-dark"> {{'auth.TrackOrder' | translate}}</a>
+        </div>
+        <div
+            class="text-dark cursor-pointer size-6 font-bold mb-8 max-260 d-flex align-items-center justify-content-between">
+            <a [routerLink]="['/account/orders']" routerLinkActive="router-link-active"
+                class="text-decoration-none w-100 text-dark"> {{'auth.MyOrders' | translate}}</a>
+            <!-- <div class="bg-pink1 text-white d-flex align-items-center max-30 border-radius-8 w-100 justify-content-center size-2 font-bold p-2">2</div> -->
+        </div>
+        <div
+            class="text-dark cursor-pointer size-6 font-bold mb-8 max-260 d-flex align-items-center justify-content-between">
+            <a [routerLink]="['/account/whishlist']" routerLinkActive="router-link-active"
+                class="text-decoration-none w-100 text-dark" (click)="faveNotification = 0"> {{'auth.WishList' | translate}}</a>
+            <div class="bg-pink1 text-white d-flex align-items-center max-30 border-radius-8 w-100 justify-content-center size-2 font-bold p-2 "
+                *ngIf="faveNotification">{{faveNotification}}</div>
+        </div>
+        <div class="text-dark cursor-pointer size-6 font-bold mb-8">
+            <a [routerLink]="['/account/mumez-subscribe']" routerLinkActive="router-link-active"
+                class="text-decoration-none w-100 text-dark"> {{'auth.MumezSubscription' | translate}}</a>
+        </div>
+        <div class="text-dark cursor-pointer size-6 font-bold mb-8">
+            <a [routerLink]="['/account/reviews']" routerLinkActive="router-link-active"
+                class="text-decoration-none w-100 text-dark"> {{'auth.ProductReviews' | translate}}</a>
+        </div>
+        <div class="text-dark cursor-pointer size-6 font-bold mb-8">
+            <a [routerLink]="['/account/return-form']" routerLinkActive="router-link-active"
+                class="text-decoration-none w-100 text-dark"> {{'auth.ReturnForm' | translate}}</a>
+        </div>
+        <div class="bg-primary p-10 max-230 border-radius-12 mt-20">
+            <div class="font-bold text-white lh-lg size-12"> {{'auth.YouneedHelp?' | translate}}</div>
+            <div class="text-white size-3 lh-lg">{{'auth.WhereisMyOrder' | translate}}</div>
+            <div class="text-white size-3 lh-lg"> {{'auth.MyPaymentOptions?' | translate}}</div>
+            <div class="text-white size-3 lh-lg"> {{'auth.Refund,Exchange,Cancellation?' | translate}}</div>
+            <div class="text-white size-3 lh-lg"> {{'auth.DeliveryTime' | translate}}</div>
+        </div>
+    </div>

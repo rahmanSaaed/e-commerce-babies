@@ -1,0 +1,19 @@
+.wrapper {
+    margin:auto;
+    position: relative;
+    overflow: hidden;
+    width: 100%;
+    @media (max-width: 575.9px) {
+      overflow: scroll;
+   } 
+}
+.error{
+  font-size: 0.875em;
+  color: #dc3545;
+}
+
+
+// #slide{
+//   overflow-y: scroll;
+//   height: 700px;
+// }

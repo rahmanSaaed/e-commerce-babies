@@ -1,0 +1,169 @@
+<section class="bg-aqua1">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <div class="d-flex align-items-start justify-content-between ptb-50 flex-column flex-lg-row">
+                    <div class="text-primary size-12 font-medium">{{ 'footer.subscriptionHead' | translate}}
+                        <br>{{ 'footer.subscriptionMiddle'| translate}} <span class="size-4"> {{ 'footer.subscriptionBottom'| translate}}</span>
+                    </div>
+                    <div class="d-flex align-items-center max-500 w-100 mt-10 mt-lg-0">
+                        <div class="form-group max-280 w-100 ms-6">
+                            <input type="email"
+                                [class.is-invalid]="emailSubscribe?.invalid && (emailSubscribe?.dirty ||emailSubscribe?.touched)"
+                                [formControl]="emailSubscribe" class="form-control p-4 size-4 text-gray3"
+                                placeholder="{{'auth.Email' | translate}}">
+                            <div class="invalid-feedback">
+                                <p *ngIf="emailSubscribe?.errors?.email">
+                                    {{'auth.Pleaseenteravalidemailaddress' | translate}}
+                                </p>
+                                <p *ngIf="emailSubscribe?.errors?.required">
+                                    {{'auth.Emailisrequired' | translate}}
+                                </p>
+                            </div>
+                        </div>
+                        <button (click)="createGuestSubdscription()"
+                            class="btn btn-primary max-120 w-100 text-white size-4 ms-6 p-4 align-self-start">{{'footer.subscrib'
+                            | translate}}</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<footer class="bg-gray1 ">
+    <section class="border-bottom">
+        <div class="container">
+            <div class="row ptb-16">
+                <div class="col-md-6 col-12 col-sm-6 col-xxl-4 mt-10 mt-sm-0">
+                    <!-- <div class="font-bold size-14 text-dark" *ngIf="categoriesArr?.length > 0" >Categories</div> -->
+                    <div class="row mt-16">
+                        <!-- <div class="col-md-6 col-6" *ngFor="let category of categoriesArr | slice:0:10" >
+                        <div class="text-dark size-5 font-medium mb-8 cursor-pointer" (click)="goToCategoryProduct(category?.categoryId)">{{category.name || category.nameAr}}</div>
+                    </div> -->
+
+                        <div class="d-flex align-items-center cursor-pointer">
+                            <img src="assets/images/mumez-logo-primary-{{global?.lang}}.svg" alt=""
+                                class="d-flex-align-items-center max-150  w-100" (click)="navigateTohome()">
+                        </div>
+
+
+                    </div>
+                </div>
+                <div class="col-md-6  col-12 col-sm-6 col-xxl-4 mt-10 mt-sm-0">
+                    <div class="font-bold size-14 text-dark">{{'footer.GettoKnowUs' | translate}}</div>
+                    <div class="row mt-16">
+                        <div class="col-md-6 col-6">
+                            <div class="text-dark size-5 font-medium mb-8 cursor-pointer"
+                                (click)="navigateTo('mumez/about-us')">{{'footer.AboutUs' | translate}}</div>
+                            <div class="text-dark size-5 font-medium mb-8 cursor-pointer"
+                                (click)="navigateTo('mumez/contact-us')">{{'footer.ContactUs' | translate}}</div>
+                            <!-- <div class="text-dark size-5 font-medium mb-8 cursor-pointer" (click)="navigateTo()">
+                                {{'footer.Careers' | translate}}</div> -->
+                            <!-- <div class="text-dark size-5 font-medium mb-8 cursor-pointer" (click)="navigateTo()">Sell on Mumez</div> -->
+                        </div>
+                        <div class="col-md-6 col-6">
+                            <div class="text-dark size-5 font-medium mb-8 cursor-pointer" (click)="navigateTo('blog')">
+                                {{'footer.Blog' | translate}}</div>
+                            <div class="text-dark size-5 font-medium mb-8 cursor-pointer"
+                                (click)="navigateTo('mumez/return-policy')">{{'footer.ReturnsPolicy' | translate}}</div>
+                            <!-- <div class="text-dark size-5 font-medium mb-8 cursor-pointer" (click)="navigateTo()">Returns Form</div> -->
+                            <div class="text-dark size-5 font-medium mb-8 cursor-pointer"
+                                (click)="navigateTo('mumez/terms-condition')">{{'footer.SellerTermsandConditions' |
+                                translate}}</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xxl-1 d-none d-xxl-block">
+                </div>
+                <div class="col-lg-12 col-12 col-xxl-3">
+                    <div class="row">
+                        <div class="col-xxl-1"></div>
+                        <div class="col-lg-11 col-12 mt-xxl-0 mt-16">
+                            <div class="font-bold size-14 text-dark mb-16">{{'footer.ContactUs' | translate}}</div>
+
+                            <div
+                                class="bg-white d-flex align-items-center border-radius-10 p-4 mb-4 border border-aqua1 max-280 w-100">
+                                <div
+                                    class="d-flex align-items-center justify-content-center border-radius-5 bg-pink3 p-3 me-8">
+                                    <img src="../../../../assets/images/Location.svg" alt=""
+                                        class="max-20 w-100 location">
+                                </div>
+                                <div class="text-dark font-bold size-5 address-footer text-nowrap overflow-hidden max-210">
+                                    <!-- {{sittingsValues?.address}} -->
+                                    <a class="text-decoration-none text-dark"
+                                        href="https://goo.gl/maps/okJdyrFvVnqBMF6c7">
+                                        {{sittingsValues?.address}}</a>
+                                </div>
+                            </div>
+                            <div
+                                class="bg-white d-flex align-items-center border-radius-10 p-4 mb-4 border border-aqua1 max-280 w-100">
+                                <div
+                                    class="d-flex align-items-center justify-content-center border-radius-5 bg-aqua1 p-3 me-8">
+                                    <img src="../../../../assets/images/Phone-number.svg" alt=""
+                                        class="max-20 w-100 location">
+                                </div>
+                                <div class="text-dark font-bold size-5">
+                                    <a href="tel:{{sittingsValues?.phone}}"
+                                        class="text-decoration-none">{{sittingsValues?.phone}}</a>
+                                </div>
+                            </div>
+                            <div
+                                class="bg-white d-flex align-items-center border-radius-10 p-4 mb-4 border border-aqua1 max-280 w-100">
+                                <div
+                                    class="d-flex align-items-center justify-content-center border-radius-5 bg-secondary1 p-3 me-8">
+                                    <img src="../../../../assets/images/Mail.svg" alt="" class="max-20 w-100 location">
+                                </div>
+                                <div class="text-dark font-bold size-5 overflow-scroll">
+                                    <a href="mailto: {{sittingsValues?.email}}"
+                                        class="text-decoration-none text-secondary"> {{sittingsValues?.email}}</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="ptb-30 pb-60 pb-lg-30">
+        <div class="container">
+            <div class="row">
+                <div
+                    class="col-md-4 col-12 col-sm-6 d-flex justify-content-center d-sm-block flex-column align-items-center">
+                    <div class="size-2 text-dark">{{'footer.©2020Mumez®AllRightsreserved.' | translate}}</div>
+                    <div class="size-2 text-dark font-medium mt-2">{{'footer.Developedwith' | translate}} <img
+                            src="../../../../assets/images/HEART2.svg" alt=""> <a href="https://www.baianat.com/">
+                            Baianat</a> </div>
+                </div>
+
+                <div class="col-md-4">
+
+                </div>
+
+                <div class="col-md-4 col-12 col-sm-6  mt-10 mt-sm-0 d-flex align-items-center social-media-container">
+                    <!-- <img src="../../../../assets/images/Facebook-icon.svg"   alt="" class="max-30 w-100 me-20"> -->
+                    <div
+                        class="d-flex align-items-center justify-content-center bg-follow p-8 rounded-circle max-40 w-100 height cursor-pointer">
+                        <a href={{sittingsValues?.facebook}}>
+                            <img src="../../../../assets/images/face-follow.svg" alt="" class="face w-100 me-20">
+                        </a>
+                    </div>
+                    <!-- <img src="../../../../assets/images/Twitter-icon.svg" alt="" class="max-30 w-100 me-20"> -->
+                    <div
+                        class="d-flex align-items-center justify-content-center bg-follow p-6 rounded-circle max-40 w-100 height ms-4 cursor-pointer">
+                        <a href={{sittingsValues?.twitter}}>
+                            <img src="../../../../assets/images/Twitter-icon.svg" alt="" class="max-30 w-100 me-20">
+                        </a>
+                    </div>
+                    <!-- <img src="../../../../assets/images/instagram-icon.svg" alt="" class="max-30 w-100 me-20"> -->
+                    <div
+                        class="d-flex align-items-center justify-content-center bg-follow p-5 rounded-circle max-40 w-100 height ms-4 cursor-pointer">
+                        <a href={{sittingsValues?.instagram}}>
+                            <img src="../../../../assets/images/instagram-icon.svg" alt=""
+                                class="max-30 w-100 me-lg-20 me-0">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</footer>

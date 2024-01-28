@@ -1,0 +1,399 @@
+<section class="bg-gray1">
+  <div class="container bg-gray1">
+    <div class="row pt-10 pb-24 border-bottom">
+      <div class="col-12 col-md-12 col-lg-12 col-xl-6 mb-xl-0 mb-10">
+        <ng-container *ngIf="!sliderFirst">
+          <app-placeholder [placeholder]="'slider'"></app-placeholder>
+        </ng-container>
+        <ng-container *ngIf="sliderFirst">
+          <section class="bg-primary border-radius-20 p-16 position-relative h-100">
+            <div class="d-md-flex d-block justify-content-between align-items-center">
+              <div class="size-sm-24 size-18 text-white font-bold w-60 cursor-pointer"  (click)="navigateToSlideProduct(sliderFirst, sliderFirst?.slogan || sliderFirst?.sloganAr)" [innerHtml]=" sliderFirst?.slogan || sliderFirst?.sloganAr"></div>
+              <button
+                class="btn btn-outline-white size-8 weight-4000 w-100 max-140 border-radius-15 btn-shop mt-md-0 mt-10"
+                (click)="goToAllProducts()">
+                 {{'home.ShopNow' | translate}}</button>
+            </div>
+            <div class="d-flex justify-content-end">
+              <img [hidden]="sliderFirst?.image" src="{{sliderFirst?.image}}" alt=""
+                (click)="navigateToSlideProduct(sliderFirst, sliderFirst?.slogan || sliderFirst?.sloganAr)"
+                class="w-100 max-280 max-xl-220 max-xxl-280 d-flex align-items-center mt-md-16 mt-0 image-boy cursor-pointer">
+              <div class="d-md-flex align-items-center d-none">
+                <div class="p-6 bg-white-opacity max-130 mse-2 border-radius-18 mt-30">
+                  <img [hidden]="sliderSecond?.image" src={{sliderSecond?.image}} alt=""
+                    (click)="navigateToSlideProduct(sliderSecond, sliderSecond?.slogan || sliderSecond?.sloganAr)"
+                    class="w-100 max-130 d-flex align-items-center border-radius-18 item-image cursor-pointer">
+                  <div class="text-white max-130 size-4 mt-6 mb-4 tex-box-size cursor-pointer"
+                    (click)="navigateToSlideProduct(sliderSecond, sliderSecond?.slogan || sliderSecond?.sloganAr)"> {{sliderSecond?.slogan || sliderSecond?.sloganAr}} </div>
+                </div>
+                <div class="p-6 bg-white-opacity mse-2 border-radius-18 mt-30 max-130">
+                  <img [hidden]="sliderThird?.image" src={{sliderThird?.image}} alt=""
+                    (click)="navigateToSlideProduct(sliderThird, sliderThird?.slogan || sliderThird?.sloganAr)"
+                    class="w-100 max-130 d-flex align-items-center border-radius-18 item-image cursor-pointer">
+                  <div class="text-white size-4 mt-6 mb-4 tex-box-size cursor-pointer"
+                    (click)="navigateToSlideProduct(sliderThird)">{{sliderThird?.slogan || sliderThird?.sloganAr}}</div>
+                </div>
+              </div>
+            </div>
+          </section>
+        </ng-container>
+      </div>
+      <div class="col-12 col-lg-6 col-xl-3 col-sm-6">
+        <div class="d-flex flex-column h-100">
+          <ng-container *ngIf="!sliderFourth">
+            <div class="mb-10">
+              <app-placeholder [placeholder]="'slider-small'"></app-placeholder>
+            </div>
+          </ng-container>
+          <ng-container *ngIf="sliderFourth">
+            <div
+              class="bg-orange border-radius-20 p-10 position-relative clothes-1 d-flex align-items-end justify-content-end h-50">
+              <img [hidden]="sliderFourth?.image" src={{sliderFourth?.image}} alt=""
+                (click)="navigateToSlideProduct(sliderFourth, sliderFourth?.slogan || sliderFourth?.sloganAr)"
+                class="w-100 max-md-150 max-xl-140 max-xxl-170 max-110 d-flex align-items-center position-absolute baby-image1 cursor-pointer">
+              <div class="text-pink1 text-white text-start font-bold max-80 size-lg-14 size-xl-12 siz-xxl-14 size-10 lh-1 cursor-pointer max-xl-80 max-lg-120"
+                (click)="navigateToSlideProduct(sliderFourth, sliderFourth?.slogan || sliderFourth?.sloganAr)">{{sliderFourth?.slogan || sliderFourth?.sloganAr}}
+              </div>
+            </div>
+          </ng-container>
+          <ng-container *ngIf="!sliderFifth">
+            <app-placeholder [placeholder]="'slider-small'"></app-placeholder>
+          </ng-container>
+          <ng-container *ngIf="sliderFifth">
+            <div class="bg-pink2 border-radius-20 p-16 position-relative clothes-2 mt-8 h-50" >
+              <img [hidden]="sliderFifth?.image" src={{sliderFifth?.image}} alt=""
+                (click)="navigateToSlideProduct(sliderFifth, sliderFifth?.slogan || sliderFifth?.sloganAr)"
+                class="w-100 max-md-150 max-110 max-xl-130 max-xxl-150 d-flex align-items-center baby-image2 position-absolute cursor-pointer">
+              <div class="text-pink1 text-white text-start font-bold size-lg-14  size-10 lh-1 cursor-pointer max-120"
+                (click)="navigateToSlideProduct(sliderFifth, sliderFifth?.slogan || sliderFifth?.sloganAr)">{{sliderFifth?.slogan || sliderFifth?.sloganAr}}
+              </div>
+              <div
+                class="bg-pink1 text-white size-md-6 size-xl-4 size-xxl-6 size-2 font-bold border-radius-14 p-4 mt-4 w-100 max-lg-120 max-xl-100 max-xxl-120 max-100 text-center">
+                OFF 50%</div>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+      <div class="col-lg-6 col-xl-3 col-12 col-sm-6 mt-10 mt-sm-0">
+        <ng-container *ngIf="!sliderSix">
+          <app-placeholder [placeholder]="'slider'"></app-placeholder>
+        </ng-container>
+        <ng-container *ngIf="sliderSix">
+          <section class="bg-secondary border-radius-20 p-16 h-100 position-relative slider-six">
+            <img src={{sliderSix?.image}} alt="" class="last-content-img cursor-pointer max-200 max-sm-200 max-lg-250 max-xxl-300"
+              (click)="navigateToSlideProduct(sliderSix, sliderSix?.slogan || sliderSix?.sloganAr)">
+            <div class="text-white text-start font-bold size-14 lh-1 position-absolute last-content max-lg-300 max-180 max-sm-120 max-xl-120 cursor-pointer"
+              (click)="navigateToSlideProduct(sliderSix, sliderSix?.slogan || sliderSix?.sloganAr)">
+              {{sliderSix?.slogan || sliderSix?.sloganAr}}
+            </div>
+          </section>
+        </ng-container>
+      </div>
+    </div>
+    <div class="row pt-30 pb-30 justify-content-between align-items-center">
+      <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-3">
+        <div class="d-flex align-items-center">
+          <div class="">
+            <img src="../../../assets/images/services-sec-1.svg" alt=""
+              class="d-flex algin-items-center max-md-70 max-50 w-100 help-image">
+          </div>
+          <div class="content ms-16">
+            <div class="text-dark font-bold size-10">{{'home.Support24/7' | translate}}</div>
+            <div class="text-dark size-2">{{'home.Wesupport24haday' | translate}}</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-3 mt-10 mt-sm-0">
+        <div class="d-flex align-items-center">
+          <div class="">
+            <img src="../../../assets/images/services-sec-2.svg" alt=""
+              class="d-flex algin-items-center max-md-70 max-50 w-100 help-image">
+          </div>
+          <div class="content ms-16">
+            <div class="text-dark font-bold size-10">{{'home.MoneyBack' | translate}}</div>
+            <div class="text-dark size-2">{{'home.Wehave30daysreturn' | translate}}</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-3 mt-10 mt-md-0">
+        <div class="d-flex align-items-center">
+          <div class="">
+            <img src="../../../assets/images/services-sec-3.svg" alt=""
+              class="d-flex algin-items-center max-md-70 max-50 w-100 help-image">
+          </div>
+          <div class="content ms-16">
+            <div class="text-dark font-bold size-10">{{'home.PaymentSecure' | translate}}</div>
+            <div class="text-dark size-2">{{'home.Weensuresecurepayment' | translate}}</div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12 col-sm-6 col-md-6 col-lg-6 col-xl-3 mt-10 mt-md-0">
+        <div class="d-flex align-items-center">
+          <div class="">
+            <img src="../../../assets/images/services-sec-4.svg" alt=""
+              class="d-flex algin-items-center max-md-70 max-50 w-100 help-image">
+          </div>
+          <div class="content ms-16">
+            <div class="text-dark font-bold size-10"> {{'home.Discount' | translate}}</div>
+            <div class="text-dark size-2">{{'home.Upto70%OFF' | translate}}</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<section class="bg-white">
+  <div class="container">
+    <div class="row mtb-50">
+      <ng-container *ngIf="!popularCategories">
+        <div class="col-md-6 col-12 col-sm-6 col-lg-3 mb-16" *ngFor="let i of [1,2,3,4,5,6,7,8]">
+          <app-placeholder [placeholder]="'category'"></app-placeholder>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="popularCategories">
+        <div class="col-md-6 col-12 col-sm-6 col-lg-3 mb-16" *ngFor="let category of popularCategories">
+          <app-category-item [icon]="category?.image" [nameCategory]="category?.name || category?.nameAr"
+            [categoryId]="category?.categoryId">
+          </app-category-item>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</section>
+<section class="bg-aqua1 border-radius-50 ptb-40 arrival-section position-relative">
+  <img src="../../../assets/images/left.svg" alt=""
+    class="max-sm-40 max-10 d-flex align-items-center justify-content-center position-absolute left cursor-pointer"
+    (click)="scrollToLeft()">
+  <img src="../../../assets/images/right.svg" alt=""
+    class="max-sm-40 max-10 d-flex align-items-center justify-content-center position-absolute right cursor-pointer"
+    (click)="scrollToRight()">
+
+  <div class="container">
+    <div class="d-flex align-items-center justify-content-between">
+      <!-- <div class="text-dark size-26 font-bold">New Arrivals</div>
+      <button class="btn btn-white text-dark font-bold size-4 box-shadow w-100 max-100 border-radius-14">View
+        More</button> -->
+    </div>
+    <div class="row mt-20 arrivals-wrapper d-block mse-15 mse-md-0" #contentScroll>
+      <ng-container *ngIf="!popularSubCategories">
+        <div class="col-md-4 col-8 col-sm-5 col-lg-3 col-xxl-2 d-inline-block" *ngFor="let subCategory of [1,2,3,4,5,6]">
+          <app-placeholder [placeholder]="'sub-category'"></app-placeholder>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="popularSubCategories">
+        <div class="col-md-4 col-8 col-sm-5 col-lg-3 col-xxl-2 d-inline-block" *ngFor="let subCategory of popularSubCategories">
+          <app-new-arrivals-item [nameSubCategory]="subCategory.name || subCategory.nameAr" [subCategoryId]="subCategory.subCategoryId"
+            [image]="subCategory.image"></app-new-arrivals-item>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</section>
+<section class="bg-white ptb-40">
+  <div class="container">
+    <div class="d-flex align-items-center justify-content-between">
+      <div class="text-dark size-26 font-bold">{{'home.NewArrivals' | translate}}</div>
+      <!-- <button class="btn btn-white text-dark font-bold size-4 border w-100 max-100 border-radius-14">View
+        More</button> -->
+    </div>
+    <div class="row mt-20">
+      <ng-container *ngIf="!newArrivals">
+        <div class="col-md-4 col-12 col-sm-6 col-lg-3 col-xl-3 col-xxl-2 d-flex justify-content-center d-sm-block mt-8 mt-sm-0" *ngFor="let i of [1,2,3,4,5,6]">
+          <app-placeholder [placeholder]="'product'"></app-placeholder>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="newArrivals">
+        <div class="col-md-4 col-12 col-sm-6 col-lg-3 col-xl-3 col-xxl-2 d-flex justify-content-center d-sm-block mt-8 mt-sm-0" *ngFor="let product of newArrivals">
+          <app-product-item [productId]="product.productId" [name]="product.name || product.nameAr"
+            [price]="product.price" [productReviews]="product?.reviews"
+            [image]="product.images[0]"
+            [salePrice]="product?.salePrice">
+          </app-product-item>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</section>
+<section class="bg-white pb-40">
+  <div class="container">
+    <div class="d-flex align-items-center justify-content-center mb-20">
+      <div class="text-dark size-26 font-bold">{{'home.BACKYARDFUN' | translate}}</div>
+    </div>
+    <div class="row mt-20">
+      <ng-container *ngIf="!backGroundFun">
+        <div class="col-md-6 col-12 col-sm-6 col-lg-3 mb-16" *ngFor="let i of [1,2,3,4]">
+          <app-placeholder [placeholder]="'category'"></app-placeholder>
+        </div>
+      </ng-container>
+
+      <ng-container *ngIf="backGroundFun">
+        <div class="col-md-6 col-12 col-sm-6 col-lg-3 mb-16" *ngFor="let category of backGroundFun">
+          <app-category-item [categoryId]="category.categoryId" [nameCategory]="category.name || category.nameAr" [icon]="category.image">
+          </app-category-item>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</section>
+
+<section class="ptb-4">
+  <div class="container">
+    <div class="row">
+      <ng-container *ngIf="!shopByGender">
+        <div class="col-md-4" *ngFor="let i of [1,2,3]">
+          <app-placeholder [placeholder]="'section-small'"></app-placeholder>
+        </div>
+
+      </ng-container>
+
+      <ng-container *ngIf="shopByGender">
+        <div class="col-md-12 col-lg-4 position-relative mb-lg-0 mb-16 cursor-pointer" *ngFor="let gender of shopByGender;let i=index;" (click)="goTosearchPage(gender?.genderId, gender?.title || gender?.titleAr)">
+          <!-- {{ gender.genderId }} -->
+
+          <div class="p-20 border-radius-20 h-300" [style.background-image]="'url(' + gender?.image + ')'"
+            [ngClass]="{ 'shop-all-girls': i == '1', 'shop-all-boys': i == '0', 'shop-all-mumz': i == '2' }">
+            <!-- <img class="position-absolute shop-by-gender border-radius-10" src={{gender.image}} > -->
+            <div class="text-white font-medium size-16 max-180 w-100 mb-10 ">{{gender?.title || gender?.titleAr}}</div>
+            <div class="font-medium text-white size-16 max-180 w-100 mb-10 lh-1">{{gender?.subTitle || gender?.subTitleAr}}</div>
+            <!-- <div class="badge rounded-pill bg-pink1 text-white p-4">OFF 50%</div> -->
+          </div>
+        </div>
+      </ng-container>
+
+      <!-- <div class="col-md-4">
+        <div class="p-12 border-radius-20 shop-all-girls h-300">
+          <div class="text-white font-medium size-16 max-180 w-100 mb-10">Shop All Girls</div>
+          <div class="font-regular text-white size-16 max-220 w-100 mb-10 lh-1">Children`s clothing is often
+            more casual than adult clothing, fit for play and rest.
+          </div>
+        </div>
+      </div> -->
+
+      <!-- <div class="col-md-4">
+        <div class="p-12 border-radius-20 shop-all-mumz h-300">
+          <div class="text-white font-medium size-16 max-180 w-100 mb-10">Shop All Mumz</div>
+          <div class="font-medium text-white size-16 max-180 w-100 mb-10 lh-1">Welcome to the mummy. </div>
+        </div>
+      </div> -->
+
+    </div>
+  </div>
+</section>
+
+
+<section class="bg-white ptb-40">
+  <div class="container">
+    <div class="d-flex align-items-center justify-content-between">
+      <div class="text-dark size-26 font-bold">{{'home.productsWeLove' | translate}}</div>
+      <!-- <button class="btn btn-white text-dark font-bold size-4 border w-100 max-100 border-radius-14">View
+        More</button> -->
+    </div>
+    <div class="row mt-20">
+      <ng-container *ngIf="!productsWeLove">
+        <div class="col-md-4 col-12 col-sm-6 col-lg-3 col-xl-3 col-xxl-2 d-flex justify-content-center d-sm-block mt-8 mt-sm-0" *ngFor="let i of [1,2,3,4,5,6]">
+          <app-placeholder [placeholder]="'product'"></app-placeholder>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="productsWeLove">
+        <div class="col-md-4 col-12 col-sm-6 col-lg-3 col-xl-3 col-xxl-2 d-flex justify-content-center d-sm-block mt-8 mt-sm-0" *ngFor="let product of productsWeLove">
+          <!-- <app-product-item></app-product-item> -->
+          <app-product-item [productId]="product?.productId" [name]="product?.name || product?.nameAr"
+            [price]="product?.price"
+            [salePrice]="product?.salePrice"
+            [productReviews]="product?.reviews"
+            [image]="product?.images[0]">
+          </app-product-item>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</section>
+<!-- <section class="bg-white pb-40">
+  <div class="container">
+    <div class="d-flex align-items-center justify-content-center mb-20">
+      <div class="text-dark size-26 font-bold">TOYS & GAMES</div>
+    </div>
+    <div class="row mt-20">
+      <div class="col-md-3" *ngFor="let i of [1,1,1,1]">
+        <app-category-item></app-category-item>
+      </div>
+    </div>
+  </div>
+</section> -->
+<section class="bg-pink3 border-radius-50 ptb-40 arrival-section position-relative">
+
+  <div class="container">
+    <div class="d-flex align-items-center justify-content-center mb-20">
+      <div class="text-dark size-26 font-bold">{{'home.WidestRangeOfBrands' | translate}}</div>
+    </div>
+
+    <div class="row mt-20">
+      <ng-container *ngIf="!brands">
+        <div class="col-6 col-md-4 col-lg-3 col-xl-2 mb-8" *ngFor="let brand of [1,2,3,4,5,6,7,8,9,1,2,3]">
+          <app-placeholder [placeholder]="'brand'"></app-placeholder>
+        </div>
+
+      </ng-container>
+      <ng-container *ngIf="brands">
+        <div class="col-6 col-md-4 col-lg-3 col-xl-2 mb-8" *ngFor="let brand of brands">
+          <app-brand-item [image]="brand?.image" [brandId]="brand?.brandId" [name]="brand?.name || brand?.nameAr"></app-brand-item>
+
+        </div>
+      </ng-container>
+      <!-- <button
+        class="btn btn-pink3 text-dark font-bold size-4 border w-100 max-100 border-radius-14 m-auto border-pink4 mt-20">View
+        More</button> -->
+
+    </div>
+  </div>
+</section>
+
+<section class="bg-white ptb-40">
+  <div class="container">
+    <div class="d-flex align-items-center justify-content-between">
+      <div class="text-dark size-26 font-bold">{{'home.TrendingProducts' | translate}}</div>
+      <!-- <button class="btn btn-white text-dark font-bold size-4 border w-100 max-100 border-radius-14">View
+        More</button> -->
+    </div>
+    <div class="row mt-20">
+      <ng-container *ngIf="!trendingProducts">
+        <div class="col-md-4 col-12 col-sm-6 col-lg-3 col-xl-3 col-xxl-2 d-flex justify-content-center d-sm-block mt-8 mt-sm-0" *ngFor="let product of [1,2,3,4,5,6]">
+          <app-placeholder [placeholder]="'product'"></app-placeholder>
+        </div>
+
+      </ng-container>
+      <ng-container *ngIf="trendingProducts">
+        <div class="col-md-4 col-12 col-sm-6 col-lg-3 col-xl-3 col-xxl-2 d-flex justify-content-center d-sm-block mt-8 mt-sm-0" *ngFor="let product of trendingProducts">
+          <!-- <app-product-item></app-product-item> -->
+          <app-product-item [productId]="product.productId" [name]="product.name || product.nameAr"  [productReviews]="product?.reviews"
+            [price]="product.price"
+            [image]="product.images[0]"
+            [salePrice]="product?.salePrice">
+          </app-product-item>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</section>
+
+<section class="bg-white pb-40">
+  <div class="container">
+    <div class="d-flex align-items-center justify-content-center mb-20">
+      <div class="text-dark size-26 font-bold">{{'home.ShopbyAge' | translate}}</div>
+    </div>
+    <div class="row mt-20">
+      <ng-container *ngIf="!ages">
+        <div class="col-md-6 col-12 col-sm-6 col-lg-3 mb-16" *ngFor="let age of [1,2,3,4]">
+          <app-placeholder [placeholder]="'category'"></app-placeholder>
+        </div>
+      </ng-container>
+      <ng-container *ngIf="ages">
+        <div class="col-md-6 col-12 col-sm-6 col-lg-3 mb-16" *ngFor="let age of ages;">
+          <app-shop-item [name]="age?.name || age?.nameAr" [ageId]="age?.ageId" [age]="age?.age || age?.ageAr" [image]="age?.image"></app-shop-item>
+
+        </div>
+      </ng-container>
+    </div>
+  </div>
+</section>
+

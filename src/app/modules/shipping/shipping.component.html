@@ -1,0 +1,88 @@
+<div class="container">
+    <div class="row mt-sm-60 mt-20">
+        <div class="col-lg-1 col"></div>
+        <div class="col-lg-2 col-12 mb-20">
+            <div class="responsive-stepper d-flex align-items-start w-100 justify-content-between d-block d-lg-none">
+                <div class="d-flex flex-column step">
+                    <div class="bullet"  [ngClass]="currentstep == 'billingInfo' ? 'active' : '' ">
+                        1
+                    </div>
+                    <div class="content mt-4">
+                        <div class="text-dark size-5 font-medium"> {{'order.BillingInfo' | translate}}</div>
+                    </div>
+                </div>
+                <div class="d-flex flex-column step">
+                    <div class="bullet" [ngClass]="currentstep == 'shippingDetails' ? 'active' : '' ">
+                        2
+                    </div>
+                    <div class="content mt-4">
+                        <div class="text-dark size-5 font-medium"> {{'order.ShippingDetails' | translate}}</div>
+                    </div>
+                </div>
+                <div class="d-flex flex-column step">
+                    <div class="bullet" [ngClass]="currentstep == 'paymentMethod' ? 'active' : '' ">
+                    3
+                    </div>
+                    <div class="content mt-4">
+                        <div class="text-dark size-5 font-medium"> {{'order.PaymentDetails' | translate}}</div>
+                    </div>
+                </div>
+                <div class="d-flex flex-column step">
+                    <div class="bullet" [ngClass]="currentstep == 'confirmation' ? 'active' : '' ">
+                        4
+                    </div>
+                    <div class="content mt-4">
+                        <div class="text-dark size-5 font-medium"> {{'order.Receipt' | translate}}</div>
+                    </div>
+                </div>
+            </div>
+           <!-- <div class="d-flex align-items-center w-100 justify-content-between responsive-stepper">
+               <div class="step"></div>
+               <div class="line"></div>
+               <div class="step"></div>
+               <div class="line"></div>
+               <div class="step"></div>
+               <div class="line"></div>
+               <div class="step"></div>
+
+           </div> -->
+            <div class="stepper d-none d-lg-block">
+                <div class="step" [ngClass]="currentstep == 'billingInfo' ? 'active' : '' ">
+                    <div class="content p-6">
+                        <div class="text-dark size-5 font-medium"> {{'order.BillingInfo' | translate}}</div>
+                    </div>
+                </div>
+                <div class="step" [ngClass]="currentstep == 'shippingDetails' ? 'active' : '' ">
+                    <div class="content p-6">
+                        <div class="text-dark size-5 font-medium"> {{'order.ShippingDetails' | translate}}</div>
+                    </div>
+                </div>
+                <div class="step" [ngClass]="currentstep == 'paymentMethod' ? 'active' : '' ">
+                    <div class="content p-6">
+                        <div class="text-dark size-5 font-medium"> {{'order.PaymentDetails' | translate}}</div>
+                    </div>
+                </div>
+                <div class="step" [ngClass]="currentstep == 'confirmation' ? 'active' : '' ">
+                    <div class="content p-6">
+                        <div class="text-dark size-5 font-medium"> {{'order.Receipt' | translate}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-1 col"></div>
+        <div class="col-lg-8 col-12">
+            <app-billing-info (emmitbuyerInfo)="accInfoFunc($event)" (newItemEvent)="nextStep($event)"
+                [hidden]="currentstep != 'billingInfo' "></app-billing-info>
+
+            <app-shipping-details (newItemEvent)="nextStep($event)" [hidden]="currentstep != 'shippingDetails' ">
+            </app-shipping-details>
+
+            <app-shipping-payment-methods (newItemEvent)="nextStep($event)" [hidden]="currentstep != 'paymentMethod' "
+                [shippingDetails]="addressSellected" [personalInfo]="buyerInfo"></app-shipping-payment-methods>
+
+            <app-confirmation [shippingcode]="shippingcode" [orderId]="orderId" (newItemEvent)="nextStep($event)"
+                [hidden]="currentstep != 'confirmation' "></app-confirmation>
+
+        </div>
+    </div>
+</div>

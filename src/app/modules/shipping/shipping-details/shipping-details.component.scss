@@ -1,0 +1,36 @@
+.divider {
+    background: #F4F4F4;
+    height: 1px;
+    margin-left: 40px;
+}
+.addresses >.address:last-of-type {
+    .divider {
+        display: none;
+    }
+}
+::ng-deep .mat-dialog-container {
+    box-shadow: unset !important;
+    border-radius: 40px !important;
+    padding: 120px !important;
+    @media (max-width: 575.9px) {
+        padding: 40px !important;
+        height: 400px !important;
+    }
+}
+
+.button-prev {
+  font-size: 23px;
+  font-weight: bolder;
+  margin-top: 48px;
+}
+
+.filter-green{
+  filter: invert(120%) sepia(79%) saturate(100%) hue-rotate(100deg) brightness(100%) contrast(100%);
+}
+::ng-deep html[dir="rtl"] {
+	
+  .prev-arrow {
+    transform: scaleX(-1);
+    margin-right: 2px;
+  }
+}

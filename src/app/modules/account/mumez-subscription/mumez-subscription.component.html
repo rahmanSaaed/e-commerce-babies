@@ -1,0 +1,18 @@
+<div class="text-dark size-25 font-bold">{{'accoun.MumezSubscription' | translate}}</div>
+<div class="text-center mb-30">
+  <img src="../../../../assets/images/subscribe.png" alt="" *ngIf="!isChecked" class="w-100 max-500 mt-lg-80 mt-20">
+
+  <div class="text-dark size-14 mt-16" *ngIf="!isChecked">{{'accoun.NoSubscriptions' | translate}}</div>
+  <div class="text-dark size-14 mt-16 text-break" *ngIf="isChecked">{{'accoun.YouSubscribeWithyouraccountemail' | translate}} </div>
+
+  <mat-slide-toggle [(ngModel)]="isChecked" (change)="changeSlide()" ></mat-slide-toggle>
+
+
+  <!-- <button class="btn btn-secondary text-white font-bold size-6 max-250 w-100 ptb-6 border-radius-14 mt-16"
+    *ngIf="!email" (click)="openAddSubscription()">Add +</button> -->
+
+    <button class="btn btn-pink3 text-pink1 font-bold size-6 max-250 w-100 mt-4 border-radius-12 p-6"
+    *ngIf=""
+    (click)="deleteSub()">{{'accoun.Delete' | translate}}</button>
+
+</div>

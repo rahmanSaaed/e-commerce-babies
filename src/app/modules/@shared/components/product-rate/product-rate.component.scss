@@ -1,0 +1,23 @@
+.rate {
+    position: relative;
+    overflow: hidden;
+    white-space: nowrap;
+    display: inline-flex;
+    
+    &-colored {
+      position: absolute;
+      top: 0;
+      left: 0;
+    //   color: $warning;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+  
+    &-uncolored {
+    //   color: $gray-400;
+    }
+  }
+  .max-15{
+    width: 12px;
+  }
+  

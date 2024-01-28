@@ -1,0 +1,29 @@
+<form class="row needs-validation" [formGroup]="scriptionForm"
+  (ngSubmit)="addSubScription()" novalidate>
+  <div class="d-flex  justify-content-center align-self-center">
+    <div class="wrapper">
+      <div class="text-secondary size-md-25 size-14 font-bold mb-12">{{'accoun.Subscribetoournewsletter' | translate}}</div>
+      <div class="row">
+        <div class="col-md-12">
+          <label for="exampleFormControlInput1" class="text-gray3 size-6 mb-4">{{'accoun.Email' | translate}}</label>
+          <input type="email"  formControlName="email"
+           class="form-control  border-radius-8 border-gray text-gray2 size-4 w-100 ptb-6"
+            id="exampleFormControlInput1" >
+            <p *ngIf="(scriptionForm?.dirty || scriptionForm?.touched) && scriptionForm.invalid">
+              <span class="error">{{'accoun.emailrequired' | translate}}</span>
+            </p>
+        </div>
+        <div class="col-md-6">
+
+          <button [disabled]="scriptionForm.invalid"
+            class="btn btn-secondary text-white font-bold size-6 size-md-12 w-100 mt-16 border-radius-10 ptb-6 w-100">{{'accoun.Confirm' | translate}}</button>
+        </div>
+        <!-- <div class="col-md-6">
+          <button [disabled]="scriptionForm.invalid"
+            class="btn btn-pink3 text-pink1 font-bold size-12 w-100 mt-16 border-radius-10 ptb-6 w-100">Cancel</button>
+        </div> -->
+      </div>
+    </div>
+  </div>
+
+</form>

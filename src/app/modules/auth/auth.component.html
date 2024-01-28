@@ -1,0 +1,20 @@
+<div class="row h-100">
+    <div class="col-md-6 bg-image bg-primary d-md-block d-none">
+        <div class="d-flex flex-column justify-content-between align-items-center mt-100">
+            <img [routerLink]="''" src="assets/images/mumez-logo-{{global?.lang}}.svg" alt="" class="max-270 cursor-pointer">
+            <div class="size-30 text-white font-regular ms-lg-90 ms-md-72 lh-1 mt-6"  > {{'auth.Welcometothe' | translate}} <br> {{'auth.mummyMumez' | translate}} <br>  {{'auth.world.' | translate}}
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6 col-12 bg-primary1">
+        <div class="container max-600">
+            <div class="segment mt-80 mb-18 d-flex align-items-center bg-primary border-radius-20 w-100 p-7">
+                <a routerLink="login" routerLinkActive="bg-primary1"
+                    class="btn btn-primary size-14 font-medium text-white w-50 text-decoration-none p-10 border-radius-20 me-2">{{'auth.Login' | translate}}</a>
+                <a routerLink="register" routerLinkActive="bg-primary1"
+                    class="btn btn-primary size-14 font-medium text-white w-50 text-decoration-none p-10 border-radius-20 ms-2">{{'auth.Register' | translate}}</a>
+            </div>
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>

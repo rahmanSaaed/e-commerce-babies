@@ -1,0 +1,74 @@
+<div class="d-flex justify-content-center align-self-center">
+  <div class="wrapper">
+    <div class="text-secondary size-md-25 size-14 font-bold mb-12">{{'accoun.UpdateyourEmail' | translate}}</div>
+
+    <form class="row needs-validation" [hidden]="!showChangeEmail" [formGroup]="changeEmailRequest"
+      (ngSubmit)="changeEmailEwquest()" novalidate>
+      <div class="col-md-6">
+        <label for="exampleFormControlInput1" class="text-gray3 size-6 mb-4">{{'accoun.YourNewemail' | translate}}</label>
+        <input type="email" class="form-control border-radius-8 border-gray text-gray size-4 w-100" pattern="[^@\s]+@[^@\s]+\.[^@\s]+"
+          formControlName="newEmail" (input)="matchPasswords()" id="exampleFormControlInput1">
+          <!-- <div class="invalid-feedback"> -->
+            <p *ngIf="newEmail.hasError('email') || newEmail.hasError('pattern')"   class="error">
+              {{'auth.Pleaseenteravalidemailaddress' | translate}}
+            </p>
+          <!-- </div> -->
+      </div>
+      <div class="col"></div>
+      <div class="col-md-6">
+        <label for="exampleFormControlInput1" class="text-gray3 size-6 mb-4">{{'accoun.ConfirmNewemail' | translate}}</label>
+        <input type="email" class="form-control border-radius-8 border-gray text-gray size-4 w-100"
+          formControlName="confirmNewEmail" (input)="matchPasswords()" id="exampleFormControlInput1">
+        <p *ngIf="matched && (changeEmailRequest?.dirty || changeEmailRequest?.touched)">
+          <span class="error">{{'accoun.EmailNotMached' | translate}}</span>
+        </p>
+        <!-- <p *ngIf="(changeEmailRequest?.dirty || changeEmailRequest?.touched) && changeEmailRequest.hasError('pattern')">
+          <span class="error">pattern</span>
+        </p> -->
+      </div>
+      <div class="col"></div>
+      <div class="col-md-6">
+        <button [disabled]="(changeEmailRequest.invalid || matched)"
+          class="btn btn-secondary text-white font-bold size-12 w-100 mt-16 border-radius-10 ptb-6 w-100">{{'accoun.Confirm' | translate}}</button>
+      </div>
+      <!-- <div class="col-md-6">
+        <button
+          class="btn btn-pink3 text-pink1 font-bold size-12 w-100 mt-16 border-radius-10 ptb-6 w-100">Cancel</button>
+      </div> -->
+    </form>
+
+    <form class="row needs-validation" [formGroup]="checkPassword" (ngSubmit)="checkPass()" id="slide"
+      [hidden]="!showChangePassword" novalidate>
+
+      <div class="col-md-11 position-relative">
+        <label for="exampleFormControlInput1" class="text-gray3 size-6 mb-4">{{'accoun.Typeyourpassword' | translate}}</label>
+        <input type="{{passwordType}}" class="form-control border-radius-8 border-gray text-gray size-4 w-100"
+          formControlName="password" id="exampleFormControlInput1" minlength="8">
+
+          <img src="../../../../assets/images/visibility.png" alt="" *ngIf="passwordType && checkPassword.value.password" (click)="showHidePass()"
+          class="d-flex align-items-center  position-absolute  cursor-pointer  bg-gray1 pass" >
+
+          <img src="../../../../assets/images/visibility-dis.png" alt="" *ngIf="!passwordType && checkPassword.value.password" (click)="showHidePass()"
+          class="d-flex align-items-center  position-absolute  cursor-pointer  bg-gray1 pass" >
+
+      </div>
+
+      <div class="col-md-11">
+        <button [disabled]="!checkPassword.valid"
+          class="btn btn-secondary text-white font-bold size-6 size-md-12 w-100 mt-16 border-radius-10 ptb-6 w-100">{{'accoun.Confirm' | translate}}</button>
+      </div>
+    </form>
+    <div class="row needs-validation" id="slide" [hidden]="!changeEmailEwquestIsSubmitting">
+      <div class="col-md-11">
+        <label for="exampleFormControlInput1" class="text-gray3 size-6 mb-4">{{'accoun.PleaseCheckYourEmail' | translate}}
+          {{changeEmailRequest.get('newEmail').value}}</label>
+      </div>
+      <div class="col-md-11">
+        <div class="col-md-6">
+          <!-- <button
+            class="btn btn-pink3 text-pink1 font-bold size-12 w-100 mt-16 border-radius-10 ptb-6 w-100">Cancel</button> -->
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

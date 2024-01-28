@@ -1,0 +1,9 @@
+img {
+    object-fit: cover;
+}
+.sections {
+    img {
+        object-fit: contain;
+        height: 80px;
+    }
+}

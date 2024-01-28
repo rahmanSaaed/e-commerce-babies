@@ -1,0 +1,23 @@
+::-webkit-input-placeholder::ng-deep {
+    /* Chrome/Opera/Safari */
+    font-size: 1.075rem !important;
+    color:#969CAA !important;
+    font-family: 'BryantPro-Regular' !important;
+}
+
+.filter-green{
+  filter: invert(120%) sepia(79%) saturate(100%) hue-rotate(100deg) brightness(100%) contrast(100%);
+}
+::ng-deep html[dir="rtl"] {
+	.was-validated .form-control:invalid,
+	.form-control.is-invalid {
+		padding-right: calc(1.5em - 0.7rem);
+		padding-left: calc(1.5em + 0.75rem);
+		background-position: left calc(0.375em + 0.1875rem) center;
+		background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+	}
+  .filter-green {
+    transform: scaleX(-1);
+    margin-right: 2px;
+  }
+}

@@ -1,0 +1,17 @@
+th {
+  border-bottom: 1px solid #eaedef !important;
+}
+td {
+  border-bottom: 1px solid #eaedef;
+  padding: 22px 0;
+}
+.item-image {
+  height: 58px;
+  object-fit: cover;
+}
+
+@media (max-width: 991.98px) {
+  table {
+    width: 750px;
+  }
+}

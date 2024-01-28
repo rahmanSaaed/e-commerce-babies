@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="89" height="89" viewBox="0 0 89 89">
+  <defs>
+    <style>
+      .cls-1 {
+        fill: #fff;
+      }
+
+      .cls-2 {
+        fill: #57a5e9;
+      }
+    </style>
+  </defs>
+  <g id="Group_18045" data-name="Group 18045" transform="translate(0.459)">
+    <circle id="Ellipse_533" data-name="Ellipse 533" class="cls-1" cx="44.5" cy="44.5" r="44.5" transform="translate(-0.459)"/>
+    <path id="gps_1_" data-name="gps (1)" class="cls-2" d="M9.131,0A15.4,15.4,0,0,0-6.25,15.381c0,10.66,15.4,28.868,15.4,28.868S24.511,25.516,24.511,15.381A15.4,15.4,0,0,0,9.131,0Zm4.641,19.884a6.563,6.563,0,1,1,0-9.281A6.543,6.543,0,0,1,13.771,19.884Zm0,0" transform="translate(34.25 22)"/>
+  </g>
+</svg>

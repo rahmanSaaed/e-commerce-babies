@@ -1,0 +1,28 @@
+<div class="text-dark size-25 font-bold"> {{'auth.WishList' | translate}}</div>
+<div class="row mt-18 mb-50">
+    <ng-container *ngIf="!wishList">
+        <div class="col-xxl-3 col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12 mb-20" *ngFor="let item of [1,2,3,4,5,6,7,8]">
+            <app-placeholder [placeholder]="'wishList'"></app-placeholder>
+        </div>
+    </ng-container>
+    <ng-container *ngIf="wishList">
+        <ng-container *ngIf="wishList?.length == 0">
+            <div class="col-md-12 text-center">
+                <div><img src="../../../assets/images/empty-cart.svg" alt="" class="w-100 max-500"></div>
+                <div class="size-10 text-dark font-medium mb-8"> {{'auth.Noitemsadded' | translate}}</div>
+            </div>
+        </ng-container>
+        <ng-container *ngIf="wishList?.length > 0">
+            <div class="col-xxl-3 col-xl-4 col-lg-4 col-md-4 col-sm-6 col-12 mb-20" *ngFor="let item of wishList">
+                <whishlist-item (deletedItem)="deletedItem($event)" [productId]="item.productId"
+                    [name]="item.product.name || item.product.nameAr"
+                    [price]="item.product.price"
+                    [image]="item.product.images"
+                    [salePrice]="item?.product?.salePrice"
+                    [productReviews]="item?.product?.reviews"
+                    [favouriteId]="item?.favouriteId">
+                  </whishlist-item>
+            </div>
+        </ng-container>
+    </ng-container>
+</div>

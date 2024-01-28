@@ -1,0 +1,12 @@
+.bg-image {
+    background-image: url('../../../assets/images/7@2x.png');
+    background-size: 100% 100%;
+}
+.segment a {
+    &:hover {
+        background: #75CBD8;
+    }
+}
+body {
+    height: 100%;
+}

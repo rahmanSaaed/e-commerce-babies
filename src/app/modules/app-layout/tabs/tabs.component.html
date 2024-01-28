@@ -1,0 +1,36 @@
+<nav class="fixed-bottom d-block d-lg-none">
+    <div class="d-flex align-items-center justify-content-around bg-secondary ptb-2 tabs">
+        <a routerLink="/" routerLinkActive="active-tab" class="ptb-2 pse-4 ptb-sm-4 pse-sm-6 text-decoration-none" [routerLinkActiveOptions]="{exact:true}">
+            <div class="d-flex flex-column justify-content-center align-items-center">
+                <img src="../../../../assets/images/tab-home.svg" alt="" class="w-100 max-20">
+                <div class="text-white size-sm-4 mt-2 size-3">Home</div>
+            </div>
+        </a>
+        <a  routerLinkActive="active-tab" class="ptb-2 pse-4 ptb-sm-4 pse-sm-6 text-decoration-none">
+            <div class="d-flex flex-column justify-content-center align-items-center" (click)="showAccMenu = !showAccMenu">
+                <img src="../../../../assets/images/tab-profile.svg" alt="" class="w-100 max-20">
+                <div class="text-white size-sm-4 mt-2 size-3">Profile</div>
+                <app-tab-profile [showAccMenu]="showAccMenu"></app-tab-profile>
+            </div>
+        </a>
+        <a routerLink="/categories" routerLinkActive="active-tab" class="ptb-2 pse-4 ptb-sm-4 pse-sm-6 text-decoration-none">
+            <div class="d-flex flex-column justify-content-center align-items-center">
+                <img src="../../../../assets/images/tab-category.svg" alt="" class="w-100 max-20">
+                <div class="text-white size-sm-4 mt-2 size-3">Categories</div>
+            </div>
+        </a>
+        <a routerLink="/search" routerLinkActive="active-tab"  [queryParams]="{id: 'sale'}" class="ptb-2 pse-4 ptb-sm-4 pse-sm-6 text-decoration-none">
+            <div class="d-flex flex-column justify-content-center align-items-center">
+                <img src="../../../../assets/images/sale.svg" alt="" class="w-100 max-20">
+                <div class="text-white size-sm-4 mt-5 size-3">Sales</div>
+            </div>
+        </a>
+        <a  routerLinkActive="active-tab" class="ptb-2 pse-4 ptb-sm-4 pse-sm-6">
+            <div class="d-flex flex-column justify-content-center align-items-center" (click)="showSettinsTab = !showSettinsTab">
+                <img src="../../../../assets/images/settings.svg" alt="" class="w-100 max-20">
+                <div class="text-white size-sm-4 mt-5 size-3">Settings</div>
+                <app-tab-settings [showSettinsTab]="showSettinsTab"></app-tab-settings>
+            </div>
+        </a>
+    </div>
+</nav>

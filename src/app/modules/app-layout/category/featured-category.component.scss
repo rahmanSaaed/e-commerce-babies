@@ -1,0 +1,120 @@
+.sub-cate-list {
+  background-color: #f7f7f7;
+  position: absolute;
+  padding-top: 1%;
+  padding-bottom: 5%;
+  width: 100%;
+  top: 69px;
+  height: 500px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  display: none !important;
+  z-index: 200;
+}
+
+.sub-cate-list-hover {
+  background-color: #f7f7f7;
+  position: absolute;
+  padding-top: 1%;
+  padding-bottom: 5%;
+  width: 100%;
+  top: 69px;
+  height: 500px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  display: flex !important;
+    z-index: 200;
+}
+
+.sub-cate-list::before {
+  content: '';
+  position: absolute;
+  top: -20px;
+  width: 100%;
+  background: transparent;
+  height: 20px;
+}
+// a.cate:hover ~ div.sub-cate-list {
+//   display: flex !important;
+// }
+
+// .sub-cate-list:hover {
+//   display: flex !important;
+// }
+.sub-cate-list:hover ~ .cate-overlay {
+  display: block !important;
+}
+.cate {
+  height: 100%;
+  border-bottom: 2px solid transparent;
+}
+.cate:hover {
+  border-width: 2px;
+  border-bottom-style: solid;
+  border-color: black;
+}
+
+// .cate-hover {
+//     border-width: 2px;
+//     border-bottom-style: solid;
+//     border-color: black;
+//   }
+
+// .cate:hover ~ .cate-overlay {
+//   display: block !important;
+// }
+.active {
+  border-width: 2px;
+  border-bottom-style: solid;
+  // border-color: black;
+}
+img {
+  object-fit: fill;
+}
+.cate-overlay {
+  background: rgb(0 0 0 / 0.2);
+  top: 380px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  position: fixed !important;
+  width: 100%;
+  height: 100%;
+  display: none !important;
+  z-index: 100;
+}
+
+.cate-overlay-hover {
+  background: rgb(0 0 0 / 0.2);
+  top: 380px;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  position: fixed !important;
+  width: 100%;
+  height: 100%;
+  display: block !important;
+  z-index: 100;
+}
+
+.cate-menue {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+}
+.cate-menue {
+  overflow: -moz-scrollbars-none;
+  -ms-overflow-style: none;
+  white-space: nowrap;
+}
+
+.cate-menue::-webkit-scrollbar {
+  width: 0 !important;
+  display: none;
+}
+.line {
+  transition: all .2s ease-in-out;
+}
+.line:hover { transform: scale(1.1); }

@@ -1,0 +1,22 @@
+<section class="h-100">
+	<div class="container h-100">
+		<div class="row h-100">
+			<div class="col-md-12 d-flex justify-content-center align-items-center">
+				<div class="text-center">
+					<img src="assets/images/mumez-logo.svg" alt="" class="max-300 w-100">
+					<div class="size-40 text-white text-center font-bold mt-16"> {{'auth.ThanksForRegistration' |
+						translate}}</div>
+					<div class="text-white text-center size-12">
+						{{'auth.confirmRegister1' | translate}} <span class="font-bold">{{email}}</span> <br>
+						{{'auth.confirmRegister2' | translate}}
+					</div>
+					<button
+						class="btn font-bold size-10 p-8 w-100 activation-button border-radius-18 text-white resend mt-16"
+						[disabled]="activeResend" (click)="sendResetPassword()"> {{'auth.Resendagain' | translate}}
+					</button>
+					<div [hidden]="timeleft <= 0" id="countdown" class="text-white font-bold size-16 min-h mt-4"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>

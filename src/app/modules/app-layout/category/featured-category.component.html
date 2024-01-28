@@ -1,0 +1,70 @@
+<nav class="bg-gray1 pt-8 d-none d-lg-block">
+    <div class="container bg-white border-radius-20 box-shadow pse-20">
+        <div class="row">
+            <div class="col-12">
+                <div class="d-flex align-items-center justify-content-between position-relative h-100">
+                    <a (click)="goToAllCategories()" class="text-decoration-none text-dark size-4 font-bold ptb-12 cursor-pointer ">
+                        {{'featureCat.allCategories' | translate}}
+                    </a>
+                    <!-- (mouseenter)="mouseHoverCategory()" (mouseleave)="mouselCategory()" -->
+                    <a  class="text-decoration-none text-dark size-3 font-medium cate ptb-12 cursor-pointer"
+                        *ngFor="let cate of allCategories;let i=index;" [class.active]="categoryId == cate.categoryId" id="{{cate?.categoryId}}"
+                        (mouseenter)="getSubCategory(cate)" (mouseleave)="leaveCategoryList()"
+                        (click)="goToCategoryProduct(cate.categoryId)"
+                        >
+
+                        {{ cate?.name || cate.nameAr }}
+                    </a>
+                    <button class="btn btn-secondary1 text-secondary size-4 border-radius-18 w-100 max-90 font-medium ptb-4"  (click)="navigateSearch()">{{'featureCat.sale' | translate}}</button>
+                    <div class="sub-cate-list bg-white p-20 d-flex justify-content-between" id="sub-cate-list" (mouseleave)="leaveList()" (mouseenter)="getSubCategory()">
+                        <div class="category me-16">
+                            <div class="text-dark size-12 font-bold mb-8 cursor-pointer" (click)="goToCategoryProduct(categoryId)" >{{categoryName}}</div>
+                            <div class="text-dark size-4 font-medium mb-4 cursor-pointer line" *ngFor="let subCategory of subCategories" (click)="goToSubCategoriesProducts(subCategory.subCategoryId, subCategory.name || subCategory.nameAr)"> {{subCategory.name || subCategory.nameAr}} </div>
+                        </div>
+                        <div class="cate-image d-flex align-items-cetner ">
+                            <img [src]="categoryImage" alt={{categoryName}} class="w-100 max-600" defaultImage>
+                        </div>
+                    </div>
+                    <div class="cate-overlay" id="cate-overlay"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</nav>
+
+ 
+<!-- <nav class="bg-gray1 pt-8 d-block d-lg-none">
+    <div class="container bg-white border-radius-20 box-shadow pse-20">
+        <div class="row">
+            <div class="col-9 cate-menue h-100 ptb-4">
+                    <a (click)="goToAllCategories()" class="text-decoration-none text-dark size-4 font-bold ptb-12 cursor-pointer">
+                        All categories
+                    </a>
+                    <a  class="text-decoration-none text-dark size-3 font-medium cate ptb-12 cursor-pointer pse-4"
+                        *ngFor="let cate of allCategories;let i=index;" [class.active]="categoryId == cate.categoryId"
+                        (mouseover)="getSubCategory(cate)"
+                        (click)="goToCategoryProduct(cate.categoryId)"
+                        >
+
+                        {{ cate.name }}
+                    </a>
+
+
+            </div>
+            <div class="col-3 ptb-4 d-flex justify-content-end"><button class="btn btn-secondary1 text-secondary size-4 border-radius-18 w-100 max-90 font-medium"  (click)="navigateSearch()">Sale</button></div>
+        </div>
+    </div>
+</nav> -->
+
+
+<!--
+<div class="sub-cate-list bg-white p-20 d-flex justify-content-between" (mouseleave)="leaveList()">
+    <div class="category me-16">
+        <div class="text-dark size-12 font-bold mb-8 cursor-pointer" (click)="goToCategoryProduct(categoryId)" >{{categoryName}}</div>
+        <div class="text-dark size-4 font-medium mb-4 cursor-pointer" *ngFor="let subCategory of subCategories" (click)="goToSubCategoriesProducts(subCategory.subCategoryId)"> {{subCategory.name}} </div>
+    </div>
+    <div class="cate-image d-flex align-items-cetner ">
+        <img [src]="categoryImage" alt={{categoryName}} class="w-100 max-600" defaultImage>
+    </div>
+</div>
+<div class="cate-overlay"></div> -->

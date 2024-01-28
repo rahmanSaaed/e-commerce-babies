@@ -1,0 +1,7 @@
+<div class="position-relative content cursor-pointer" (click)="goToBlogDetail(blogId)">
+    <img [src]="image" alt={{name}} class="border-radius-40 w-100 cursor-pointer"  defaultImage>
+    <div class="overlay border-radius-40 w-100 cursor-pointer">
+    </div>
+</div>
+<div class="text-gray3 size-14 font-bold mt-8 max-600 cursor-pointer" (click)="goToBlogDetail(blogId)" >{{name}}</div>
+<div class="text-gray2 size-8 mt-10">{{dateCreated | date}}</div>
